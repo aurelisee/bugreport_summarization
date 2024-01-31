@@ -1,0 +1,7 @@
+Code actions without definite edits were re-run via the additional call to resolve, triggering some to run immediately on hover. Auto insertion occurs when hovering over suggestions in "Quick Fix." This issue exists in current vscode versions but not in 1.80.2 released in June, using the same Snyk extension version. "Local" code actions directly interfacing with VSCode don't exhibit this behavior. The problem was resolved in the last insiders' release.
+OS Version: macOS AMD64
+VS Code Version: September 2023 (version 1.83)
+OS Version: Apple M2
+Flutter Toolkit version: v2.1.1
+1. Provide code action via language server.
+2. When opening the `Quickfixes...` menu, the code action command is automatically executed on mouse-over/selection.

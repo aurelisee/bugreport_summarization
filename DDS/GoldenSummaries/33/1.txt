@@ -1,0 +1,8 @@
+The editorGutter element in the editor has disappeared, and the corresponding colors for Git changes cannot be displayed. The issue was caused by the dirtydiffDecorator not properly disposing of the item when the editor is no longer visible. Upgrading git to the latest version hasn't resolve the problem. The fix involves checking if the item exists before disposing of it and deleting it from the map if it is empty. 
+- VS Code Version: 1.83.1
+- OS Version: Windows 10
+1. Open a file
+2. Click "Ctrl + \ " (notebook.cell.split)
+3. Close the split
+
+ 

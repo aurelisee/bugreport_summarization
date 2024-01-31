@@ -1,0 +1,14 @@
+(Atlassian and GitLens) Gives Notification saying "failed to install [insert program name here]" The notification window contains a Download Manually button option. 
+The manual download button starts downloading a VISX, but when installing, it fails saying "One or more extensions are for Visual Studio Code. 
+I've deleted Code and even rm -Rf the Code folder in Application Support but even after doing that, and reinstalling the latest version of VSCode I cannot install any extension.
+Fixed it and triggered new insiders release.
+Version: 1.46.0-insider
+Electron: 7.3.0
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.17763
+Update your system to latest macOS
+Try to install anything
+Error message appears:
+Console in developer tools shows this:

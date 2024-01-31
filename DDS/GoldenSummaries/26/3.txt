@@ -1,0 +1,11 @@
+Previously, the output window automatically gained focus after compilation, allowing closure with a simple Enter press. However, regardless of the `focus` setting, it no longer auto-focuses, requiring a click on the window after compilation and then pressing Enter to close it. This issue is common, but there's optimism as it appears resolved in the pre-release version (`1.85-insider`). The cursor remains in the editor, necessitating a click on the terminal to press Enter and dismiss the task.
+  Version: 1.84.0 (Universal)
+  Electron: 25.9.2
+  Chromium: 114.0.5735.289
+  Node.js: 18.15.0
+  V8: 11.4.183.29-electron.0
+  OS: Darwin arm64 23.1.0
+- OS Version: macOS Sonoma 14.1
+1. Create a task in task.json with this format
+2. Open an editor window if not already open
+3. Run the task

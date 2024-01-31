@@ -1,0 +1,9 @@
+The "Restart to Update" does not restart  but the update works fine after a manual start VS Code is updated
+On Big Sur action is still to be called Restart to Update. 
+When clicking it, a modal dialog should come up explaining this is broken in Big Sur, with a link to the issue, and an action to Quit VS Code.
+Upstream fix electron/electron#25864, should be fixed in our exploration builds, needs to be backported to 9-x-y
+I'm on Version: 1.52.1
+1.get an update and download the update
+2.Main menu (or Gear) -> click on the Restart button so the update gets applied
+3.VS Code insiders is closed but does not start 🐛
+

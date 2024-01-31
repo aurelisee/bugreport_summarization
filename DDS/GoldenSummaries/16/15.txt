@@ -1,0 +1,13 @@
+VS Code crashes, saying it cannot find libgtk-2.0.so or libXtst.so or libgconf-2.0.so
+Certain distros don't include some base deps and VS Code will install successfully but not launch without manually installing the deps it complains about.
+So it seems like the above 4 packages should be added as package dependencies, to avoid the user having to manually find/install additional packages.
+This is fixed Insiders, coming in 1.9.0
+Installing libicu seems to have cleared that up.
+VSCode Version: 1.8.1
+OS Version: CentOS 7.3 (x64)
+Electron: 6.1.5
+Chrome: 76.0.3809.146
+Node.js: 12.4.0
+V8: 7.6.303.31-electron.0
+Install CentOS 7.3 minimal ISO to a new VM
+sudo yum install code-1.8.1-1482158209.el7.x86_64.rpm

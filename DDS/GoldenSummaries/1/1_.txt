@@ -1,0 +1,15 @@
+When double-clicking the mouse in the terminal to select, in the Chinese environment, the first word is ignored
+Fix wide character offset in word link detector
+MacOS: 12.3.1
+VSCode: 1.67.0-insider
+OS: Darwin x64 21.5.0
+版本: 1.69.2 (Universal)
+提交: 3b889b0
+日期: 2022-07-18T16:12:57.074Z
+Electron: 18.3.5
+Chromium: 100.0.4896.160
+Node.js: 16.13.2
+V8: 10.0.139.17-electron.0
+OS: Darwin x64 21.5.0
+Prerequisite: I have enabled the mouse selection and copy function in the terminal, and the right mouse button paste function
+When I double-click to select "我是一个中国人" and paste it, the word "我" is lost

@@ -1,0 +1,14 @@
+The bottom of the bar is visible while closed.
+Dialog moves up but part of the dialog remains visible.
+It only adds .multipleline if the searchString contains \n, it doesn't check replaceString.
+I think a better solution may be to animate on transform.
+VS Code version: Code 1.39.2
+OS version: Linux x64 5.0.0-32-generic
+Open replace dialog box ("Edit-Replace" or Ctrl+H)
+Select "replace with" input box (bottommost)
+Type in several words, separated with Ctrl+Enter or Shift+Enter
+Close dialog (Esc)
+1.Open any file
+2.Hit `CTRL+H` to open the Search and Replace bar
+3.In the Replace field, hit `Shift+Enter` to add a line return
+4.Close the bar

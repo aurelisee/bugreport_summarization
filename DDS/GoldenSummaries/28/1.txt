@@ -1,0 +1,9 @@
+When this command is run, it is supposed to open the explorer and also highlight/select the target file in the explorer. There are two race conditions here both preventing selecting directories the first when no files are open and the second when an active file is open. This is caused by the visibility callback firing and resetting the tree input and then selecting the active file. Both of these can mess with a selection that was applied earlier.
+If the explorer is already open and I do the same thing, it works. The fix: https://github.com/microsoft/vscode/issues/197268
+OS version: Darwin arm64 23.1.0
+OS version: Windows_NT x64 10.0.19045
+1. Focus in chat view or another view so that the explorer is not visible
+2. Trigger the `revealInExplorer` command with a folder that exists
+
+
+

@@ -1,0 +1,9 @@
+Two Columns Layouts not work, when I open any document and one extension readme at a time
+It seems like webview is detached and reattached by vscode during this action while some pending events are fired which results in this error.
+Split was causing the webview in the extension editor to be reparented, which caused this cryptic error
+Result: all tabs are hidden.
+VS Code version: Code 1.38.0 
+OS version: Windows_NT x64 6.1.7601
+1.Open any document
+2.Open any extension (see readme)
+3.Click en [|] button for see Two Columns Layouts

@@ -1,0 +1,7 @@
+When using "terminal.integrated.developer.devMode": true, focusing on the terminal now places the cursor at the text box's start. For PowerShell, a regex with an optional space at the end is applied, addressing conpty rendering issues. Returning true in the _cursorOnNextLine check happens when there's a single command, indicating the first command and validating any match. To resolve machine-specific issues, polling is increased to 1000ms (50x20ms).
+1. Windows (maybe not needed?)
+2. Set `"terminal.integrated.developer.devMode": true`
+3. Open terminal
+4. Write some text, note the cursor location
+5. Focus an editor
+6. Focus the terminal, ???? the cursor is at the start of the textbox

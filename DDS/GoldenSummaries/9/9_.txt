@@ -1,0 +1,16 @@
+My initial finding was that vscode didn't clear the opened text models for the old locations after the move operation, so that the next time you move back, vscode will try to reuse the previously cached text models.
+Open file A.java in VS Code.
+Modify file A.java and add some contents, and leave it unsaved.
+Drag and drop A.java to a new folder f1.
+VSCode Version: 1.45.1
+OS Version: Windows 10
+Electron: 7.2.4
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.18363
+Open sample node project below in VS Code.
+dnd.zip
+Set the setting "typescript.updateImportsOnFileMove.enabled": "always" or "never".
+Click to open multiple files (e.g. src/utils/ma.ts, src/utils/mb.ts, src/utils/mc.ts, src/utils/md.ts) in VS Code.
+In File Explorer, drag and drop these files back and forth several times, e.g.

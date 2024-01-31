@@ -1,0 +1,8 @@
+iterm2 select the number range is correct, but in vscode terminal is not right.
+After reset all the settings and reload with disable extensions,this issue still happened in zsh and bash
+This is not an upstream problem but an issue with the word link provider
+Fix wide character offset in word link detector
+MacOS: 12.3.1
+VSCode: 1.67.0-insider
+copy words 获取模板 25235168 的预览图失败
+double click on the number

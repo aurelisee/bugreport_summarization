@@ -1,0 +1,9 @@
+After installing latest release VS Code no longer automatically sync my repositories after successfull commits, despite that being set in settings.
+In previous version comment+enter would do what the large button right under the message input box do commit and sync. 
+In current version command+enter only commit and do not sync.
+VS Code does what it is suppossed to do do after successfull commits.
+i can use "command + enter" in the source control view and it works now
+This issue has been fixed in the latest Insiders release:
+Version: 1.71.0-insider
+OS version: Darwin arm64 21.6.0
+OS version: Windows_NT x64 6.3.9600

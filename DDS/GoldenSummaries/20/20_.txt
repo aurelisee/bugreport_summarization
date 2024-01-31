@@ -1,0 +1,10 @@
+a "reload window" in the EH should not kill the window but just restart the EH (with the same port number) and send an event to the VS Code debugger (you). 
+This should result in sending an attach request to node-debug.
+Workaround is to pass the folder in the launch config.
+I've created PR #23586
+VSCode Version: Code - Insiders 1.11.0-insider
+OS Version: Linux x64 3.13.0-108-generic
+1. Open folder with extension
+2. F5 extension
+3. In extension's workbench try to open a different folder
+4. -> Extension's workbench closes, but does not reopen with new folder

@@ -1,0 +1,5 @@
+If the side bar is closed or on a tab besides the Explorer, and press CTRL+Click on a path to a folder in the embedded terminal, the Explorer opens but does not navigate to the folder, and instead selects the last active file in the editor pane. Seems to be caused by the code which triggers a second call to reveal the active editor file when the explorer is revealed. Two race conditions here both preventing selecting directories the first when no files are open and the second when an active file is open. This is caused by the visibility callback firing and resetting the tree input and then selecting the active file. Both of these messed with a selection that was applied earlier. If do the same thing when the explorer is already open, it works. The fix is https://github.com/microsoft/vscode/issues/197268
+OS version: Darwin arm64 23.1.0
+OS version: Windows_NT x64 10.0.19045
+1. Focus in chat view or another view so that the explorer is not visible
+2. Trigger the `revealInExplorer` command with a folder that exists

@@ -1,0 +1,13 @@
+When I paste the content into the Webview, it will paste twice.
+This is a result of us enabling the copy/paste menu bar commands for webviews + the usage of a custom title bar (which is the default on windows)
+I think we want to completely block the browser generate events in all cases and instead always dispatch the events through VS Code. 
+VSCode Version:Version: 1.47.0-insider 
+Electron: 7.3.2
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.19041
+Download the vscode extension samples:
+2.Modify the html in the cat coding webview sample to have a ```<textarea>```
+3.Run the cat coding webview
+4.Paste some text into the text area.

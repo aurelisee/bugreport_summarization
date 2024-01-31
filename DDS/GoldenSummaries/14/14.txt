@@ -1,0 +1,9 @@
+It seems like webview is detached and reattached by vscode during this action while some pending events are fired which results in this error.
+when i open an extension window, then i click on the split screen button, it say error idk what it say, then the window is closed and blank, i cant open my file window again
+Split was causing the webview in the extension editor to be reparented, which caused this cryptic error
+Fixed by 92dac9e
+VS Code version: Code 1.38.0 
+OS version: Windows_NT x64 6.1.7601
+1.Open any document
+2.Open any extension (see readme)
+3.Click en [|] button for see Two Columns Layouts

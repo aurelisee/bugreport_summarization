@@ -1,0 +1,12 @@
+if I stop the execution of the script and run the debugger again the late code change be load. 
+VS Code pre-release does not reload code on restart of the debugger
+All of a sudden VS Code (preview) does not load changes made to the code, when restarting the debugger.
+Expected behaviour for the restart button; is to stop the debugger, and run the debugger again based on the updated code.
+OS Version: Windows 10 Pro 21H2
+VS Code Version: 1.70.1
+OS Version: Linux x64 5.15.0-43-generic
+Put a breakpoint in code
+Start python debugging session
+When stopped at breakpoint edit an change code
+Restart debugging session (ctrl-shift-F5)
+The changes are not saved, the debugger happily runs the old version

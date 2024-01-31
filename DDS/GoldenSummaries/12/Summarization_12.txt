@@ -1,0 +1,16 @@
+Failed to install any extension with recent VSCode Insider
+The manual download button starts downloading a VISX, but when installing, it fails saying "One or more extensions are for Visual Studio Code. 
+VSCode Version:
+Version: 1.46.0-insider
+Commit: 1d268b7
+Date: 2020-05-28T08:50:53.373Z
+Electron: 7.3.0
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.17763
+OS Version: Windows 10
+Fresh install of VSCode Insider 1.46.0 (also tried the zip package)
+Try to install any extension (tried multiple popular extensions with same result)
+Error message appears
+Console in developer tools shows

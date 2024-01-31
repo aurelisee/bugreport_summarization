@@ -1,0 +1,3 @@
+The bug is that VSCode doesn't activate 'html' when it needs it's indent rules. 
+Since any of the last updates, the html parts of php file don't autoindent with proper linebreaks as before.
+I noticed that if I open an html file and come back to the php file, the autoindentation temporarily wors again until you close and reopen de php file.

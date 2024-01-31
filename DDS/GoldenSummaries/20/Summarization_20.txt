@@ -1,0 +1,7 @@
+Extension host debug: reload window closes the debuggee
+ it is probably related in how we handle reloads on vscode side
+Based on the stopOnEntry flag EH debugging either uses --debugPluginHost or --debugBrkPluginHost, so if we want to have a minimal fix, we probably should only include an additional test for --debugPluginHost.
+1. Open folder with extension
+2. F5 extension
+3. In extension's workbench try to open a different folder
+4. -> Extension's workbench closes, but does not reopen with new folder

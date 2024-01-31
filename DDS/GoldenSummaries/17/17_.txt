@@ -1,0 +1,5 @@
+When I reformat (or more subtly, when I hit Restart in a debugging session, which automatically saves, which fires format-on-save) the breakpoint ends up pointing at a totally different piece of code.
+It seems like the editor does not update those decorations in that specific case.
+it is inconsistent to compute more minimal edits when formatting explicitly, but not when formatting on save.
+- VSCode Version: 1.16.0
+- OS Version: Win 10, up to date

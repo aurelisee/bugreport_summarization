@@ -1,0 +1,6 @@
+As of version 1.70, some buttons on toolbars appear to be unlabeled, or if they have, they are not being read by orca.
+The lack of labels directly impacts accessibility, at least for those who use orca as a screen reader.
+As a workaround you can use VS Code insiders https://code.visualstudio.com/insiders/ which already has the fix
+What is missing is the aria-label, so this commit sets the aria-label on that inner element.
+VS Code version: Code - Insiders 1.70.0-insider (6246902, 2022-07-21T05:18:49.778Z)
+OS version: Linux x64 5.18.11-200.fc36.x86_64

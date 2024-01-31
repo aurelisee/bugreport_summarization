@@ -1,0 +1,12 @@
+When having Python interactive window open and try to switch to that group (normally with Cmd + 2), the cursor will disappear instead of going to the "command line" (the space to write commands). 
+For this reason I think this bug is a result of a change in keyboard shortcut handling, and listening for focus / blur on the window is insufficient, since we're getting an extra blur external to our code.
+VS Code version: Code 1.45.1 (5763d90, 2020-05-14T08:33:47.663Z)
+OS version: Darwin x64 19.4.0
+Save this file locally (it happens also with other files; this is a file I've been able to reproduce it consistently with)
+Launch VSC
+Open the file above
+Tap Ctrl+K, V
+Now, perform the following sequence without leaving the finger from Ctrl:
+Ctrl + 1, Ctrl + End, Ctrl + 2, Ctrl + W
+The keyboard is now locked! Tapping any key/combination doesn't have any effect.
+it appears that webview within the panel doesn't receive focus when the user switches to a group

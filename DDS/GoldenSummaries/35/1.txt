@@ -1,0 +1,8 @@
+When starting a new workbook without saving the Jupyter notebook, pasting images from the clipboard works correctly. However, after saving the notebook, pasted images are no longer treated as inline attachments. This issue occurs when using the `"ipynb.pasteImagesAsAttachments.enabled": false` setting, resulting in broken markdown image links upon pasting with `ctrl+v`. On the other hand, with the setting `"ipynb.pasteImagesAsAttachments.enabled": true`, `ctrl+v` correctly pastes inline attachment image links. This problem seems related to markdown paste providers, and further investigation is suggested. The desired `attachment:filename` experience, with images stored in the notebook, can be achieved with `"ipynb.pasteImagesAsAttachments.enabled": true`, providing a preferable option for sharing. Although the issue occurred in a previous build, the latest test indicates it's now working as expected.
+Version: 1.83.1 (system setup)
+Electron: 25.8.4
+ElectronBuildId: 24154031
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.19045

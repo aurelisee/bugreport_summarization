@@ -1,0 +1,10 @@
+Terminal word selection range not correct
+When double-clicking the mouse in the terminal to select, in the Chinese environment, the first word is ignored
+on follow video you can see iterm2 select the number range be correct but in vscode terminal be not right.
+When I double-click to select "我是一个中国人" and paste it, the word "我" is lost
+https://github.com/microsoft/vscode/pull/169445
+MacOS: 12.3.1
+VSCode: 1.67.0-insider
+OS: Darwin x64 21.5.0
+- copy words 获取模板 25235168 的预览图失败
+- double click on the number

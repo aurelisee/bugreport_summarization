@@ -1,0 +1,17 @@
+Peek Definition + ENTER doesn' go to definition anymore
+"Press Enter Key" does not jump to the definition of the selected item with "White colored font 
+The item already is both focused and selected, so pressing Enter won't fire a selection change event since the selection doesn't change.
+pressing Shift + down arrow instead of Enter can be used as workaround.
+The Enter key does not work in this situation.
+- VSCode Version: 1.38.0
+- OS Version: ubuntu 16.04 LTS
+OS: Darwin x64 18.7.0
+C/C++ Extension Version: 0.25.1
+Version: 1.38.1
+Electron: 4.2.10
+Node.js: 10.11.0
+OS: Darwin x64 18.7.0
+1.set "C_Cpp: Intelli Scese Engine" to "Tag Parser" so there will be multiple results with "Go to definition"
+2.Press F12 on variables/functions which have multiple definitions
+3.Press Enter
+4.nothing happen

@@ -1,0 +1,9 @@
+When I apply commit the post commit does not work
+I had already checked if the update process changed this setting and checked again - git.postCommitCommand is still set to sync.
+Expected: Command+Enter again performs the same action as the large button under the message input box - commit and sync.
+i can use "command + enter" in the source control view and it works now
+but it doesn't work if i use the command palette with "Git: Commit All"
+This issue has been fixed in the latest Insiders release:
+Version: 1.71.0-insider
+OS version: Darwin arm64 21.6.0
+OS version: Windows_NT x64 6.3.9600

@@ -1,0 +1,12 @@
+When attempting to hover a dropdown list, it will jump to (0,0). This reproduces 100% of the time precisely when I hover over the dropdown list values, and I even repro it when the settings UI is the only active editor (no splitview or gridview). When trying to hover it while it's at (0,0) will cause it to jump back to the list it came from and continue to do this over and over.
+Version: 1.85.0-insider (system setup)
+Electron: 25.9.4
+ElectronBuildId: 25127168
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.22631
+1. open settings editor
+2. find/filter `inlineChat.showGutterIcon`
+3. select something from the dropdown
+

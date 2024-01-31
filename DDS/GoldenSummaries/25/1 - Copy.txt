@@ -1,0 +1,8 @@
+There's a problem with commit message history: they disappear completely after undoing the last commit. If you use saveValue, it replaces the last item in the linked list stored in memory. It's better to use historyNavigator.add because it doesn't replace the last item, but it's always empty. When scmService.setValue is used, no changes happen if the value is the same, but it returns. If the method is used with transient = false, it replaces the last history navigator value, adds the new one, and updates the _value member. The issue is that historyNavigator removes duplicates. To fix this, when transient = false, instead of replacing the last value, we should add the new value as another node. This will handle all cases.
+VS Code Version: 1.84.2
+OS Version: Windows 11 x64 (22H2, 22621.2715)
+1. Open a local Git project.
+2. Make changes.
+3. Commit with a wrong message.
+4. Undo the last commit.
+5. Re-commit with the correct message, causing the wrong message to vanish.

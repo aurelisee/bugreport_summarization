@@ -1,0 +1,6 @@
+In Zen Mode, the sudden appearance of multiple tabs occurs upon switching. Although the "Tab Bar" menus are expected to adapt to Zen Mode settings, selecting options under "Tab Bar" does not affect `zenMode.showTabs`. The proposed fix, outlined in a pull request, addresses this issue by updating preconditions for editor tab actions and menu items, excluding Zen Mode. This adjustment ensures that the editor tab actions and menu items are inaccessible when the editor is in Zen Mode.
+VS Code version: Code 1.84.0 (Universal) 
+OS version: Darwin arm64 22.1.0
+- Choose "View" -> "Appearance" -> "Tab bar" -> "Single tab"
+- Enter "Zen mode"
+- Right-clicking the tab bar and selecting the options under "Tab Bar" have no effect

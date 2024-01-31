@@ -1,0 +1,7 @@
+Open terminal with "terminal.integrated.developer.devMode": true, focusing on the terminal will cause the cursor at the start of the textbook. PowerShell handling has been updated with a specific regex that includes an optional space at the end. This addition is necessary because conpty may not render the final space in the prompt. Additionally, the _cursorOnNextLine check now returns true if there is a single command, indicating the first command and validating any match. To address issues on the user's machine, the polling interval has been increased to 1000ms (50x20ms).
+1. Windows (maybe not needed?)
+2. Set `"terminal.integrated.developer.devMode": true`
+3. Open terminal
+4. Write some text, note the cursor location
+5. Focus an editor
+6. Focus the terminal, ???? the cursor is at the start of the textbox

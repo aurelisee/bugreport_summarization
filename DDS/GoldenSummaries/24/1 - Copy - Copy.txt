@@ -1,0 +1,9 @@
+The issue arises because picking a color through any selector instantly triggers a change in the editor, consequently activating the editor's `onDidChangeModelContent` emitter. This, in turn, prompts the hover widget to invoke the `_hideWidgets` method. The flow is straightforward: color picker alters editor content, triggering emitter, leading to the hover widget hiding itself. To address this, modify the method invoked on model content change to cancel the scheduler without hiding the widget. The fix is in Insiders 1.85 or the next release of stable.
+- OS Version: Windows 10 Pro x64 Version 22H2
+VS Code version: Code 1.84.1
+OS version: Windows_NT x64 10.0.19045
+Version: 1.84.2 (user setup)
+1. Click or hover over a color square in a document, like `settings.json`
+2. Color picker opens
+3. Click on the slider on the right to change hue
+4. Color picker closes before you can actually pick the color you want

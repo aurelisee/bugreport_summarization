@@ -1,0 +1,9 @@
+This is happening when reassigning the items
+When introducing ids, you would probably expect the new object to replace the old object with the same id in all of the API.
+I request an API to add elements to the list in such a way that the scroll doesn't loose focus.
+Although if a user happens to scroll down the list while the list is loading, the scroll focus is reset to the top position every time the quickpick list is edited, even though no active item is present.
+The scroll focus is not maintained when elements are deleted in the middle of the list, i.e the visible items change.
+In case an active item is present, the reset position always focuses on the item.
+One way to avoid introducing ids would be to have separate functions for inserting, replacing and removing items:
+The overall fix for this issue is being tracked in: #132068
+

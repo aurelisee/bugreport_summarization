@@ -1,0 +1,9 @@
+Have tried the fix in the insider, looks like the dirty text models don't exist any more. 
+When moving files, the VS Code would modify the unsaved files again to restore the dirty state. 
+If i want to enable refactoring feature based on the move operation, the silent didChange behavior from VS Code client probably conflicts with the refactoring job.
+open fileA.ts that exports a symbol that is used in fileB.ts
+rename a symbol in fileA.ts
+(fileB.ts opens as a background tab)
+save all
+hit the x on the fileB.ts tab
+observe (through logging) that fileB.ts is not disposed

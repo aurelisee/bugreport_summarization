@@ -1,0 +1,5 @@
+Quick input reset scroll position
+This is happening when reassigning the items (since the press changed the label)
+This is similar to ignoreFocusOut: boolean and it would specifically handle the behavior of what to do with the scroll position.
+the scroll focus is not maintained when elements are deleted in the middle of the list, i.e the visible items change.
+One way to avoid introducing ids would be to have separate functions for inserting, replacing and removing items:

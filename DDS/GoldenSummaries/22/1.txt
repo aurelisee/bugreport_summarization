@@ -1,0 +1,13 @@
+When attempting to hover a dropdown list, it will jump to (0,0). And when trying to hover it while it's at (0,0), it will cause it to jump back to the list it came from. It will continue to do this over and over, creating a loop of mouse chase. It happens even with settings UI is the only active editor (no splitview or gridview).
+Initiated on a previous version of insiders, then updated before to file a bug report, hoping it was already resolved. Unfortunately, it is still happening on the latest update.
+Version: 1.85.0-insider (system setup)
+Electron: 25.9.4
+ElectronBuildId: 25127168
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.22631
+- Windows 11 Pro 23H2
+1. Click the dropdown caret
+2. Hover over an enum value
+3. :bug: dropdown appears in top left 

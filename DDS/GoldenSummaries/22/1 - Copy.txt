@@ -1,0 +1,13 @@
+Hovering over a dropdown list results in it jumping to (0,0). Subsequent attempts to hover at (0,0) make it return to its original list, creating a repetitive mouse chase loop. This occurs even when the settings UI is the sole active editor without splitview or gridview.
+The issue originated in a previous version of Insiders, and despite updating before filing a bug report, it persists in the latest update.
+Version: 1.85.0-insider (system setup)
+Electron: 25.9.4
+ElectronBuildId: 25127168
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.22631
+1. open settings editor
+2. find/filter `inlineChat.showGutterIcon`
+3. select something from the dropdown
+

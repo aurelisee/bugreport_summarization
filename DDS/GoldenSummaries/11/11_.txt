@@ -1,0 +1,6 @@
+This is happening when reassigning the items (since the press changed the label) here:
+Although if a user happens to scroll down the list while the list is loading, the scroll focus is reset to the top position every time the quickpick list is edited, even though no active item is present.
+In case an active item is present, the reset position always focuses on the item.
+The scroll focus is not maintained when elements are deleted in the middle of the list, i.e the visible items change.
+Adds a new property to quick picks called: resetScrollPosition: boolean that controls whether or not the cursor position will be reset to the top when either items or activeItems are changed.
+

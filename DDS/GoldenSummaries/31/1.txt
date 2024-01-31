@@ -1,0 +1,6 @@
+The code action commands provided by the language server are executing on mouse-over/selection. The command json pasted for opening a browser window in the description is one of the examples. And auto insertion happens when hover the mice over the suggestions in "Quick Fix".  This is happening with current vscode versions, but not with 1.80.2 released in June, both using the same Snyk extension version. "Local" code actions that directly interface with VSCode don't show this behavior. It was fixed in last insiders.
+- VS Code Version: 1.83 & 1.84-insider NOT: 1.80.2
+OS Version: macOS AMD64
+1. Provide code action via language server.
+2. When opening the `Quickfixes...` menu, the code action command is automatically executed on mouse-over/selection.
+

@@ -1,0 +1,8 @@
+Consider how scmService.setValue works. It doesn't make changes if the passed value is the same, just returns. When invoked with transient = false, it first replaces the last history navigator value with the current _value, then adds the passed value. At the end, it updates the _value member with the passed value. Note that historyNavigator removes duplicates and always ends with an empty string. In the case of undo commit, setValue is called with transient = false, and the passed value is the undone commit message. This places the undone commit message at the end of the history navigator and in the _value member. However, any subsequent setValue with transient = false would overwrite and lose the last item in history navigator (undone commit message). To fix this, when transient = false, instead of replacing the last value, we should add the passed-in value as another node.
+VS Code Version: 1.84.2
+OS Version: Windows 11 x64 (22H2, 22621.2715)
+1. Open a local Git repository project.
+2. Make changes.
+3. Choose and commit with a wrong message.
+4. Undo the last commit from the menu.
+5. Commit again with the correct message, and the wrong message will disappear.

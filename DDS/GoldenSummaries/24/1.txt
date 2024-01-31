@@ -1,0 +1,9 @@
+There is a problem with color selection. When selecting a color in the RGBA color palette, it automatically closes and adds the wrong code. It means that when change color through any of the selectors, a change is immediately triggered, which causes editor's onDidChangeModelContent emitter, therefore the hover widget triggers the _hideWidgets method. To fix changes were added the method called on model content change so that we just cancel the scheduler and we don't hide the widget. It is fixed in Insiders 1.85 version. 
+- OS Version: Windows 10 Pro x64 Version 22H2
+VS Code version: Code 1.84.1
+OS version: Windows_NT x64 10.0.19045
+Version: 1.84.2 (user setup)
+1. Click or hover over a color square in a document, like `settings.json`
+2. Color picker opens
+3. Click on the slider on the right to change hue
+4. Color picker closes before you can actually pick the color you want

@@ -1,0 +1,7 @@
+When I reformat (or more subtly, when I hit `Restart` in a debugging session, which automatically saves, which fires format-on-save) the breakpoint ends up pointing at a totally different piece of code. 
+It seems like the editor does not update those decorations in that specific case.
+Open an empty folder and add a file with the following content
+Create a format provider that returns the same data without the empty lines
+Now enable formatOnSave, add the breakpoint and hit Save. Then undo and choose Format Document
+- VSCode Version: 1.16.0
+- OS Version: Win 10, up to date

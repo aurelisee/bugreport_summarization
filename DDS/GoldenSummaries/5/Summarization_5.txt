@@ -1,0 +1,15 @@
+On python project interactive window open and try to switch to that group the cursor will disappear instead of going to the "command line". 
+Then when trying to go back to editor with Cmd + 1, this won't work again 
+it appears that webview within the panel doesn't receive focus when the user switches to a group
+It sounds like the core focus is not restored once the interactive window is refocused. 
+When a webview tab is focused, VS Code focused the webview element but it does not restore focus to any previously focused element within that webview
+VS Code version: Code 1.45.1 (5763d90, 2020-05-14T08:33:47.663Z)
+OS version: Darwin x64 19.4.0
+Save this file locally (it happens also with other files; this is a file I've been able to reproduce it consistently with)
+Launch VSC
+Open the file above
+Tap Ctrl+K, V
+Now, perform the following sequence without leaving the finger from Ctrl:
+Ctrl + 1, Ctrl + End, Ctrl + 2, Ctrl + W
+The keyboard is now locked! Tapping any key/combination doesn't have any effect.
+clicking away from the python interactive window and then clicking on the interactive window tab

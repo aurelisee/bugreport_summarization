@@ -1,0 +1,13 @@
+Copying and pasting images in a new Jupyter workbook works fine, but if you save the notebook, the pasted images don't show up correctly. When `"ipynb.pasteImagesAsAttachments.enabled"` is set to `false`:
+- Pasting (`ctrl+v`) gives a broken image link.
+- Pasting creates an image file on disk, adds a markdown link, and shows correctly.
+When set to `true`:
+- Pasting gives a correct image link, and it shows up fine.
+This issue seems related to copying images in markdown. Using `"ipynb.pasteImagesAsAttachments.enabled": true` helps share images within the notebook, and it's working well in the latest test, fixing a problem in a previous version.
+Version: 1.83.1 (system setup)
+Electron: 25.8.4
+ElectronBuildId: 24154031
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.19045

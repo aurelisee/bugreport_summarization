@@ -1,0 +1,3 @@
+When opening the terminal with "terminal.integrated.developer.devMode": true and focusing on it, the cursor will now appear at the beginning of the text box. For PowerShell, a specific regex has been implemented, including an optional space at the end. If matched, a space is added to the end, addressing rendering issues in conpty that may not display the final space in the prompt. In the _cursorOnNextLine check, returning true now occurs if there is a single command, indicating the first command and validating any match. To resolve issues on the user's machine, the polling interval has been extended to 1000ms (50x20ms).
+Repro is to fill the viewport such that there's a scroll bar, then type.
+Ctrl+c helps make it happen too.

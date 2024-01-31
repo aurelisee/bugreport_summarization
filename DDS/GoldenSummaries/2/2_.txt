@@ -1,0 +1,21 @@
+All of a sudden VS Code (preview) does not load changes made to the code, when restarting the debugger.
+ this is about edit-and-continue (pause, edit code, resume).
+Up until the last version, while debugging, whenever I would restart it would trigger saving of project files.
+Expected behaviour for the restart button; is to stop the debugger, and run the debugger again based on the updated code.
+set "Auto Save" to "afterDelay"
+Install multi-command extension
+Then replace the hotkey for Debug: Restart in keybindings.json:
+VS Code Version: 1.70.1
+OS Version: Linux x64 5.15.0-43-generic
+Electron: 18.3.5
+Chromium: 100.0.4896.160
+Node.js: 16.13.2
+V8: 10.0.139.17-electron.0
+OS: Windows_NT x64 10.0.22000
+use this hello.js:
+and create a node.js launch config for hello.js
+set "Auto Save" setting to "off"
+make sure to have "Save Before Start" enabled
+F5
+modify the "hello world" string
+press Restart button

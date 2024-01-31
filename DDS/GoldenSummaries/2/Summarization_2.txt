@@ -1,0 +1,11 @@
+All of a sudden VS Code (preview) does not load changes made to the code, when restarting the debugger.
+If stop the execution of the script, and run the debugger again, the latest code changes are loaded.
+this isn't about restarting the session at all - this is about edit-and-continue (pause, edit code, resume).
+Edit and continue hasn't reloaded the code for python.
+Expected behaviour for the restart button; is to stop the debugger, and run the debugger again based on the updated code.
+Switching to the release version of VS Code, the code is reloaded as expected on restart, even without saving it first, which is practical.
+It is possible that autoReload is no longer set in one of the shortcuts being used in VSCode
+Issue also happened in java
+run the debugger. Before the debugger exits the session; edit the code, save the code, and restart the debugger using the restart button. The debugger then exits and debugs the code which was originally debugged, instead of debugging the updated code. When stop the stop the session using the stop button and then debug the code again, the updated code is debugged.
+Install multi-command extension
+Then replace the hotkey for Debug: Restart in keybindings.json

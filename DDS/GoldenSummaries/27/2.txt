@@ -1,0 +1,6 @@
+Bug relates to the `"workbench.activityBar.location": "hidden"` setting. The Activity Bar doesn't display icons. Shortcuts like Ctrl+Shift+E become unresponsive after opening VS Code, fixed temporarily by restarting the editor. When the Activity Bar is set to hidden, closing and reopening VSCode disables shortcuts for Explorer, Extensions, and Debugger panels. The control panel loses the option to show these panels (`View: Show Explorer`). Issues only occur after reopening if the Activity Bar was previously hidden. Selecting "View: Hide Activity Bar" in the control panel lacks an option to show it again. There's a need for a "View: Show Activity Bar" setting. If the Activity Bar is hidden and "View: Focus Activity Bar" is selected, the UI space appears, but the content remains hidden.
+- VS Code Version: Version: 1.84.0 (Universal)
+- OS Version: macOS 13.3.1 (a) 
+OS version: Windows_NT x64 10.0.22000
+1. Set activity bar position to hidden
+2. Open command palette and activate View: Focus activity bar

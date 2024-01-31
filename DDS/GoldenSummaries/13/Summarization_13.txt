@@ -1,0 +1,14 @@
+Closed search bar visible when Replace field is multiline
+It only adds .multipleline if the searchString contains \n, it doesn't check replaceString.
+I noticed that if .multipleline is added, you don't get the animation (slide down/up). 
+I think a better solution may be to animate on transform
+VS Code version: Code 1.39.2 (6ab5985, 2019-10-15T15:33:40.634Z)
+OS version: Linux x64 5.0.0-32-generic
+1.Open any file
+2.Hit `CTRL+H` to open the Search and Replace bar
+3.In the Replace field, hit `Shift+Enter` to add a line return
+4.Close the bar
+1.Open replace dialog box ("Edit-Replace" or Ctrl+H)
+2.Select "replace with" input box (bottommost)
+3.Type in several words, separated with Ctrl+Enter or Shift+Enter
+4.Close dialog (Esc)

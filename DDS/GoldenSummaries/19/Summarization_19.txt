@@ -1,0 +1,14 @@
+Double pasting in a webview with latest insiders 
+This is a result of us enabling the copy/paste menu bar commands for webviews + the usage of a custom title bar (which is the default on windows)
+VSCode Version:Version: 1.47.0-insider (user setup)
+Commit: d5e9aa0
+Date: 2020-07-08T10:52:52.439Z
+Electron: 7.3.2
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.19041
+Download the vscode extension samples:
+2.Modify the html in the cat coding webview sample to have a ```<textarea>```
+3.Run the cat coding webview
+4.Paste some text into the text area.

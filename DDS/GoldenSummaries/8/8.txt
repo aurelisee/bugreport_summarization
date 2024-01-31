@@ -1,0 +1,6 @@
+A dialog popped up and said preferences sync was being disabled because of too many requests.
+I can confirm that after the service side changes where made, it started to work.
+VS Code version: Code - Insiders 1.46.0-insider (b26e0bc, 2020-05-26T17:07:53.549Z)
+OS version: Darwin x64 19.5.0
+Sign out of VSCode
+Click turn on preferences sync, sign in, then sign in with GitHub

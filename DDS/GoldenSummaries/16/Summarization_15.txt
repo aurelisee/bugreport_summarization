@@ -1,0 +1,14 @@
+Missing dependencies in rpm package
+Certain distros don't include some base deps and VS Code will install successfully but not launch without manually installing the deps it complains about.
+Changing the permissions as asked for fixed the problem.
+That was enough to get vscode to run, but further usage encountered errors about no icu package on the system. 
+Installing libicu seems to have cleared that up.
+VSCode Version: 1.8.1
+OS Version: CentOS 7.3 (x64)
+Electron: 6.1.5
+Chrome: 76.0.3809.146
+Node.js: 12.4.0
+V8: 7.6.303.31-electron.0
+1.Install CentOS 7.3 minimal ISO to a new VM
+3.code .
+

@@ -1,0 +1,17 @@
+It seems that the item that got initially focus cannot be selected with Enter anymore
+When there are multiple results with "Go to definition" search, "Press Enter Key" does not jump to the definition of the selected item with "White colored font ( the default selected item)".
+Until the fix is available, pressing Shift + down arrow instead of Enter can be used as workaround.
+The Enter key does not work in this situation.
+VS Code version: Code 1.38.0 
+OS version: Windows_NT x64 10.0.18362
+OS Version: ubuntu 16.04 LTS
+Electron: 4.2.10
+Chrome: 69.0.3497.128
+Node.js: 10.11.0
+V8: 6.9.427.31-electron.0
+OS: Darwin x64 18.7.0
+1.set "C_Cpp: Intelli Scese Engine" to "Tag Parser" so there will be multiple results with "Go to definition"
+2.Press F12 on variables/functions which have multiple definitions
+3.Press Enter
+4.nothing happen
+

@@ -1,0 +1,9 @@
+Code actions that didn't have definite edits were being re-run via the additional call to resolve (which called resolveCodeAction when there were no edits), which results in some code actions being immediately run on hover. And auto insertion happens when hover the mice over the suggestions in "Quick Fix".  This is happening with current vscode versions, but not with 1.80.2 released in June, both using the same Snyk extension version. "Local" code actions that directly interface with VSCode don't show this behavior. It was fixed in last insiders.
+OS Version: macOS AMD64
+VS Code Version: September 2023 (version 1.83)
+OS Version: Apple M2
+Flutter Toolkit version: v2.1.1
+1. Install Flutter Toolkit extension
+2. Create a new class with some parameters
+3. Hover the mice over the suggestions in "Quick Fix"
+

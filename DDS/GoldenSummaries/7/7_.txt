@@ -1,0 +1,3 @@
+The bug is that VSCode doesn't activate 'html' when it needs it's indent rules. 
+Since any of the last updates, the html parts of php file don't autoindent with proper linebreaks as before. 
+Since a couple of milestones, it is possible to express everything in the language configuration files, including the wordPattern and the onEnterRules.

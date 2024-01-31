@@ -1,0 +1,4 @@
+The history action lacks focus, and there are localization issues with the history hint. These have been addressed by modifying which actions will be localized, allowing removal of spaces from the history hint suffix where applicable. In simple find width, history hints will no longer double up, and the arrow symbol will not be presented for translation, providing clearer instructions to translators. Although the text appears different, the search widget now uses 'search' instead of 'find' in the placeholder.
+1 - Prevent translators from seeing `\\u21C5`
+2 - Why is history action appearing in not focused?
+3 - `or` should be localized

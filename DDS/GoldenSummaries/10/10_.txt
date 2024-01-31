@@ -1,0 +1,6 @@
+The "Restart to Update" does not restart VS Code on macOS 11.0.1 (Big Sur).
+But the update works fine: after a manual start VS Code is updated.
+I'm on Version: 1.52.1
+1.get an update and download the update
+2.Main menu (or Gear) -> click on the Restart button so the update gets applied
+3.VS Code insiders is closed but does not start 🐛

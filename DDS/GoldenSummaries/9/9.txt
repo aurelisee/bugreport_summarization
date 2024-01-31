@@ -1,0 +1,7 @@
+vscode didn't clear the opened text models for the old locations after the move operation, so that the next time you move back, vscode will try to reuse the previously cached text models.
+Open file A.java in VS Code.
+Modify file A.java and add some contents, and leave it unsaved.
+Drag and drop A.java to a new folder f1.
+I am not sure yet about the proper fix but tested locally that a fix for #98653 should also fix this issue.
+VSCode Version: 1.45.1
+OS Version: Windows 10

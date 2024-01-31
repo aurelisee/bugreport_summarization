@@ -1,0 +1,5 @@
+Explorer shows but the file is not revealed. if the explorer is visible the command works fine. There are two race conditions: one occurs when no files are open, and the other when an active file is open. This happens because the visibility callback fires, resetting the tree input and then selecting the active file, disrupting an earlier applied selection. Performing the same action when the explorer is already open works as intended. The fix available here: https://github.com/microsoft/vscode/issues/197268
+OS version: Darwin arm64 23.1.0
+OS version: Windows_NT x64 10.0.19045
+1. Focus in chat view or another view so that the explorer is not visible
+2. Trigger the `revealInExplorer` command with a folder that exists

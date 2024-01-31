@@ -1,0 +1,16 @@
+Wrong file extension for Python file on macOS Catalina 10.15.4
+The filename extension order is not suitable when saving a file. 
+Save the Untitled file to Java format, the default filename extension is .class. 
+Yes, disable all installed extensions, the default extension name becomes .java. 
+This is fixed with Electron 9.3.0.
+\closedWith 89c002a
+OS version: Darwin x64 19.4.0
+Electron: 9.3.0
+Chrome: 83.0.4103.122
+Node.js: 12.14.1
+V8: 8.3.110.13-electron.0
+OS: Darwin x64 19.5.0
+Open up Visual Studio Code (and/or Insiders)
+Create any new file
+Attempt to save file as a "Python" file in the dropdown
+(Animated GIF Below)

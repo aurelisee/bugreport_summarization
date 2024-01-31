@@ -1,0 +1,7 @@
+When apply commit, the post commit does not work.
+Push doesn't work after commit
+In current version command+enter only commit and do not sync.
+VS Code no longer automatically sync repositories after successfully commits in latest release
+Version: 1.71.0-insider
+OS version: Darwin arm64 21.6.0
+OS version: Windows_NT x64 6.3.9600

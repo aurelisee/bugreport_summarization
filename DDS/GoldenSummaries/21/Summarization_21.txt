@@ -1,0 +1,12 @@
+Can't run tasks on Git-Bash integrated terminal on Windows
+It looks like this is running within bash or WSL
+I suspect this is related to the fix for microsoft/node-pty#41
+Notice how the file and args are returned when args is a string
+Use the short-names so spaces aren't an issue :)
+"terminal.integrated.shell.windows": "C:/Progra~1/Git/bin/bash.exe"
+- VSCode Version: 1.13.0-insider
+- OS Version: Windows 10
+1.Set Git-Bash as the integrated terminal:
+2.Define a task using tasks version 2.0.0:
+3.Execute run task
+2.Change `"terminal.integrated.shell.windows"` to point to this path (e.g.

@@ -1,0 +1,2 @@
+VSCode doesn't activate 'html' when it needs it's indent rules
+Since we now support defining regular expression in language-configuration.json files, we could simply move the setLanguageConfiguration calls to the JSON files.

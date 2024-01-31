@@ -1,0 +1,4 @@
+Chrome-debug supports .js files with query parameters. 
+That normalize code should only be executed if the source could not be found - otherwise source should not be null and the rawSource should be passed to the adapter.
+VS Code should be able to determine that the file opened by clicking on a stackframe and the file opened by clicking in the Loaded Scripts Explorer are one and the same.
+I've addressed this issue by making sure that the flow Source -> uri -> Source preserves the data so that the initial and resulting Source objects are identical.

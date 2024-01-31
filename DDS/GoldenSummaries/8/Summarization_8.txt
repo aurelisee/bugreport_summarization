@@ -1,0 +1,9 @@
+A dialog popped up and said preferences sync was being disabled because of too many requests
+there is a loop in auto sync that is causing this. 
+I reverse engineered the logs and I am suspecting the loop is caused by following
+Sync is not successful and auto sync is disabled/stopped after a second. 
+This could be caused by Unauthorised failure (401) during which we reset the token and request auth extension (Microsoft, GitHub) with refreshed sessions (tokens)
+VS Code version: Code - Insiders 1.46.0-insider (b26e0bc, 2020-05-26T17:07:53.549Z)
+OS version: Darwin x64 19.5.0
+Sign out of VSCode
+Click turn on preferences sync, sign in, then sign in with GitHub
