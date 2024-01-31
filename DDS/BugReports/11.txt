@@ -1,0 +1,130 @@
+* use latest from master
+* f1 > insert snippet
+* scroll down to an extension snippet and hide it (press 👁️ icon)
+* :bug: the scroll position resets
+This is happening when reassigning the items (since the press changed the label) here: https://github.com/microsoft/vscode/blob/92314d61a55f466c125fa9d1f9fe8da633a82423/src/vs/workbench/contrib/snippets/browser/insertSnippet.ts#L213
+Fixing this might be non-trivial because you set new objects and there is no way for the picker to tell if you intend this to be a new set of choices that require the scroll position to be reset or if this is a refinement of the existing choices that require the scroll position to stay the same.
+I could give you the same object again, e.g I would modify them them in-place and set the same array again
+Two simpler options:
+- Add read-writable `scrollTop` to the QuickPick object.
+You read it, update the items and set the old value again.
+- Or: Add `splice()` to the QuickPick object and document that as preserving the scroll position by default.
+If we were to add this to the API one day, I would prefer the second option.
+I don\'t think the `splice()` would help in this case because @jrieken doesn\'t want to remove the item, he wants to _change_ the item.
+> Add read-writable scrollTop to the QuickPick object.
+You read it, update the items and set the old value again.
+This would work, though I\'m not sure how to control scroll...
+any pointers on that?
+With that being said, I almost feel like @jrieken wants a way to say "Hey I modified the objects in some way, please refresh them".
+This can be done by turning [this code](https://github.com/microsoft/vscode/blob/156fed280ac000e9d61014b16da93ea8baefdb36/src/vs/workbench/contrib/snippets/browser/insertSnippet.ts#L210-L214) into (note the if/else would be factored out as it is used in another place):
+```ts
+                picker.onDidTriggerItemButton(ctx => {
+   const isEnabled = snippetService.isEnabled(ctx.item.snippet);
+   snippetService.updateEnablement(ctx.item.snippet, !isEnabled);
+   if (!isEnabled) {
+    ctx.item.description = undefined;
+    ctx.item.buttons = [{
+     iconClass: Codicon.eyeClosed.classNames,
+     tooltip: nls.localize(\'disableSnippet\', \'Hide from IntelliSense\')
+    }];
+   } else {
+    ctx.item.description = nls.localize(\'isDisabled\
+(hidden from IntelliSense)");
+    ctx.item.buttons = [{
+     iconClass: Codicon.eye.classNames,
+     tooltip: nls.localize(\'enable.snippet\', \'Show in IntelliSense\')
+    }];
+   }
+   picker.itemActivation = 0;
+   picker.itemsUpdated = true;
+   picker.update();
+  });
+```
+The if/else just sets the buttons and description based on the new state.
+The real magic is the last 3 lines that basically force update how the items are rendered.
+This gives the desired effect of clicking on an 👁️ and having it change right in front of you.
+```ts
+picker.itemActivation = 0;
+picker.itemsUpdated = true;
+picker.update();
+```
+None of these are public atm, but I could see a possible `refreshItems()` function that does exactly those 3 lines.
+Thoughts?
+The assumption so far was that items would not change and that we need to read their properties only once when they are set on the picker object.
+That has kept the API simple.
+The `scrollTop` and `splice()` (replace the changed items) suggestions are preserving this assumption.
+If we wanted to support mutable items, we would need an extension-supplied event.
+That would in my view mix two distinct approaches in the same API.
+`splice()` might be a bit easier to use, but now that I think about this some more I think `scrollTop` will cover more cases and might be the preferable solution.
+(E.g., imagine changing the sort order and wanting control the scroll position or similar changes affecting all items.)
+@chrmarti and I talked about this...
+one of my fundamental misunderstandings was that a `.splice()` would only remove things from a list when really the idea is that we\'d pass a `Map` into `.splice()` that would map "nodes to be replaced" to "nodes to replace them with".
+The assumption being that this API would not scroll to top as you are just replacing nodes in the list.
+If you want the \'scroll to top\' behavior, you can set `.items`.
+What do you think?
+Something like this:
+```ts
+export interface QuickPick<T extends QuickPickItem> extends QuickInput {
+    // ...
+    splice(replacementMap: Map<T, T>): void;
+   // ...
+}
+```
+after talking to @jrieken, he suggested we use an `id` property instead that we can use to do the comparison on whether or not the list has changed.
+The logic would be...
+if the list maintains the same order as before (using the `id`s to determine this) we will maintain the cursor position.
+What do you think @chrmarti ?
+@TylerLeonhardt Sounds good.
+I suggest to briefly look into the implementation before committing to it.
+We currently maintain object identity in the API, e.g., when the extension sets some items, it will get the same objects back as the active and selected item(s).
+When introducing ids, you would probably expect the new object to replace the old object with the same id in all of the API.
+Probably not a big task, but something to consider.
+> When introducing ids, you would probably expect the new object to replace the old object with the same id in all of the API.
+Probably not a big task, but something to consider.
+This a good point...
+I guess the question is...
+how far should we go with this?
+If you have 2 items with the same id should it:
+* throw an error at set time?
+Explicit but potentially hugely breaking.
+* Keep the last one?
+Makes it so the quick pick still works but potentially breaking if the user has 2 items with the same id today.
+Also extension authors need to know about this behavior change.
+* Only use the id (or a new property like `.focusId`) for focus purposes and allow 2 items with the same id
+I think the "focus algorithm" could simply be...
+"verify the order of the ids hasn\'t changed at all" which means something along these lines:
+```ts
+ private shouldKeepFocus(items: Array<T | IQuickPickSeparator>): boolean {
+  // short circuit if their lengths are different
+  if (items.length !== this._items.length) {
+   return false;
+  } else {
+   return this._items.every((item, i) => {
+    const otherItem = items[i];
+    // verify separators are the same
+    if (otherItem.type === \'separator\'
+     && item.type === \'separator\'
+     && otherItem.label === item.label
+    ) {
+     return true;
+    }
+    // verify items have the same id (and that that id is not undefined)
+    if (otherItem.type !== \'separator\'
+     && item.type !== \'separator\'
+     && otherItem.id === item.id
+     && otherItem.id
+    ) {
+     return true;
+    }
+    return false;
+   });
+  }
+ }
+Even without duplicate ids in the same items array, ids raise some questions, e.g.:
+- Set some `items` with unique ids and focus one of them.
+- Reading `activeItems` will give you the same object you set on `items`.
+- Update `items` with new objects, but the same ids (same order to keep things simple).
+- Does reading `activeItems` now give you the new object or the old object?
+(I'd expect the new object.
+If you agree, this just needs to be considered when implementing.)
+If `items` is set to an array with duplicate ids, maybe a warning could be logged and all ids could be ignored to keep things simple and non-breaking?

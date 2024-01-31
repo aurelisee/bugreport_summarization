@@ -1,0 +1,21 @@
+1.Start debugging a vscode extension
+2.Reload the vscode window that just opened (which has the extension running)
+3.The window closes instead of reloading
+Assigning first to @weinand though it is probably related in how we handle reloads on vscode side by @isidorn and @bpasero
+@isidorn this is working fine in stable.
+To rule out node-debug, I\'ve tried to reproduce with a combination of VS Code stable and the latest node-debug from Insiders.
+This works fine too.
+I suspect that this is a problem on @bpasero\'s side: a "reload window" in the EH should not kill the window but just restart the EH (with the same port number) and send an event to the VS Code debugger (you).
+This should result in sending an attach request to node-debug.
+I\'ve verified that node-debug does not receive an attach request.
+ 
+@isidorn please investigate
+Current investigation:
+1.does not always happen
+2.in those cases when it happens I am getting a broadcast of `vscode:extensionTerminate` instead of `vscode:extensionAttach`
+3.Looking at the [extensionHost.ts](https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/electron-browser/extensionHost.ts#L101) it seems like the extensionTerminate is only sent `onWIllShutdown`
+@bpasero might it be that the `extensionHost` wrongly thinks it will shutdown instead of reload?
+@isidorn you guys no longer start with `break` I guess which makes the following check fail: https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/electron-browser/extensionHost.ts#L349 around `this.isExtensionDevelopmentDebugging`
+Can we use that other property `debugExtensionHost.port` to find out that we are being debugged?
+Based on the `stopOnEntry` flag EH debugging either uses `--debugPluginHost` or `--debugBrkPluginHost`, so if we want to have a minimal fix, we probably should only include an additional test for `--debugPluginHost`.
+@bpasero I'll try your suggestion with the port...

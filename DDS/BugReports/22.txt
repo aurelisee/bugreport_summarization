@@ -1,0 +1,67 @@
+1. Click the dropdown caret
+2. Hover over an enum value
+3. :bug: dropdown appears in top left 
+<img width="574" alt="image" src="https://github.com/microsoft/vscode/assets/30305945/3eb97c23-27ac-4c41-a2a4-f6404421ec88">
+I have seen this occasionally too, but haven't discovered a repro.
+Perhaps #197987 is related.
+See also #197755
+For me, this reproduces 100% of the time precisely when I hover over the dropdown list values, and I even repro it when the settings UI is the only active editor (no splitview or gridview)
+I'm able to repro https://github.com/microsoft/vscode/issues/197755, but I'm unable to repro this issue where the context menu already goes to the top-left while still in the Settings editor.
+@joyceerhl if you repro, then please `vscode-bisect` it to the change!
+???? `vscode-bisect` claims there is no released insiders for 657bb89984f37b810b250955570593cde0cd62eb even though I got that from the insiders builds page after checking `Show released only` based on https://github.com/microsoft/vscode/issues/197755#issuecomment-1811538701
+![image](https://github.com/microsoft/vscode/assets/30305945/ab0ae54e-d095-415a-902b-a287cc587c72)
+I cannot repro in Code-OSS :( 
+@joyceerhl `vscode-bisect` goes over unreleased builds as well. 
+What is the commits range?
+@rzhao271 found that he could repro https://github.com/microsoft/vscode/issues/197755 between 1.78.2 and 1.79.2
+@joyceerhl thats a different bu
+FWIW, I tried debugging in dev tools
+* We relayout the context view on hover here https://github.com/microsoft/vscode/blob/e1c8870cd21051aaf9b2582d7b4dcea5d874bf08/src/vs/base/browser/ui/selectBox/selectBoxCustom.ts#L776
+* On a good layout, `DOM.getDomNodePagePosition(this.view).top` and `DOM.getDomNodePagePosition(this.view).left` are 0 here https://github.com/microsoft/vscode/blob/e1c8870cd21051aaf9b2582d7b4dcea5d874bf08/src/vs/base/browser/ui/contextview/contextview.ts#L351-L352
+* On a bad layout, `top` === `DOM.getDomNodePagePosition(this.view).top` and `left` === `DOM.getDomNodePagePosition(this.view).left`, so `this.view.style.top` and `this.view.style.left` get zeroed
+@joyceerhl interesting, I wonder if maybe we cannot find the `window` for the element in `getDomNodePagePosition`, there were recent changes. 
+Having a change in https://github.com/microsoft/vscode/pull/198269 to always ensure we fallback to the main window.
+* open settings editor
+* find/filter `inlineChat.showGutterIcon`
+* select something from the dropdown
+* ???? sometimes the dropdown shows at (0,0) but not always
+<img width="783" alt="Screenshot 2023-11-15 at 10 14 17" src="https://github.com/microsoft/vscode/assets/1794099/cf4abe4a-31f1-4426-9907-68354f63a779">
+Is there anything I should look out for? 
+Probe for some dom element or something in the log I should check?
+Yeah if at all this reproduces in a `vscode-bisect` session that would be cool. 
+We are tracking this issue in https://github.com/microsoft/vscode/issues/198251
+/duplicate https://github.com/microsoft/vscode/issues/198251
+Thanks for creating this issue! 
+We figured it's covering the same as another one we already have. 
+Thus, we closed this one as a duplicate. 
+You can search for [similar existing issues](https://github.com/microsoft/vscode/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+). 
+See also our [issue reporting guidelines](https://aka.ms/vscodeissuereporting).
+Happy Coding!
+Also seeing this issue as of tonight on latest `1.85.0-insider` build. 
+When attempting to hover a dropdown list, it will jump to (0,0). 
+Then when trying to hover it while it's at (0,0) will cause it to jump back to the list it came from.
+It will continue to do this over and over, basically playing _"catch me if you can!"_ with the mouse.
+Personal environment information:
+```
+Version: 1.85.0-insider (system setup)
+Commit: b3a649fe52c0fb8692c9b28dfe25227c97521884
+Date: 2023-11-15T09:43:13.091Z (1 hr ago)
+Electron: 25.9.4
+ElectronBuildId: 25127168
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.22631
+``
+- VSCode Insiders `1.85.0-insider`
+- Windows 11 Pro 23H2
+I did not personally see this issue until tonight.
+It started on a previous version of Insiders, but I allowed it to update before coming to file a bug report to see if it was a known issue that was already fixed. 
+It is still happening on the latest. 
+But seems to be happening less frequently now.
+Edit: There is another bug with the dropdown menus that may potentially help with this issue as it has a similar effect. 
+If you open the Settings UI, open a dropdown, then close the Settings UI window by clicking its 'x' in the tab, the dropdown list will remain visible. 
+Hovering over this list will cause it to jump to (0,0) as well. _(Hovering on it at (0,0) wont cause it to keep moving in this situation though.)_
+Here is a video showing this additional bug:
+https://github.com/microsoft/vscode/assets/1422090/65183b2e-eba1-4eae-b5ca-5c4419def838
+@bpasero I cannot repro anymore in the latest Insiders :+1:

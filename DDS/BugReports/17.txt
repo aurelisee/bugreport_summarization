@@ -1,0 +1,78 @@
+Given the following code:
+```dart
+printThingInternal() {
+  
+  print('Hello, world!'); // Breakpoint on this line
+}
+```
+When I reformat (or more subtly, when I hit `Restart` in a debugging session, which automatically saves, which fires format-on-save) the breakpoint ends up pointing at a totally different piece of code.
+I believe the work in #10310 was to reduce the chances of things tied to source code being moved around in reformats so I wonder whether that should include breakpoints?
+In this case I believe Code is recalculating my edit as just a minor delete of some newlines, so in theory it has all of the information to preserve the breakpoint at the correct location?
+Currently BPs are being moved as the user edits, so I believe they would move when we format as well
+![bpmoved](https://user-images.githubusercontent.com/1926584/27782943-9f09c0e2-5fd4-11e7-8503-036908700be8.gif)
+However if that is not the case then formating does some special edits which Debug is not listening on which I would find strange.
+In your example you put the breakpoint on print('Hello World') and then it is moved to a wrong location?
+Can you also reproduce this problem in Javascript so I can investigate?
+Weird; I'll do some more digging tonight and see if I can repro on another language or get more info.
+@isidorn Testing with Dart, I noticed that a `Format Document` works fine, however the format-on-save does not (as I understand, they'll both use the same call to my extension?):
+![Breakpoint](https://user-images.githubusercontent.com/1078012/27802225-55b26ef8-601a-11e7-8af9-657a33adb838.gif)
+I struggled to repro with JS only because formatting a JS file doesn't remove the blank lines like it does in Dart, but if you think the issue is Dart specific and know what I can do in another language that would cause lines to change I can give it a go.
+@DanTup yes they should call the same format, but @jrieken can correct me if I am wrong here.
+This particular issues is how editor is handling decorations on white space removal.
+Can you paste your dart example code so we try to repro?
+Yeah, all the same save-call
+Here's an easy repro without any reliance on Dart/Dart Code.
+Open an empty folder and add a file with the following content:
+```dart
+thing();
+thing(); // Breakpoint here
+thing();
+// tes
+// test
+// test
+// test
+// test
+// test
+// test
+// test
+// test
+// test
+```
+Create a format provider that returns the same data without the empty lines:
+```ts
+ provideDocumentFormattingEdits(document: TextDocument, options: FormattingOptions, token: CancellationToken): TextEdit[] {
+  return [
+   new TextEdit(
+    new Range(document.positionAt(0), document.positionAt(document.getText().length)),
+    document.getText().replace(/\
++/g, '\t').replace(/(\\r\t)+/g, '\\r\t')
+   )
+  ];
+ }
+```
+Now enable `formatOnSave`, add the breakpoint and hit Save.
+Then undo and choose Format Document.
+This should show the issue the same as in my animation before.
+I'm aware that language services would be better returning a reduced edit but I'm unable to change this one (it returns the whole doc as one edit) and it works fine if you use `Format Document` so I think it's just a bug in `formatOnSave`.
+LMK if you need anything more!
+Thanks for the details, will investigate in the next couple of weeks.
+It seems like the editor does not update those decorations in that specific case.
+Not sure if the combination of save / format leads to some weird timing.
+However my assumption is that you could reproduce with any other editor decoration (error squigle, lightbulb...)
+Yep; this seems to affect other things too (for example I just saw it on some custom decorations I have - I hit Save and the code moved and they all ended up in the wrong places for a short period until my extension updated them again).
+- VSCode Version: 1.16.0
+- OS Version: Win 10, up to date
+Steps to Reproduce:
+No idea how to reproduce it
+<!-- Launch with `code --disable-extensions` to check.-->
+Reproduces without extensions: Yes!
+No matter what I try I can't get rid of a specific breakpoint.
+VSCode restart didn't help either.
+Video showing the issue that I can't remove the breakpoint: https://streamable.com/g7htk
+Please try reproducing with latest [vscode insiders](https://code.visualstudio.com/insiders)
+If you can reproduce please give us steps so we can investigate further.
+With the current data providede there is not much we can do
+@isidorn I think I've figured out that it's happening if you set a breakpoint while the application is running and the file you've set a breakpoint for is unsaved.
+After saving the file, the breakpoint would move down to another line.
+This means it will maybe even move to lines where one could normally set no breakpoints at all.
+@inkredible-raccoonbot thanks, though this is a duplicate of https://github.com/Microsoft/vscode/issues/30010

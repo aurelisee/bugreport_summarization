@@ -1,0 +1,27 @@
+Repro:
+1. Windows (maybe not needed?)
+2. Set `"terminal.integrated.developer.devMode": true`
+3. Open terminal
+4. Write some text, note the cursor location
+5. Focus an editor
+6. Focus the terminal, ???? the cursor is at the start of the textbox
+![image](https://github.com/microsoft/vscode/assets/2193314/8961209c-2da5-4718-85ce-749e302e9af5)
+Works on Mac.
+It also works for me on Windows.
+@Tyriar any other steps required?
+I think the repro is to fill the viewport such that there's a scroll bar, then type.
+Ctrl+c helps make it happen too.
+Some other repros too:
+![image](https://github.com/microsoft/vscode/assets/2193314/d628bb71-320a-43a8-a949-909ddc8c1ed1)
+![image](https://github.com/microsoft/vscode/assets/2193314/ef9b5c0e-5f21-4036-9738-d3f02b8306a7)
+![image](https://github.com/microsoft/vscode/assets/2193314/051d984d-1630-43d7-b36b-1eeb99273de1)
+I'm hitting this:
+```
+CommandDetectionCapability#_handleCommandStartWindows reached max attempts, [true,null]
+```
+Looking into it.
+- PowerShell is now handled with a specific regex which has an optional space at the end; if matched, a space will be added to the end. This is needed because conpty may not 'render' the final space in the prompt.
+- Return true in _cursorOnNextLine check if there is a single command, as this means it's the first command, so any match should be correct.
+- Increase polling to 1000ms (50x20ms) as it was being hit on my machine.
+Fixes #196758
+![Recording 2023-10-30 at 12 53 22](https://github.com/microsoft/vscode/assets/2193314/075e9f93-70c9-4397-ae39-da931b95615e)

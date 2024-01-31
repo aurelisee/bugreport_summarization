@@ -1,0 +1,39 @@
+On following video, you can see iterm2 select the number range is correct, but in vscode terminal is not right.
+- MacOS: 12.3.1
+- VSCode: 1.67.0-insider
+Steps to Reproduce:
+1. copy words `获取模板 25235168 的预览图失败
+2. double click on the number
+https://user-images.githubusercontent.com/41773861/163772454-fff35b32-dc14-449f-bb2c-3d4037f71f32.mov
+doesn't reproduce here https://xtermjs.org/
+After I reset all the settings and reload with disable extensions, I can still repro this issue in zsh and bash:
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/41773861/163844646-64eddeed-6315-48b6-9202-04e4ea1bd87f.png">
+Yes I can reproduce the issue. 
+Tracked in https://github.com/xtermjs/xterm.js/issues/4307
+<!-- ⚠️⚠️ Do Not Delete This! bug_report_template ⚠️⚠️ -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- 🕮 Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- 🔎 Search existing issues to avoid creating duplicates. -->
+<!-- \U0001f9ea Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- 💡 Instead of creating your report here, use \'Report Issue\' from the \'Help\' menu in VS Code to pre-fill useful information. -->
+<!-- 🔧 Launch with `code --disable-extensions` to check. -->
+Does this issue occur when all extensions are disabled?: Yes/No
+<!-- \U0001fa93 If you answered No above, use \'Help: Start Extension Bisect\' from Command Palette to try to identify the cause. -->
+<!-- 📣 Issues caused by an extension need to be reported directly to the extension publisher. The \'Help > Report Issue\' dialog can assist with this. -->
+版本: 1.69.2 (Universal)
+提交: 3b889b090b5ad5793f524b5d1d39fda662b96a2a
+日期: 2022-07-18T16:12:57.074Z
+Electron: 18.3.5
+Chromium: 100.0.4896.160
+Node.js: 16.13.2
+V8: 10.0.139.17-electron.0
+OS: Darwin x64 21.5.0
+Steps to Reproduce:
+1. Prerequisite: I have enabled the mouse selection and copy function in the terminal, and the right mouse button paste function
+<img width="439" alt="image" src="https://user-images.githubusercontent.com/17977783/182525208-466fc14d-41a2-474a-9aaa-868cd32f7641.png">
+<img width="587" alt="image" src="https://user-images.githubusercontent.com/17977783/182525241-7b0af9db-50c7-4c35-ad06-08e4043a7497.png">
+2. When I double-click to select "我是一个中国人" and paste it, the word "我" is lost', 'Upstream: https://github.com/xtermjs/xterm.js/issues/4001
+/duplicate https://github.com/microsoft/vscode/issues/147619
+This is not an upstream problem but an issue with the word link provider
+Fixes #147619
+Fixes #169538

@@ -1,0 +1,122 @@
+<!-- ⚠️⚠️ Do Not Delete This! bug_report_template ⚠️⚠️ -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- Please search existing issues to avoid creating duplicates.-->
+<!-- Also please test using the latest insiders build to make sure your issue has not already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- Use Help > Report Issue to prefill these.-->
+- VSCode Version:Version: 1.47.0-insider (user setup)
+Commit: d5e9aa0227e057a60c82568bf31c04730dc15dcd
+Date: 2020-07-08T10:52:52.439Z
+Electron: 7.3.2
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.19041
+Steps to Reproduce:
+1.Download the vscode extension samples: (https://github.com/microsoft/vscode-extension-samples.git)
+2.Modify the html in the cat coding webview sample to have a ```<textarea>```
+3.Run the cat coding webview
+4.Paste some text into the text area.
+It will double paste.
+Double cut seems to happen too.
+Root cause seems to be this commit id:
+https://github.com/microsoft/vscode/commit/85402615934f3c8b97ad14d8c483383833287a82 as found by @dimitry-ishenko
+This is causing these two issues in the python extension:
+https://github.com/microsoft/vscode-python/issues/11796
+https://github.com/microsoft/vscode-python/issues/12808
+<!-- Launch with `code --disable-extensions` to check.-->
+Does this issue occur when all extensions are disabled?: NA
+Doesn't seem to repo on MacOS.
+Will take a look into Windows and Linux
+The repro may be timing dependent.
+I can repro locally but others on the team cannot.
+Debugging it shows a double paste event firing inside of the text area.
+I can hit this reliably on Windows.
+This is a result of us enabling the copy/paste menu bar commands for webviews + the usage of a custom title bar (which is the default on windows)
+Fixes #101946
+## The Problem
+Webview can currently trigger some keyboard events twice.
+Here is the sequence of events when this happens:
+- User presses ctrl+v with a webview focused
+- The webview is listening to keyboard events.
+It rebroadcasts these keypressesso that we can handle normal VS code commands—such as cmd+p—even when focused on a webview
+- We rebroadcast the keypresses back to VS Code
+- The webview then triggers the standard copy behavior on its own (I believe this is either chromium or electron)
+- VS Code gets the ctrl+v keypress event and resolves it to the 'paste' command
+- The paste command triggers the paste method on the webview
+- This calls back into the webview content to trigger a second paste
+This does not happen in cases where we are using native menus, which can call `setIgnoreMenuShortcuts` to disable the browser generated paste event.
+This problem resulted from out work to enable the copy/paste menu commands for webviews and custom editors
+## The fix
+To fix this, I think we want to completely block the browser generate events in all cases and instead always dispatch the events through VS Code.
+This should ensure more consistent behavior.
+This PR does this by:
+- In the webview, add a keypress listener for copy/paste/cut and undo/redo.
+When we see these events, call `preventDefault` to block them but still dispatch back to VS Code
+- In VS Code, more the  logic for triggering undo/redo, etc.
+on webviews out of the electron layer and into the browser layer.
+iframe based webviews have the exact same problem as electron based webviews, so we need to fix this issue for both of them.
+@rchiodo Please test the next VS Code 1.48 insiders that includes f37faf6.
+This is the more scoped fix that we will consider taking into a 1.47 recovery build
+#101958 has a better fix but is more risky.
+We will likely merge it into insiders for feedback and target shipping it in 1.48
+I assume that would be tomorrow's build?
+Or is there a way I can just install that commit?
+This would be the first 1.48 insiders build (which should be out tomorrow)
+Insiders version `1.48.0-1594382675` has trickled out to Ubuntu and I can confirm that this bug is now handled.
+We have written the needed data into your clipboard because it was too large to send.
+Please paste.
+When I copy text from other software for ex.
+ MS Edge and paste to VS CODE editor by [Ctrl+V].
+It doubled my copied text.
+I experience the same thing.
+Using NX Console to generate Angular components.
+I paste "abc" into the path textbox and it ends up as "abcabc".
+I encountered the same problem.
+When I paste the content into the Webview, it will paste twice.
+I have the same issues of duplicate pasting, when copying and pasting code inside an ipynb file.
+hi guys,
+i noticed the same problem after update to the latest version (1.47) when copy and paste in Jupyter notebook extension.
+Thanks
+Duplicate of #101946
+Issue Type: <b>Bug</b>
+Whenever I copy and paste some text in Jupyter Notebook files, the text that pasted is always double in two.
+This should be normal, only pasted the text that already been copied before.
+VS Code version: Code 1.47.0 (d5e9aa0227e057a60c82568bf31c04730dc15dcd, 2020-07-09T08:02:06.629Z)
+OS version: Windows_NT x64 10.0.17763
+<details>
+<summary>System Info</summary>
+|Item|Value|
+|---|---|
+|CPUs|Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz (8 x 1992)|
+|GPU Status|2d_canvas: enabled
+flash_3d: enabled
+flash_stage3d: enabled
+flash_stage3d_baseline: enabled
+gpu_compositing: enabled
+multiple_raster_threads: enabled_on
+oop_rasterization: disabled_off
+protected_video_decode: enabled
+rasterization: enabled
+skia_renderer: disabled_off_ok
+video_decode: enabled
+viz_display_compositor: enabled_on
+viz_hit_test_surface_layer: disabled_off_ok
+webgl: enabled
+webgl2: enabled|
+|Load (avg)|undefined|
+|Memory (System)|7.85GB (1.83GB free)|
+|Process Argv||
+|Screen Reader|no|
+|VM|0%|
+</details><details><summary>Extensions (2)</summary>
+Extension|Author (truncated)|Version
+---|---|---
+python|ms-|2020.6.91350
+LiveServer|rit|5.6.1
+</details>
+<!-- generated by issue reporter -->
+Duplicate of #101946
+Ports f37faf6c84b204565ab9e447efd477e10fe6a837 to the 1.47 recovery
+Fixes #101946
+This change already shipped with 1.48.
+It is the more conservative fix for #101946

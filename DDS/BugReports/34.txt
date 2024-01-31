@@ -1,0 +1,44 @@
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- \U0001f9ea Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+Does this issue occur when all extensions are disabled?: Yes
+<!-- \U0001fa93 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.83.1
+- OS Version: Ubuntu 23.04
+**Steps to Reproduce**
+1. In VSCode, open two terminals
+2. Inspect the terminal tabs using chrome devtools
+3. Notice that both terminal tabs have `aria-label="[object Object]"`
+![aria-label](https://github.com/microsoft/vscode/assets/23744935/62fab064-f4f7-4024-8b85-a41a7735c775)
+**Source Code**
+It seems the issue might be here (`options.title` can be of type `string` or `ITooltipMarkdownString`): https://github.com/microsoft/vscode/blob/ae774a04cf1f5ecfc03d79165f30b8001cde862d/src/vs/base/browser/ui/iconLabel/iconLabel.ts#L140-L142
+Hello can anyone assign this issue to me?
+Hi, @meganrogge. 
+I was looking into this issue, and like @SimonSiefke suspected, it seems like in this instance, the aria-title is a Markdown string, which is why it's showing up as an object. 
+I'm not exactly sure what the best way to handle the Markdown string would be. 
+However, using the tooltip label marks the aria-label as "$(terminal) zsh." 
+Would that be sufficient, or should I look for another solution? 
+Not exactly sure of the guidelines surrounding aria. Thanks!
+Can you call `.toString()` on the markdown string? 
+If not, using the tooltip seems fine.
+Unfortunately, toString doesn't solve the problem.
+![Screenshot](https://github.com/microsoft/vscode/assets/144873395/60c90653-8f54-4e2d-91b9-937fd095b998)
+This is what the input is getting as ITooltipMarkdownString. 
+Because the IIconLabelValueOptions interface accepts both a string or a markdown string for the title, I'm unsure of a function that will allow me to just get the markdown property without causing other issues. 
+Plus, in this case, I don't know if the string is even suitable for an aria-label. 
+However, if the tooltip works, I'll run tests and submit a PR soon.
+<!-- Thank you for submitting a Pull Request. Please:
+* Read our Pull Request guidelines:
+  https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests
+* Associate an issue with the Pull Request.
+* Ensure that the code is up-to-date with the `main` branch.
+* Include a description of the proposed changes and how to test them.
+-->
+closes #195661
+Switches aria-label titles to tooltip titles for certain instances where options.title is a markdown string.

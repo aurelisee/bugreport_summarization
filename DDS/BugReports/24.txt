@@ -1,0 +1,220 @@
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- 🚦 Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+
+Does this issue occur when all extensions are disabled?: Yes/No
+
+Yes
+
+<!-- 🪓 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+
+- VS Code Version: VS Code v1.84.1
+- OS Version: Windows 10 Pro x64 Version 22H2 (Build 19045.3448)
+
+Steps to Reproduce:
+
+1. Click or hover over a color square in a document, like `settings.json`
+2. Color picker opens
+3. Click on the slider on the right to change hue
+4. Color picker closes before you can actually pick the color you want
+
+**Screen recording:**
+
+![Screenshot](https://github.com/microsoft/vscode/assets/33441569/569e1581-80c2-441a-9666-dc30a503ac43)
+
+Thanks for creating this issue! It looks like you may be using an old version of VS Code; the latest stable release is 1.84.1. 
+Please try upgrading to the latest version and check whether this issue remains.
+
+Happy Coding!
+
+I was actually incorrect when I posted my version number initially. I **am** definitely running on `1.84.1`. 
+And the issue remains the same as my original post. 
+I'm going to edit it to reflect the correct version.
+
+I have the same issue, and I'm on `1.84.1` as well.
+
+This issue seems to also affect me, I am currently using the insider build of VSCode, but I also tried the latest release, and it also has this bug.
+
+I have the same problem on VS Code 1.84.1, Windows 11, disabling all installed extensions doesn't help.
+
+I had the same problem, I installed an older version to fix it.
+
+Same issue - v1.84.1
+
+I have the same issue from nowhere. 
+It started from the latest VS Code update.
+
+Type: <b>Bug</b>
+
+Hello, I want to report a problem with color selection.
+When selecting a color in the RGBA color palette, it automatically closes and adds the wrong code.
+
+VS Code version: Code 1.84.1 (2b35e1e6d88f1ce073683991d1eff5284a32690f, 2023-11-06T12:35:59.022Z)
+OS version: Windows_NT x64 10.0.19045
+
+Modes:
+
+<details>
+<summary>System Info</summary>
+
+|Item|Value|
+|---|---|
+|CPUs|AMD Ryzen 7 5700U with Radeon Graphics          (16 x 1797)|
+|GPU Status|2d_canvas: enabled<br>canvas_oop_rasterization: enabled_on<br>direct_rendering_display_compositor: disabled_off_ok<br>gpu_compositing: enabled<br>multiple_raster_threads: enabled_on<br>opengl: enabled_on<br>rasterization: enabled<br>raw_draw: disabled_off_ok<br>video_decode: enabled<br>video_encode: enabled<br>vulkan: disabled_off<br>webgl: enabled<br>webgl2: enabled<br>webgpu: enabled|
+|Load (avg)|undefined|
+|Memory (System)|13.85GB (8.86GB free)|
+|Process Argv|--crash-reporter-id e4926e9d-2593-40c3-97ab-d3792a8cdff1 --crash-reporter-id e4926e9d-2593-40c3-97ab-d3792a8cdff1|
+|Screen Reader|no|
+|VM|0%|
+</details><details><summary>Extensions (5)</summary>
+
+Extension|Author (truncated)|Version
+---|---|---
+classroom|git|0.0.4
+vscode-pull-request-github|Git|0.76.1
+vscode-language-pack-es|MS-|1.84.2023110809
+vsliveshare|ms-|1.0.5892
+LiveServer|rit|5.7.9
+
+</details><details>
+<summary>A/B Experiments</summary>
+
+```
+vsliv368cf:30146710
+vsreu685:30147344
+python383:30185418
+vspor879:30202332
+vspor708:30202333
+vspor363:30204092
+vslsvsres303:30308271
+vserr242:30382549
+pythontb:30283811
+vsjup518:30340749
+pythonptprofiler:30281270
+vsdfh931:30280409
+vshan820:30294714
+vstes263:30335439
+vscod805cf:30301675
+binariesv615:30325510
+bridge0708:30335490
+bridge0723:30353136
+vsaa593:30376534
+pythonvs932:30410667
+py29gd2263:30880072
+vscaat:30438848
+vsclangdf:30486550
+c4g48928:30535728
+dsvsc012cf:30540253
+pynewext54:30695312
+azure-dev_surveyone:30548225
+3biah626:30602489
+f6dab269:30613381
+showlangstatbar:30737416
+pythonfmttext:30731395
+fixshowwlkth:30771522
+showindicator:30805244
+pythongtdpath:30769146
+i26e3531:30792625
+welcomedialog:30882109
+pythonnosmt12:30797651
+pythonidxpt:30866567
+pythonnoceb:30805159
+asynctok:30869155
+dsvsc013:30795093
+dsvsc014:30804076
+dsvsc015:30845448
+pythontestfixt:30871694
+pythonregdiag2:30871582
+pyreplss2:30879913
+pythonmypyd1:30879173
+pythoncet0:30874138
+pythontbext0:30879054
+dsvsc018cf:30880895
+aa_t
+
+_chat:30882232
+
+```
+
+</details>
+
+<!-- generated by issue reporter -->
+Thanks for creating this issue! 
+We figured it's covering the same as another one we already have. 
+Thus, we closed this one as a duplicate. 
+You can search for [similar existing issues](https://github.com/microsoft/vscode/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3A%22bug%22%20label%3A%22editor-color-picker%22).
+See also our [issue reporting guidelines](https://aka.ms/vscodeissuereporting).
+
+Happy Coding!
+
+Hi yes this issue was fixed in version 1.85. 
+Let us know if you continue seeing this.
+
+I will work on this issue
+
+I can reproduce this issue on Ubuntu 22.04.2 with VS Code 1.84 installed as a Snap, and also with VS Code Insiders 1.85 (`f346494c77e1245505e53a2ddcab3bfb4ee52e08`) installed as a Snap.
+
+I wonder if this is related in any way to #136965?
+
+Related on Stack Overflow: [Why does the VS Code 1.84 color picker close after clicking any input in it?](https://stackoverflow.com/q/77429583/11107541)
+
+Also related on Reddit: https://www.reddit.com/r/vscode/comments/17rc8h1/is_the_color_picker_supposed_to_close_once_you/
+
+Same issue on v1.84.2
+
+Are we going to fix it at all? 
+The original issue has been posted since 2021. 
+It's almost 2024 now.
+
+@honguyenminh what do you mean? what issue ticket are you referring to? 
+The one I mentioned above? 
+Because I wasn't implying that they are the same issue, and if you compare the behaviour described, they are different. 
+I was only asking (the maintainers) if they are _related_.
+
+<!-- Thank you for submitting a Pull Request. Please:
+* Read our Pull Request guidelines:
+  https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests
+* Associate an issue with the Pull Request.
+* Ensure that the code is up-to-date with the `main` branch.
+* Include a description of the proposed changes and how to test them.
+-->
+Fixes #197588.
+### What I did
+So the issue arose in 18.4.0 with #196709, in particular [this](https://github.com/microsoft/vscode/commit/33b2e4a29c4ff7f8e7c988f19add209bd53ed55e#diff-790d9803b8477b256b7f571260cda4f3d5b033b6405e3586bf3e98d08236087aR110) line.
+The reason for the issue is that whenever a color is picked through any of the selectors, a change is immediately triggered on the editor. 
+That triggers the editor's `onDidChangeModelContent` emitter, therefore the hover widget triggers the `_hideWidgets` method.
+So it's actually a straightforward flow to understand: color picker changes editor content -> editor triggers emitter -> hover widget hides itself.
+
+I have changed the method called on model content change so that we just cancel the scheduler and we don't hide the widget as well.
+I just need some help with debugging the previous issue #196660 in order to make sure that this is not introducing regressions on that one.
+
+Hey guys, I took a look and it was actually a recent change that caused the issue. 
+If anyone wants to give feedback on the PR I just opened it'd be greatly appreciated. 
+Hopefully, we can get this fixed soon!
+
+Fixes https://github.com/microsoft/vscode/issues/197588.
+
+What I did
+So the issue arose in 18.4.0 with https://github.com/microsoft/vscode/pull/196709, in particular [this](https://github.com/microsoft/vscode/commit/33b2e4a29c4ff7f8e7c988f19add209bd53ed55e#diff-790d9803b8477b256b7f571260cda4f3d5b033b6405e3586bf3e98d08236087aR110) line.
+The reason for the issue is that whenever a color is picked through any of the selectors, a change is immediately triggered on the editor. 
+That triggers the editor's onDidChangeModelContent emitter, therefore the hover widget triggers the _hideWidgets method.
+So it's actually a straightforward flow to understand: color picker changes editor content -> editor triggers emitter -> hover widget hides itself.
+I have changed the method called on model content change so that we just cancel the scheduler and we don't hide the widget as well.
+I just need some help with debugging the previous issue https://github.com/microsoft/vscode/issues/196660 in order to make sure that this is not introducing regressions on that one.
+(ref #198066)
+
+same issue on
+Version: 1.84.2 (user setup)
+
+I have the same problem and because of this, I decided to downgrade to an older version.
+
+Hi @mk8270 the fix is in Insiders 1.85 or the next release of stable, which will come out in two weeks. 
+You may download the Insiders version of VS Code on https://code.visualstudio.com/insiders/
+
+What version of VS Code are you using @Irohukl?

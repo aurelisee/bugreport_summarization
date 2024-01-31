@@ -1,0 +1,77 @@
+["### Discussed in https://github.com/microsoft/vscode-python/discussions/19600
+<div type='discussions-op-text'>
+<sup>Originally posted by **Emergency5779** August  1, 2022</sup>
+All of a sudden VS Code (preview) does not load changes made to the code, when restarting the debugger.
+I have spent hours googling, but I have come up empty-handed
+Can anyone enlighten me on what is going on
+Is there a new config option to set whether the code is to be reloaded when restarting the debugger?
+If I stop the execution of the script, and run the debugger again, the latest code changes are loaded
+</div>
+@int19h Has something changed in the DAP client in how restart is handled?
+/cc @rchiodo
+If I understand correctly, this isn't about restarting the session at all - this is about edit-and-continue (pause, edit code, resume).
+I can't think of any recent changes in pydevd that would break this, but @fabioz would know more.
+Edit and continue hasn't reloaded the code for python
+I run the debugger
+Before the debugger exits the session; I edit the code, save the code, and restart the debugger using the restart button
+The debugger then exits and debugs the code which was originally debugged, instead of debugging the updated code.
+If I stop the stop the session using the stop button and then debug the code again, the updated code is debugged
+Expected behaviour for the restart button; is to stop the debugger, and run the debugger again based on the updated code.
+Switching to the release version of VS Code, the code is reloaded as expected on restart, even without saving it first, which is practical.
+Having downgraded and upgraded the following extensions; intellicode, python and pylance, I can't reproduce the debugger not loading the _saved_ code on restart
+However, the stable version of VS code, saves the code before reloading it, which is practical, while the pre-release version doesn't
+At least after downgrading and upgrading the extensions, the debugger does pick up the saved version
+I couldn\'t reproduce it in a simple test (when `autoReload` is properly set in the launch it does reload properly for me provided that `autoReload` is set in the launch config).
+@int19h @karthiknadig is it possible that `autoReload` is no longer set in one of the shortcuts being used in VSCode and this is what the user is seeing?
+Note that `debugpy` will do everything on the backend in this case, so, it creates a watcher for filesystem changes and doesn\'t rely on any connection or messages from the UI (this was always this way, so, it can only see changes it detects in the filesystem).
+@Emergency5779 can you provide the logs when that happens?
+i.e.:
+* Run the command `Extensions: Open Extensions Folder`
+* Locate the Python extension directory, typically of the form `ms-python.python-2022.*.****`
+* In that directory ensure you do not have any debug*.log files, if you do, please delete them
+* Go back into VS Code and modify your launch.json to add the setting `"logToFile": true`, see below:
+```
+{
+    "name": "Python: Current File (Integrated Terminal)",
+    "type": "python",
+    "request": "launch",
+    "program": "${file}",
+    "console": "integratedTerminal",
+    "autoReload": {"enable": true},
+    "logToFile": true
+}
+```
+* Start debugging
+* When done, go back into the extension directory and upload the debug*.log files into this GitHub issue.
+Thanks Fabioz,
+I came across the autoReload flag, but read it, as if it was designed for loading code on the fly with jit compilers, I didn't consider, that would also solve this problem, which is of course, is kind of obvious.
+While I have been using VS Code, the flag has never been needed with the release version, and up until recently it wasn't needed with the preview version either
+With the flag set the preview version reloads the code, also without saving it first.
+When the change makes it into the release it would make sense to have a disclaimer about autoReload on restart, no longer being the default behaviour.
+How do I set this as default in the settings.json?
+Thanks a lot for your help, it was driving me crazy!
+At first setting the autoReload flag worked flawlessly without saving, but it stopped working again, it still reloads if I save the file first, but it also did that yesterday, after I downgraded and upgraded the python related extensions
+[debugpy.pydevd.20184.log](https://github.com/microsoft/vscode-python/files/9266749/debugpy.pydevd.20184.log)
+[debugpy.server-20184.log](https://github.com/microsoft/vscode-python/files/9266750/debugpy.server-20184.log)
+[debugpy.adapter-336.log](https://github.com/microsoft/vscode-python/files/9266751/debugpy.adapter-336.log)
+[debugpy.launcher-38988.log](https://github.com/microsoft/vscode-python/files/9266752/debugpy.launcher-38988.log)
+[debugpy.pydevd.44628.log](https://github.com/microsoft/vscode-python/files/9266753/debugpy.pydevd.44628.log)
+[debugpy.server-44628.log](https://github.com/microsoft/vscode-python/files/9266754/debugpy.server-44628.log)
+[debugpy.adapter-40812.log](https://github.com/microsoft/vscode-python/files/9266755/debugpy.adapter-40812.log)
+[debugpy.launcher-27856.log](https://github.com/microsoft/vscode-python/files/9266756/debugpy.launcher-27856.log)
+[debugger.vscode_fafc7763-65fb-44cb-b077-34366269d4da.log](https://github.com/microsoft/vscode-python/files/9266757/debugger.vscode_fafc7763-65fb-44cb-b077-34366269d4da.log)
+[debugpy.adapter-8032.log](https://github.com/microsoft/vscode-python/files/9266758/debugpy.adapter-8032.log)
+[debugpy.launcher-16404.log](https://github.com/microsoft/vscode-python/files/9266759/debugpy.launcher-16404.log)
+I'm not sure I follow: `At first setting the autoReload flag worked flawlessly without saving`.
+Auto-reload on the debugger can only work when the file is saved (since it works by checking for changes in the filesystem), so, I'm not sure if I follow what you mean that it worked without saving..
+can you elaborate a bit?
+-- if it did work without you saving that'd mean that some extension was auto-saving the contents...
+I have the same setup, and settings.json, in the release version and the pre-release version, though the one saves, while the other one doesn't
+ I have autosave onFocusChange flag set, perhaps the release version changes focus to run the debugger, and the pre-release version doesn't?
+> I have the same setup, and settings.json, in the release version and the pre-release version, though the one saves, while the other one doesn't
+I have autosave onFocusChange flag set, perhaps the release version changes focus to run the debugger, and the pre-release version doesn't?
+Probably..
+either way, saving (or auto-saving) per se is not in the scope for the debugger (as it'll only track the contents of the filesystem), and I think it's not handled by vscode-python either.
+@brettcannon @karthiknadig should this be closed/moved to vscode to know if something changed there?
+The config has a setting for saving before debug, but the pre-release version doesn't do it.
+![image](https://user-images.githubusercontent.com/105434139/183652981-5a5b8de4-8f6e-4253-9bd7-5baa7079bab0.png)

@@ -1,0 +1,142 @@
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- 🧪 Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+Does this issue occur when all extensions are disabled?: Yes
+<!-- 🧓 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+- VS Code Version: 
+  Version: 1.84.0 (Universal)
+  Commit: d037ac076cee195194f93ce6fe2bdfe2969cc82d
+  Date: 2023-11-01T11:30:19.406Z
+  Electron: 25.9.2
+  ElectronBuildId: 24603566
+  Chromium: 114.0.5735.289
+  Node.js: 18.15.0
+  V8: 11.4.183.29-electron.0
+  OS: Darwin arm64 23.1.0
+- OS Version: macOS Sonoma 14.1
+Steps to Reproduce:
+1. Create a task in task.json with this format
+   ```
+      {
+          "label": "go mod tidy",
+          "type": "shell",
+          "command": "go mod tidy",
+          "group": "build",
+          "presentation": {
+              "reveal": "always",
+              "panel": "new",
+              "focus": true,
+              "echo": true
+          },
+      },
+   ```
+2. Open an editor window if not already open
+3. Run the task
+4. Notice that the cursor stays in the editor so the terminal must be clicked on to press enter and dismiss the task
+'I have the same fault in the same version of VSCode.'
+Same problem with:
+```
+Version: 1.84.1
+Commit: 2b35e1e6d88f1ce073683991d1eff5284a32690f
+Date: 2023-11-06T12:35:31.181Z
+Electron: 25.9.2
+ElectronBuildId: 24603566
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Linux x64 5.15.0-88-generic snap
+```
+My task looks like this:
+```
+      {
+          "label": "Flash firmware",
+          "type": "shell",
+          "command": "invoke flash",
+          "presentation": {
+              "echo": true,
+              "reveal": "always",
+              "focus": true,
+              "panel": "shared",
+              "showReuseMessage": false,
+              "clear": false
+          },
+          "problemMatcher": []
+      }
+```
+Exactly the same here.
+```
+Version: 1.84.2 (user setup)
+Commit: 1a5daa3a0231a0fbba4f14db7ec463cf99d7768e
+Date: 2023-11-09T10:51:52.184Z
+Electron: 25.9.2
+ElectronBuildId: 24603566
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.19045
+```
+Same here:
+```
+Version: 1.84.2
+Commit: 1a5daa3a0231a0fbba4f14db7ec463cf99d7768e
+Date: 2023-11-09T10:52:57.054Z (23 hrs ago)
+Electron: 25.9.2
+ElectronBuildId: 24603566
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Darwin arm64 23.0.0
+```
+In the 1.83 version it worked perfectly.
+The same for me:
+```
+Version: 1.84.2 (Universal)
+Commit: 1a5daa3a0231a0fbba4f14db7ec463cf99d7768e
+Date: 2023-11-09T10:52:33.687Z
+Electron: 25.9.2
+ElectronBuildId: 24603566
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Darwin arm64 23.0.0
+```
+<!-- Thank you for submitting a Pull Request. Please:
+* Read our Pull Request guidelines:
+  https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests
+* Associate an issue with the Pull Request.
+* Ensure that the code is up-to-date with the `main` branch.
+* Include a description of the proposed changes and how to test them.
+-->
+fix #197394
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- 🧪 Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+
+<!-- 🧓 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.84.2
+- OS Version: Windows 10 64-bit v. 10.0.19045
+- C++/ C extension: v1.
+17.5
+Steps to Reproduce:
+In `tasks.json` in C++ folder in `presentation`, `focus` is `true`
+It used to work, but now it doesn't work.
+For example, it was very convenient when, after compilation, the output window was focused, and this made it possible to close the window by pressing Enter.
+Now, regardless of whether true or false is selected for `focus`, the window is not focused.
+You have to click on the window after compilation and only then press Enter to close it.
+![Screenshot 2023-11-13 200216](https://github.com/microsoft/vscode/assets/125651292/745fe0e5-eac3-4cdc-a5d6-88965adf905a)
+![Screenshot 2023-11-13 200529](https://github.com/microsoft/vscode/assets/125651292/1790f52e-163e-4433-a424-f82951441a8f)
+I'm having this problem too, but it seems like it's working again in the pre-release version of 1.85 (`1.85-insider`). 
+I don't know what changeset might have fixed it though.
+/duplicate #197394

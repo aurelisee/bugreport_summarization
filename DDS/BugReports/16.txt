@@ -1,0 +1,52 @@
+https://github.com/Microsoft/vscode/issues/13089 but for .rpm
+Notes:
+- Chromium deps: https://cs.chromium.org/chromium/src/chrome/installer/linux/rpm/expected_deps_i386?dr=C&q=libxss.so.1&sq=package:chromium
+- `ldd /usr/share/code-insiders/code-insiders` can fetch a list of deps
+Fixes #17142
+---
+The list of dependencies are those that appear in Chromium's expected dependencies and the output of `ldd /usr/share/code-insiders/code-insiders`
+To verifier: Please verify installation works fine on both a 32-bit and 64-bit CentOS (I tested using Fedora when implementing).
+- VSCode Version: 1.8.1
+- OS Version: CentOS 7.3 (x64)
+Steps to Reproduce:
+1.Install CentOS 7.3 minimal ISO to a new VM
+2.sudo yum install code-1.8.1-1482158209.el7.x86_64.rpm
+3.code .
+Expected:
+VS Code to start
+Actual:
+VS Code crashes, saying it cannot find libgtk-2.0.so
+I then manually installed the "gtk2" rpm to meet the missing dependency.
+VS Code still crashes, saying it cannot find libXtst.so.
+I installed the "libXtst" rpm
+VS Code still crashes, saying it cannot find libgconf-2.0.so
+I installed the "GConf2" rpm
+VS Code starts, but immediately and silently exits.
+Running with the --verbose option eventually points to a failure to locate a "sans" font.
+I installed the "gnu-free-sans-fonts" rpm
+VS Code successfully starts and is operational.
+So it seems like the above 4 packages should be added as package dependencies, to avoid the user having to manually find/install additional packages.
+Thanks for reaching out! Interestingly, it seems that all four of those packages appear in [dependencies.json](https://github.com/Microsoft/vscode/blob/master/resources/linux/rpm/dependencies.json), so not sure what's up.
+@Tyriar, any ideas?
+This is fixed Insiders, coming in 1.9.0 😄 https://github.com/Microsoft/vscode/issues/17142
+@Tyriar Seeing this on CentOS 8.6 64-bit live CD:
+![screen shot 2017-01-27 at 2 41 55 pm](https://cloud.githubusercontent.com/assets/9205389/22390273/e8ab4f92-e49e-11e6-94cf-738e7deae8e4.png)
+![screen shot 2017-01-27 at 2 45 32 pm](https://cloud.githubusercontent.com/assets/9205389/22390359/4d43b6f6-e49f-11e6-85f7-92251ecdcabb.png)
+Consistently so for the 32-bit version:
+CentOS 8.6 32-bit live CD:
+![screen shot 2017-01-27 at 2 59 34 pm](https://cloud.githubusercontent.com/assets/9205389/22390676/51e81d6c-e4a1-11e6-9e32-e813d03af35f.png)
+![screen shot 2017-01-27 at 3 00 47 pm](https://cloud.githubusercontent.com/assets/9205389/22390690/70ce1d62-e4a1-11e6-9eac-a3558fffd88a.png)
+CentOS 7 build 1611 64-bit live DVD installs the package, but the crashes on startup of VSCode.
+--verbose shows:
+![screen shot 2017-01-27 at 3 14 56 pm](https://cloud.githubusercontent.com/assets/9205389/22391012/7801a016-e4a3-11e6-9620-07a546be5ce2.png)
+And:
+![screen shot 2017-01-27 at 3 15 58 pm](https://cloud.githubusercontent.com/assets/9205389/22391042/9c2b0180-e4a3-11e6-9af7-4f3455a43494.png)
+Changing the permissions as asked for fixed the problem.
+Not sure if there is a way to avoid that, but other applications don't seem to require that change in permissions.
+Hey there,
+I took on the challenge to install vscode on void linux from source.
+The installation doesn't list all dependencies I needed.
+These were pkg-config, libXScrnSaver, gconfmm.
+Now its working, with the only exception being the integrated terminal.
+Would be neat if you could update the installation notes.
+Duplicate of https://github.com/Microsoft/vscode/issues/13089, https://github.com/Microsoft/vscode/issues/17142

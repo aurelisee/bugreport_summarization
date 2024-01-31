@@ -1,0 +1,48 @@
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- \U0001f9ea Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+Does this issue occur when all extensions are disabled?: Yes, as the included terminal is part of the core-editor.
+<!-- \U0001fa93 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.82.2, Commit abd2f3db, Electron: 25.8.1, inside flatpak
+- OS Version: Linux x64 6.5.7-200.fc38.x86_64
+Steps to Reproduce:
+1. Install vscode via flatpak
+2. Remove access to filesystem /etc/shells (e.g. by restricting fs-access)
+3. Start vscode instance and open a new terminal.
+4. Log-output shows that /etc/shells cannot be read (obviously)
+5. profile-settings for terminal are not considered properly
+Explanation: Sometimes this file might not be accessible or available.
+Thanks for creating this issue! 
+It looks like you may be using an old version of VS Code; the latest stable release is 1.83.1. 
+Please try upgrading to the latest version and checking whether this issue remains.
+<!-- Thank you for submitting a Pull Request. Please:
+* Read our Pull Request guidelines:
+  https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests
+* Associate an issue with the Pull Request.
+* Ensure that the code is up-to-date with the `main` branch.
+* Include a description of the proposed changes and how to test them.
+-->
+Trying to fix [#196493](https://github.com/microsoft/vscode/issues/196493).
+I assume, this is the least invasive way of fixing the given issue: Usually profile-lookups are enabled (I backtraced calls until literal "true").
+Semantically, this should result in expected behavior: If `/etc/shells` file does not exist, any attempt of reading it is useless.
+Usually, this file is readable if available.
+As this issue was really easy to find and fix just by reading the `main`-branch, I am very confident that this issue persists in the latest versions of `vscode`.
+Maybe we should show a notification in this case.
+I agree that a missing `/etc/shells` is a corner-case, but showing a notification (you mean that little notification-popup, @meganrogge?!?) seems a bit extreme? 
+But I see your point: Maybe it's good to add a log-output or similar.
+Containers are usually designed to be as slim as possible, thus not adding this file in a base-container image seems reasonable.
+Needing to acknowledge a notification every time a user opens the program seems overly intrusive? 
+A missing shells file just implies that the system does not provide that information. 
+As there is already some way to configure the terminal profile explicitly, I don't consider the missing (and implicit!) system information harmful? 
+Even with no configuration, the terminal stays somewhat usable _(no hard program-crash or similar!)_. 
+In my case `sh` was used without configuration.
+Is this the right set-up? The Terminal output is empty, no error or warning
+<img width="372" alt="image" src="https://github.com/microsoft/vscode/assets/323878/9ff20c36-e847-4041-8ec7-fed3b8b42b5f">
+Looks right to me given what OP wanted, ref https://github.com/microsoft/vscode/issues/196493#issuecomment-1778131607.
+Marking the issue as verified.

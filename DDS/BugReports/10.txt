@@ -1,0 +1,24 @@
+VS Code Insider and Stable on macOS 11.0.1 (Big Sur):
+The "Restart to Update" does not restart VS Code on macOS 11.0.1 (Big Sur).
+But the update works fine: after a manual start VS Code is updated.
+Upstream fix https://github.com/electron/electron/pull/25864, should be fixed in our exploration builds, needs to be backported to `9-x-y`
+macOS Big Sur VS Code insiders
+1.get an update and download the update
+2.Main menu (or Gear) -> click on the Restart button so the update gets applied
+3.VS Code insiders is closed but does not start 🐛
+If I manualy start VS Code after this all is good and I see the update applied.
+@sandy081 also hit this
+If you do not have Big Sur let me know what more details I can provide to best help.
+/duplicate #109728
+@deepak1556 It would be ideal if we could backport this and include it for November so Big Sur stable users don't hit this issue the next few updates.
+Would a backport be possible?
+For Electron versions < 11 , squirrel is downloaded as a prebuilt binary from https://github.com/electron/electron-frameworks which hasn't bumped versions in a long time.
+For electron 11 and higher squirrel is built from source, which made it easier to pick up fixes.
+So backporting a fix to Electron 9 at this late stage in release is difficult.
+**Discussion from Zürich standup**
+On Big Sur, the action is still to be called `Restart to Update`.
+When clicking it, a modal dialog should come up explaining this is broken in Big Sur, with a link to the issue, and an action to Quit VS Code.
+@joaomoreno will this change be included only for release/1.52 branch ? Since master is already on Electron 11
+I will include the modal dialog *only* on the release branch, and keep this issue open.
+PR: https://github.com/microsoft/vscode/pull/112008
+Mitigation for https://github.com/microsoft/vscode/issues/109728

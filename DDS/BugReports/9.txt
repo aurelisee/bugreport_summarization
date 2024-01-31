@@ -1,0 +1,227 @@
+* open `fileA.ts` that exports a symbol that is used in `fileB.ts`
+* rename a symbol in `fileA.ts`
+* (`fileB.ts` opens as a background tab)
+* save all
+* hit the `x` on the `fileB.ts` tab
+* observe (through logging) that `fileB.ts` is not disposed
+Now do the same steps, but first click on the tab with `fileB.ts` before hitting `x`.
+Now, `fileB.ts` is disposed.
+---
+Notice how `fileB.ts` and `fileC.ts` do not get disposed:
+![Kapture 2020-05-27 at 15 39 52](https://user-images.githubusercontent.com/5047891/83027414-62855100-a030-11ea-9707-a9fb33188323.gif)
+---
+Notice how `fileB.ts` and `fileC.ts` get disposed now:
+![Kapture 2020-05-27 at 15 41 58](https://user-images.githubusercontent.com/5047891/83027678-ae37fa80-a030-11ea-9b0d-a492c10bc0eb.gif)
+- VSCode Version: 1.45.1
+- OS Version: Windows 10
+Steps to Reproduce:
+Screencast:
+![dnd1](https://user-images.githubusercontent.com/14052197/82178277-340bc580-990e-11ea-8c09-0c66ee57697a.gif)
+1.Open sample node project below in VS Code.
+[dnd.zip](https://github.com/microsoft/vscode/files/4642123/dnd.zip)
+2.Set the setting **"typescript.updateImportsOnFileMove.enabled": "always"** or **"never"**.
+3.Click to open multiple files (e.g.
+**src/utils/ma.ts, src/utils/mb.ts, src/utils/mc.ts, src/utils/md.ts**) in VS Code.
+4.In File Explorer, drag and drop these files back and forth several times, e.g.
+```
+1st dnd:  utils/m*.ts -> funcs/m*.ts
+2st dnd:  funcs/m*.ts -> utils/m*.ts
+3rd dnd:  utils/m*.ts -> funcs/m*.ts
+```
+5.You would see the states for these opened editors are in chaos.
+Some showed as "**deleted**", see the screenshot below.
+But actually these files exist.
+My initial finding was that vscode didn\'t clear the opened text models for the old locations after the move operation, so that the next time you move back, vscode will try to reuse the previously cached text models.
+![image](https://user-images.githubusercontent.com/14052197/82173826-34519400-9901-11ea-9bce-a55f276b9fc4.png)
+Does this issue occur when all extensions are disabled?: Yes
+@bpasero sounds like this is on the file IO layer, and not in the UI representation.
+Can you investigate first?
+Let me know if you are busy and I can also investigate.
+@testforstephen I tried to reproduce but it seemed to work ok for me, maybe more settings are needed?
+For once, it is not clear to me if it breaks only in the one case where `typescript.updateImportsOnFileMove.enabled` is set to `always` or in both cases?
+It seems quite obvious to me that this issue only surfaces for you if the imports are updated, right?
+Can you try the same thing in insiders, to rule out any particular extension or setting you might have that I don't.
+You can give our preview releases a try from: https://code.visualstudio.com/insiders/
+![recording](https://user-images.githubusercontent.com/900690/82195587-c4d7a680-98f8-11ea-809a-807c82d851c8.gif)
+Hm, I still see a bit of weirdness: the title indicates the file is deleted, but the editor tab does not show that.
+I think there is no breakage of functionality or data loss (@testforstephen correct me if that is different for you) but there seems to be a bug in showing the decoration in that case.
+At insider, i can reproduce it in both updateImports enabled and disabled.
+I didn't observe data loss yet, but not sure whether some complex case will be.
+At least, i observed there are some extra didChange events happening for those problematic editors.
+And if there is a job on applying the edit in the meantime, it probably throws errors saying there are files changed in the meantime.
+Especially if you choose to use Refactor Preview panel to preview the updates introduced by dnd, then apply the changes will most likely run into the error saying the file has been modified.
+So the fact that imports are still being rewritten when this setting is disabled smells like a bug that I filed as https://github.com/microsoft/vscode/issues/98081
+Checking for the state of file models when doing this, I see some stale text file models lurking around, easy to identify:
+* move those files back and forth as instructed
+* run the command "Developer: Log Working Copies"
+* notice how eventually there are working copies for the moved files both in the one folder as well as the other
+Checking for callers of `ITextModelResolverService#createReferencedObject()` it looks like `MainThreadDocuments#$tryCreateDocument()` is responsible for creating a reference that is not being disposed when the file is moved.
+@jrieken is that intentional?
+I see `BoundModelReferenceCollection` having some time associated with it, but this means in theory that invalid models are still hanging around when files get deleted or moved?
+I think that should be revisited and possibly the `IWorkingCopyFileService#onDidRunWorkingCopyFileOperation` be used to dispose these references.
+> @jrieken is that intentional?
+I see BoundModelReferenceCollection having some time associated with it, but this means in theory that invalid models are still hanging around when files get deleted or moved?
+Yes - we allow extensions to open text documents and there should be a little respecting of extensions when it comes to dispose.
+E.g.
+not dispose immediately but eventually.
+Also, dispose them when they never appear in an editor or as edited.
+ So, today they remain for 3 mins or when a certain size constraint is reached.
+This code is very ancient and maybe renaming/deleting wasn't an issue back then - if I remember correctly then the editor disposed models outside the ref-counted lifecycle for the longest time, right?
+> if I remember correctly then the editor disposed models outside the ref-counted lifecycle for the longest time, right?
+Maybe in the past, not sure.
+But for a while file editors use the same mechanisms and dispose the reference when the editor closes:
+https://github.com/microsoft/vscode/blob/1fc148b25413ec45e4eb6ce13fa44c0eb813ea4a/src/vs/workbench/contrib/files/common/editors/fileEditorInput.ts#L322
+I think just dipsosing the model under the hood without everyone that created a reference knowing about this is very dangerous because you may keep a reference to a model that is disposed without knowing.
+I can make a pass over clients of the text model resolver that currently do not react on the move/delete and we can go from there.
+I will also check if my suggestion about participating in the working copy file event is possible, but I think it should be fine.
+This would then just be another condition under which we free up a reference, besides the timeout.
+> Maybe in the past, not sure.
+But for a while file editors use the same mechanisms and dispose the reference when the editor closes:
+https://github.com/microsoft/vscode/blob/e5dadf5e8a00c1b84c77ac4197804967bd393ab5/src/vs/workbench/common/editor/textEditorModel.ts#L96-L98
+☝️ this is what I have meant.
+The text editor will re-use a model that it doesn't own so I wonder what happens in case the actual owner(s) let it go.
+E.g this
+* extension acquires model reference via API
+* editor opens and reuses that model (line 96)
+* extension reference is released (e.g after timeout) and model is disposed
+* editor uses a disposed model?
+That cannot happen, text editors go through the reference way as well, otherwise we would have seen a ton of issues by now.
+Text file editors always create a reference here:
+https://github.com/microsoft/vscode/blob/686512400b9cfbe747aa6e94af99797003cb0515/src/vs/workbench/contrib/files/common/editors/fileEditorInput.ts#L253
+Still, the fact that we have code like this is dangerous, and possibly not used anymore or at least needs some better understanding.
+I can look into this as part of looking into the lifecycle of references.
+I checked back on the fact that file models and untitled models have their own way of creating text models and it seems fine because `ITextModelResolverService` is actually going through that code:
+* `untitled`: https://github.com/microsoft/vscode/blob/2aa9f3f243b148b6441dc7d51808027dce68d6d2/src/vs/workbench/services/textmodelResolver/common/textModelResolverService.ts#L160
+* `file`: https://github.com/microsoft/vscode/blob/2aa9f3f243b148b6441dc7d51808027dce68d6d2/src/vs/workbench/services/textmodelResolver/common/textModelResolverService.ts#L42
+There should be no issue from that usage that I can think of as long as everyone is going through these methods which they should.
+When i try the latest insider (2020-05-27), i still can reproduce the issue with the sample project above.
+```
+Version: 1.46.0-insider (user setup)
+Commit: 876f2e70f9a2e1988887f8ca82294418afac15a2
+Date: 2020-05-27T05:43:41.115Z
+Electron: 7.2.4
+Chrome: 78.0.3904.130
+Node.js: 12.8.1
+V8: 7.8.279.23-electron.0
+OS: Windows_NT x64 10.0.18363
+```
+Is the fix on the latest insider?
+Should be fixed, reopening then.
+Using the sample and steps below, this does seems to work for me.
+Tho, I wonder if we fixed the right issue because the code that @bpasero added isn\'t actually hit.
+Well the event fires but there is removal happening because the documents do exist on the extension host but they haven\'t been requested by an extension and are therefore not kept in the `BoundReferenceCollection`.
+This was still a good change but I wonder if we have missed something...
+For more insights, I have an extension that logs all `onDidOpen` and `onDidClose` events for text documents and this is what it printed.
+At one point you see a series of CLOSE messages for the files that have been moved, that\'s followed by OPEN messages for the new locations, and finally come OPEN messages for the files that get updated
+```
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts","ref":""}
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mb.ts
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mb.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mb.ts","ref":""}
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/tsconfig.json
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mc.ts
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mb.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mb.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mc.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mc.ts","ref":""}
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mc.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mc.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts","ref":""}
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts","ref":""}
+OPEN: vscode-userdata:/Users/jrieken/Library/Application Support/code-oss-dev/User/settings.json
+CLOSE: vscode-userdata:/Users/jrieken/Library/Application Support/code-oss-dev/User/settings.json
+OPEN: vscode-userdata:/Users/jrieken/Library/Application Support/code-oss-dev/User/settings.json
+CLOSE: vscode-userdata:/Users/jrieken/Library/Application Support/code-oss-dev/User/settings.json
+OPEN: output:tasks
+CLOSE: output:tasks
+OPEN: output:extension-output-%234
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts","ref":""}
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts","ref":""}
+CLOSE: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts
+CLOSE: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mb.ts
+CLOSE: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/md.ts
+CLOSE: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/mc.ts
+CLOSE: file:///Users/jrieken/Code/_samples/devfest/issues/98057/tsconfig.json
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/utils/ma.ts","ref":""}
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mb.ts
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/md.ts
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mc.ts
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts","ref":""}
+OPEN: file:///Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/fb.ts
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/fb.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/fb.ts","ref":""}
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/fb.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/fb.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mb.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mb.ts","ref":""}
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mb.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mb.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mc.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mc.ts","ref":""}
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mc.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/mc.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/md.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/md.ts","ref":""}
+CLOSE: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/md.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/md.ts","ref":""}
+OPEN: git:/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts.git?{"path":"/Users/jrieken/Code/_samples/devfest/issues/98057/src/funcs/ma.ts","ref":""}
+```
+@testforstephen Did you try Insiders with this test case or is there a more complicated one in the Java world?
+>1.Open the sample nodejs project below in VS Code. >[dnd.zip](https://github.com/microsoft/vscode/files/4642123/dnd.zip)
+>2.Set the setting **"typescript.updateImportsOnFileMove.enabled": "always"**.
+>3.Click to open multiple files (e.g.**src/utils/ma.ts, src/utils/mb.ts, src/utils/mc.ts, src/utils/md.ts**) in VS Code.
+>4.In File Explorer, drag and drop these files back and forth several times, e.g.
+```
+1st dnd:  utils/m*.ts -> funcs/m*.ts
+2st dnd:  funcs/m*.ts -> utils/m*.ts
+3rd dnd:  utils/m*.ts -> funcs/m*.ts
+```
+I tried the steps above in the latest insider 2020-06-03 again, the issue still exists.
+In fact, i also tried in a new windows machine, it has same issue.
+@jrieken Did you check the window title?
+After DnD back and froth several times, you would see a **(deleted)** text in the window title.
+![image](https://user-images.githubusercontent.com/14052197/83740643-b673e380-a689-11ea-9255-6a0754441f10.png)
+In Java extension, what i want to do is same as "Update Imports on Move" feature in typescript.
+A little difference is that we provide the option for users to preview the update.
+The current problem is that after dragging files back and forth a few times, then applying preview will fail and it says "files were modified in the meantime".
+At the same time, i noticed there are additional title bar text "**(deleted)**" appended to these affected editors.
+Given it can also be reproduced in typescript, that\'s why i confirm it\'s a vscode issue.
+Oh, my bad.
+Didn't move back and forth, moved only once
+I can now reproduce but from the logs and debugging it seems that the extension host side is looking correct - I see meaningful CLOSE/OPEN messages and I do see how the `remove` function is executing.
+Moving this to June for further investigation but @bpasero I believe there is more to this than just extension referenced documents
+> A little difference is that we provide the option for users to preview the update.
+FYI - our current plan is to add API, e.g a workspace edit can say that it can be previewed and based on user-preference the preview pane will show.
+Similar to how rename (symbol) preview works
+This seems to be the same underlying reason as https://github.com/microsoft/vscode/issues/98653.
+During the steps we close and open editors, but some of them are inactive.
+When these get closed (e.g.
+by doing another DND operation), we do not dispose the model because an editor only disposes a model if it was opened actively, not inactive.
+Since the models are dirty doing the operation, we refuse to dispose it when the bulk edits are done.
+I think there is no issue with disposal of references, but the sequence is rather this:
+* bulk edit creates model ref and performs edits
+* bulk edits is done and disposes the ref
+* we do not dispose the model because it is dirty at this point
+* at this time we have a model without associated reference that can potentially leak
+* we open dirty models by default in the background
+* usually editors participate in the lifecycle of models by creating a reference, but not when opened in background (we do not call `resolve` in that case)
+* operation is done again, since files are moved, we close editors and reopen them
+* closing an inactive editor does not dispose any reference because none was created
+I am not sure yet about the proper fix but tested locally that a fix for https://github.com/microsoft/vscode/issues/98653 should also fix this issue.
+Closing as duplicate.
+Have tried the fix in the insider, looks like the dirty text models don't exist any more.
+But i observe a side effect on the moving file scenario.
+A typical workflow as below:
+- Open file A.java in VS Code.
+- Modify file A.java and add some contents, and leave it unsaved.
+- Drag and drop A.java to a new folder f1.
+- I observed the following events happening:
+-> didClose { uri: A.java }
+-> didOpen { uri: f1/A.java, version: 1, text: \\<the contents in the disk file\\> }
+-> didChange { uri: f1/A.java, version: 2, contentsChanges: \\<the unsaved changes before move\\> }
+When moving files, the VS Code would modify the unsaved files again to restore the dirty state.
+If i want to enable refactoring feature based on the move operation, the silent didChange behavior from VS Code client probably conflicts with the refactoring job.
+Is it possible to restore the unsaved model contents in the didOpen event directly when reopening the newly moved file?
+@testforstephen I am not sure what you are trying to build, but do you maybe rather wanna use `vscode.onWillRenameFiles` and `vscode.onDidRenameFiles` to participate in that operation?
+YES, i register listener on the renameFiles event for refactoring operation.
+IMO, how you restore the model is something that the client implements, and from the user's point of view, i just need know when to close the old file and open the new file.
+didChange is not user-operated.
+It is true that we first load the model from disk and then update it with the previous contents if you look at this code:
+https://github.com/microsoft/vscode/blob/1cc95bad5440a0ce78db0bf0d2913f3f48325166/src/vs/workbench/services/textfile/common/textFileEditorModelManager.ts#L224-L240
+It would probably make more sense to load the model directly with the contents we had before, but we currently have no way of doing so.
+I suggest a follow up issue to investigate 👍
+Created a new issue https://github.com/microsoft/vscode/issues/100255

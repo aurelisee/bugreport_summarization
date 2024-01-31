@@ -1,0 +1,117 @@
+- VSCode Version: Code - Insiders 1.11.0-insider (c995ecf2e94a00aa7eda81ed842e787b999e83ae, 2017-03-27T06:11:09.027Z)
+- OS Version: Windows_NT ia32 10.0.15063
+- Extensions:
+|Extension|Author|Version|
+|---|---|---|
+|vscode-file-peek|abierbaum|1.0.1|
+|html-snippets|abusaidm|0.1.0|
+|project-manager|alefragnani|0.13.5|
+|quitcontrol-vscode|artdiniz|2.0.2|
+|path-intellisense|christian-kohler|1.2.0|
+|githistory|donjayamanne|0.2.0|
+|tslint|eg2|0.8.1|
+|RunOnSave|emeraldwalk|0.0.16|
+|beautify|HookyQR|1.0.2|
+|vscode-less|mrmlnc|0.6.2|
+|typescript-javascript-grammar|ms-vscode|0.0.18|
+|peep|nwallace|0.0.5|
+|vscode-docker|PeterJausovec|0.0.13|
+|better-merge|pprice|0.5.1|
+|vscode-icons|robertohuertasm|7.4.0|
+|vscode-nginx|shanoor|0.3.1|
+|JasmineSnippets|xabikos|0.2.1|;
+---
+Steps to Reproduce:
+1.Set Git-Bash as the integrated terminal:
+```json
+    "terminal.integrated.shell.windows": "C:\\\\Program Files\\\\Git\\\\bin\\\\bash.exe",
+    "terminal.integrated.fontLigatures": true,
+```
+2.Define a task using tasks version 2.0.0:
+```json
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "command": "node",
+    "isShellCommand": true,
+    "args": [
+        "node_modules\\\\typescript\\\\bin\\\\tsc",
+        "-w",
+        "-p",
+        "./src/tsconfig.json"
+    ],
+    "showOutput": "silent",
+    "problemMatcher": "$tsc"
+}
+```
+3.Execute run task
+Terminal displays:
+```
+/usr/bin/bash: Files\\Git\\bin\\bash.exe: No such file or directory
+Press any key to close the terminal
+```
+Have you tried escaping the space in the middle of the string?
+i.e.
+```
+ "terminal.integrated.shell.windows": "C:\\\\Program\\ Files\\\\Git\\\\bin\\\\bash.exe",
+```
+@Tyriar assigning to you.
+I simply rely on the terminal settings.
+@steve-p-com I did a simple test to add a `\\` as you suggested, but that became invalid JSON.
+I didn't try any other escaping options, and importantly this value works for the integrated terminal, so any change would need to work with both.
+The terminal works fine with spaces in the path, here's my setting:
+https://github.com/Tyriar/dotfiles/blob/master/modules/vscode/config/settings.json#L22
+It looks like this is running within bash or WSL:
+> /usr/bin/bash: Files\\Git\\bin\\bash.exe: No such file or directory
+> Press any key to close the terminal
+@dbaeumer do you know what shell and args are sent to the new terminal instances in this case?
+The args look like this:
+![capture](https://cloud.githubusercontent.com/assets/1931590/24451548/959f9bda-147f-11e7-87ea-c5959505e30c.png)
+I get to the shell executable using `mergeDefaultShellPathAndArgs`
+Not sure what's happening here, the error is clearly coming from bash as it starts with /usr/bin/bash
+@Tyriar I was looking at a different commit (#23578), and noticed that I have `isShellCommand: true` in my task config, after changing it to `false`, the task was run successfully.
+This same config worked fine with the previous task runner, so I'm not sure what exactly the bug is:
+- Is `isShellCommand` still relevant?
+- If it is, when should it be used?
+- If not, maybe removing it from the tasks schema is enough?
+isShellCommand is still necessary.
+If set to true the node executable is executed inside a Git bash.exe in our setup.
+If isShellCommand is false then node is executed directly without a surrounding Git bash.exe.
+In this case you loose some features (variable expansion, ...) but gain simpler setup
+I\'ve a simple `tasks.json`, without `isShellCommand`, and getting the same result on the May release:
+![image](https://user-images.githubusercontent.com/4172079/26970242-93cde0aa-4d00-11e7-8a32-8f610fbc3d81.png)
+Shell is set to git bash as per other configurations on this thread `  "terminal.integrated.shell.windows": "C:\\\\Program Files\\\\Git\\\\bin\\\\bash.exe",`.
+- VSCode Version: 1.13.0-insider
+- OS Version: Windows 10
+Steps to Reproduce:
+1.Install PowerShell to a directory with a space in the path (I\'m using PowerShell 6.0-beta.2, which by default installs to `C:/Program Files/PowerShell`).
+2.Change `"terminal.integrated.shell.windows"` to point to this path (e.g.
+`C:/Program Files/PowerShell/powershell.exe`)
+3.Try to run a task, either with `"isShellComand": true` or `"type": "shell"`.
+You should get an error message like the following:
+```
+Files/PowerShell/powershell.exe : The term \'Files/PowerShell/powershell.exe\' is not recognized as the name of a cmdlet, function, script file, or operable
+program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ Files/PowerShell/powershell.exe -NoLogo -Command yarn start
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Files/PowerShell/powershell.exe:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+```
+Opening a terminal manually still works; the PowerShell extension also has no problems starting a session or opening its integrated console.
+It appears to only be an issue for the task runner.
+Generic path-wrangling strategies (like escaping the space or double-wrapping the path in different flavors of quotemarks) either don\'t affect the behavior or break all of vscode\'s terminal operations (not just from the task runner).
+Poking around the code, it looks to me like it might be an issue with [TerminalTaskSystem#resolveVariable](https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/parts/tasks/electron-browser/terminalTaskSystem.ts#L585) (which itself points indirectly to [ConfigurationResolverService#resolveString](https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/services/configurationResolver/node/configurationResolverService.ts#L134)), since the path appears to be passed as a command to TerminalTaskSystem\'s internally created terminal.
+Take that with a grain of salt as I\'m not very familiar with the codebase & at the moment I don\'t have time to investigate further.
+As a temporary (though less-than-ideal) workaround, I\'m cloning the PS install up a level to C:/ and pointing the integrated terminal to that.
+Thanks in advance!
+Dups #23396
+@Tyriar marked for June since this now causes issues with PowerShell as well under Windows.
+I suspect this is related to the fix for https://github.com/Tyriar/node-pty/issues/41
+Notice how the file and args are returned when args is a string: https://github.com/Tyriar/node-pty/pull/47/files#diff-06c24ba7a8249f1158cb1c985df3993fR98
+Changing that line to this may fix that:
+```ts
+return `${argsToCommandLine(file, [])} ${args}`;
+```

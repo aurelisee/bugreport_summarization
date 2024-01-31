@@ -1,0 +1,43 @@
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- \U0001f9ea Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+Does this issue occur when all extensions are disabled?: Yes
+<!-- \U0001fa93 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+- VS Code Version: 1.83 & 1.84-insider NOT: 1.80.2
+- OS Version: macOS AMD64
+Steps to Reproduce:
+1. Provide code action via language server. Example from [Snyk Extension](https://marketplace.visualstudio.com/items?itemName=snyk-security.snyk-vulnerability-scanner):
+```
+{"command":{"arguments":["https://learn.snyk.io/lesson/csrf-attack/?loc=ide"],"command":"snyk.openBrowser","title":"Learn more about Cross-Site Request Forgery (CSRF) (Snyk)"},"diagnostics":[{"code":"javascript/UseCsurfForExpress","codeDescription":{"href":"https://docs.snyk.io/products/snyk-code/security-rules-used-by-snyk-code"},"message":"Cross-Site Request Forgery (CSRF): CSRF protection is disabled for your Express app. This allows the...","range":{"end":{"character":18,"line":27},"start":{"character":10,"line":27}},"severity":2,"source":"Snyk Code"}],"kind":"quickfix","title":"Learn more about Cross-Site Request Forgery (CSRF) (Snyk)"}
+```
+2. When opening the `Quickfixes...` menu, the code action command is automatically executed on mouse-over/selection.
+This is happening with current vscode versions, but not with 1.80.2 released in June, both using the same Snyk extension version. 
+Therefore we think that a change in VSCode or one of its language server / language client related libraries is triggering this unexpected behaviour.
+<!-- ???????????? Do Not Delete This! bug_report_template ???????????? -->
+<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->
+<!-- ???? Read our guide about submitting issues: https://github.com/microsoft/vscode/wiki/Submitting-Bugs-and-Suggestions -->
+<!-- ???? Search existing issues to avoid creating duplicates. -->
+<!-- \U0001f9ea Test using the latest Insiders build to see if your issue has already been fixed: https://code.visualstudio.com/insiders/ -->
+<!-- ???? Instead of creating your report here, use 'Report Issue' from the 'Help' menu in VS Code to pre-fill useful information. -->
+<!-- ???? Launch with `code --disable-extensions` to check. -->
+Does this issue occur when all extensions are disabled?: Yes/No
+<!-- \U0001fa93 If you answered No above, use 'Help: Start Extension Bisect' from Command Palette to try to identify the cause. -->
+<!-- ???? Issues caused by an extension need to be reported directly to the extension publisher. 
+The 'Help > Report Issue' dialog can assist with this. -->
+- VS Code Version: September 2023 (version 1.83)
+- OS Version: Apple M2
+- Flutter Toolkit version: v2.1.1
+Steps to Reproduce:
+Auto insertion happens when I hover the mice over the suggestions in "Quick Fix".
+1. Install Flutter Toolkit extension
+2. Create a new class with some parameters
+3. Hover the mice over the suggestions in "Quick Fix"
+![Screenshot 2023-10-30 at 04 01 33](https://github.com/microsoft/vscode/assets/47524859/746dada5-5a0f-413c-b9f5-9a795610c70e)
+@luizcamposmc I was unable to reproduce this. Does this happen in the latest 1.84 release and is it only with flutter/dart?
+closing as it's a /duplicate https://github.com/microsoft/vscode/issues/196589

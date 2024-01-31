@@ -1,0 +1,44 @@
+Chrome-debug supports .js files with query parameters (`http://localhost/foo.js?bar`).
+But if I load one with "Open loaded scripts", the query parameter is stripped.
+This happens here: https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/parts/debug/browser/debugContentProvider.ts#L40 since fsPath doesn\'t include the query parameter.
+Any idea how to make this work?
+I don\'t think URI is expecting to have a URL with another scheme.
+That normalize code should only be executed if the source could not be found - otherwise `source` should not be `null` and the `rawSource` should be passed to the adapter.
+Do you know why is that?
+As for the `normalize(uri.fsPath)` call - I am not married to it and we can change it to whatever uri massaging techinique would work for you and not break the existing behavior.
+If we change this I would prefer to be in debt week -> april
+It tries to get the source from `process.sources`, but it looks like that is only populated when it breaks in there, right?
+Plus it's a different format, the script from the quickopen starts with `debug:` but the ones in `process.sources` don't.
+I don't know about replacing `uri.fsPath`, `resource.toString(true).substr('debug:'.length)` would do it if that isn't too hacky.
+Yes, `process.sources` is only populated once there is a call stack that contains that source - so if it breaks.
+Yeah that feels like a total hack.
+Why don't you experiment with different solutions and create a PR where we can comment and try out different approaches if needed?
+This regressed from https://github.com/Microsoft/vscode/commit/ce177da9e11c7c14a143b9beaf743365ce228744 adding back the `query: ''` in DebugContentProvider.getTextContent.
+@weinand is that needed?
+Also, https://github.com/Microsoft/vscode/issues/33712
+I think opening the file by putting its url into a `debug:` uri is very fragile, to say the least.
+I have listed some problems I've noticed while implementing a Loaded Scripts Explorer for the Firefox debug adapter in #32845.
+My suggestion would be to add the ability to open files using the numerical `sourceReference` that the debug adapter assigned to them or using the `Source` object that is used for identifying the file in the messages between VS Code and the DA.
+Whatever solution you adopt, keep in mind that VS Code should be able to determine that the file opened by clicking on a stackframe and the file opened by clicking in the Loaded Scripts Explorer are one and the same - otherwise setting breakpoints in a file opened through the Loaded Scripts Explorer will become problematic.
+I\'ve addressed this issue by making sure that the flow `Source` -> uri -> `Source` preserves the data so that the initial and resulting `Source` objects are identical.
+The "path" attribute of the source object can contain anything, e.g.
+a file system path or a full URL.
+So if a Uri is constructed in the following way:
+```
+const sessionId: string = ...
+const source: Source = ...
+const uri = vscode.Uri.parse(`debug:${encodeURIComponent(source.path)}?session=${encodeURIComponent(sessionId)}&ref=${source.sourceReference}`);
+```
+the debugContentProvider inside VS Code will retrieve the content by sending a "sourceRequest" with a "Source" argument to the debug adapter identified by the debug session.
+chrome-debug sends ` {"seq":0,"type":"event","event":"script","body":{"reason":"new","script":{"id":11,"source":{"name":"test2.js","path":"http://localhost:8080/out/client%20with%20space/test2.js","sourceReference":1001}}}}` (with `%20` escaped spaces)
+I open test2.js from "loaded scripts" and set a breakpoint in it.
+VS Code sends `setBreakpoints({"source":{"path":"http://localhost:8080/out/client with space/test2.js","name":"test2.js"},"lines":[3],"breakpoints":[{"line":3}],"sourceModified":false})` (with unescaped spaces)
+@roblourens can you please put a breakpoint [here](https://github.com/Microsoft/vscode/blob/master/src/vs/workbench/parts/debug/electron-browser/debugService.ts#L1065) and check if the `normalize` call is removing escape codes.
+An alternative would be that our internal [`uri`](https://github.com/Microsoft/vscode/blob/master/src/vs/base/common/uri.ts#L7) implementation somehow removes escape code.
+Also assigning to @weinand since he is aware that some loaded scripts paths get incorectly transformed on windows
+It's from URI, the 'path' goes through decodeURIComponent https://github.com/Microsoft/vscode/blob/master/src/vs/base/common/uri.ts#L189
+I think it's hard to store a URI inside another URI and get the exact same representation out, because it will always be transformed in some way.
+True, I do not see a straighforward way to fix this since we use uri everywhere inernally.
+I am open for suggestions on how to fix this
+I'll investigate...
+duplicate of #23194

@@ -1,0 +1,35 @@
+With history not focused:
+![image](https://github.com/microsoft/vscode/assets/2193314/d1516bca-8763-40dd-9b6a-9334582fa54b)
+![image](https://github.com/microsoft/vscode/assets/2193314/385b4112-c9d9-4f9a-bf30-e6fa955bc0f4)
+With history focused:
+![image](https://github.com/microsoft/vscode/assets/2193314/082c6e15-a014-46e3-a107-afda81070fdd)
+![image](https://github.com/microsoft/vscode/assets/2193314/8f258b5c-be40-4bcf-a091-cdab16e38dc6)
+To do in this repo:
+1 - Prevent translators from seeing `\\u21C5`
+2 - Why is history action appearing in not focused?
+[Source Link 1](https://github.com/microsoft/vscode-loc/blob/main/i18n/vscode-language-pack-ko/translations/main.i18n.json#L4961)
+[Source Link 2](https://github.com/microsoft/vscode-loc/blob/main/i18n/vscode-language-pack-ko/translations/main.i18n.json#L4958)
+history.input.hint:
+[Source Link 3](https://github.com/microsoft/vscode-loc/blob/main/i18n/vscode-language-pack-ko/translations/main.i18n.json#L56C34-L56C34)
+[Source Link 4](https://github.com/microsoft/vscode/blob/23f4cdd00b8aa61c3ca8c1771f49f00734db4f9e/src/vs/base/browser/ui/inputbox/inputBox.ts#L621-L622)
+3 - `or` should be localized
+History hint was added in #129324
+FYI @gjsjohnmurray the history hint causes some localization issues. 
+I'll fix it up, but your review would be helpful
+Fixes #197071
+After (same as before for English):
+![image](https://github.com/microsoft/vscode/assets/2193314/bb6bb78e-442e-4801-8721-21f194c6bda2)
+![image](https://github.com/microsoft/vscode/assets/2193314/9414956c-551d-4748-b223-663d48f7a46e)
+![image](https://github.com/microsoft/vscode/assets/2193314/6fabdff2-cf7a-457b-8d45-9823c049d2ee)
+![image](https://github.com/microsoft/vscode/assets/2193314/5ba40cfd-5fd3-4cb4-a83c-7bb6ce4739f6)
+The result of this change should be:
+- `or` will be localized
+- The spaces can be removed from the history hint suffix if it makes sense in the language
+- History hints in simple find width will no longer double up
+- The arrow symbol will not be surfaced to translators
+- Better instructions to translators
+cc @gjsjohnmurray
+Verified by installing the Microsoft Korean language pack from the gallery. 
+The text looks somewhat different; however, I suppose that's because the search widget no longer says 'find' but 'search' in the placeholder
+![Screenshot 2023-11-29 at 16 30 14](https://github.com/microsoft/vscode/assets/61460952/e045a471-d3a9-48b3-a1e2-5a2fc8a5393d)
+Yep, that means search/look up ????

@@ -1,0 +1,52 @@
+I tested on Win11 & Win10.
+It works as long as you start a new workbook and don't save the Jupyter notebook. 
+Once you save the notebook, your pastes of images from the clipboard will no longer be treated as inline attachments.
+_Originally posted by @beckerben in https://github.com/microsoft/vscode-jupyter/discussions/14408#discussioncomment-7180960_
+Possibly getting overridden by a markdown file paste provider? @mjbvz
+@amunger were you able to replicate my findings?
+> update: disregard, see your reply now on the thread
+Reviewed this thoroughly and found the following.
+All cases are performed with a screenshot copied to the clipboard and pasting into markdown notebook cells using ctrl+v. 
+Using Windows 11 and current insiders. 
+`Commit: 7dff07893ac160244db210e574eccc05f1cba2cb`
+With setting `"ipynb.pasteImagesAsAttachments.enabled": false`
+- Unsaved notebook (command palette -> new Jupyter notebook -> `Untitled-1.ipynb`)
+  - `ctrl+v` results in a broken markdown image link pasted, broken rendering (see screenshots attached)
+![image1](https://github.com/microsoft/vscode/assets/12552271/2d4546d5-7fe4-4b20-88fc-e5094a9635d2)
+![image2](https://github.com/microsoft/vscode/assets/12552271/811558b8-6677-4d9f-9b4e-c671a3549066)
+- Saved notebook
+  - Creates image file on disk, creates markdown image link, renders correctly.
+With setting `"ipynb.pasteImagesAsAttachments.enabled": true`
+- Unsaved notebook (command palette -> new Jupyter notebook -> `Untitled-1.ipynb`)
+  - `ctrl+v` results in correct inline attachment image link pasted, renders correctly
+- Saved notebook
+  - `ctrl+v` results in correct inline attachment image link pasted, renders correctly
+With the above investigation, I believe this is likely an issue with markdown paste providers, assigning @mjbvz to take a look at this.
+@beckerben, to clarify, are you expecting the images to be created on-disk upon paste and referenced via an image markdown link? 
+Or are you looking for the `attachment:filename` experience, with images stored in the notebook itself. 
+The latter can be achieved and still works properly with the setting `"ipynb.pasteImagesAsAttachments.enabled": true`
+I prefer the latter, where the images are stored in the notebook; this makes it easier to share with others in these scenarios. 
+This used to be working and then stopped working in the build I noted in the original question referenced, but I just tested in the latest build and it is back to working as expected, so must have been a bug that has now been fixed:
+The version I just tested with is updated now and it is working as expected with the `"ipynb.pasteImagesAsAttachments.enabled": true`
+Version: 1.83.1 (system setup)
+Commit: f1b07bd25dfad64b0167beb15359ae573aecd2cc
+Date: 2023-10-10T23:48:05.904Z
+Electron: 25.8.4
+ElectronBuildId: 24154031
+Chromium: 114.0.5735.289
+Node.js: 18.15.0
+V8: 11.4.183.29-electron.0
+OS: Windows_NT x64 10.0.19045
+Works fine for me too with the default settings. 
+Will disable pasting into untitled notebooks with the setting off
+Fixes #194809
+Since the notebook does not exist on disk yet, there's no way to write a relative path in it. 
+Just disable the feature since there's nothing else we can reasonably do here
+<!-- Thank you for submitting a Pull Request. 
+Please:
+* Read our Pull Request guidelines:
+  https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests
+* Associate an issue with the Pull Request.
+* Ensure that the code is up-to-date with the `main` branch.
+* Include a description of the proposed changes and how to test them.
+-->
