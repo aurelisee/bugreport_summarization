@@ -1,0 +1,19 @@
+It would be usefull to add a \"Swap\" button to quickly change the aspect ratio between portrait and landscape.
+This is needed when extracting a portrait from a landscape photo.
+You already have to move the mouse to make your selection.
+You'll likely do something that is approximately the right ratio.
+If that's closer to portrait, then portrait should get used, otherwise landscape should get used.
+That's one less button to press.
+The point is being able to flip the aspect ratio after you have created your rectangle selection.
+Sven is right, I meant that it would be usefull to have the swap option after the creation of the rectangle selection.
+I've a landscape photo that contains an interesting flower for example.
+I want to print a photo that have the same proportions as the original, but in a portrait format, more adapted to my flower.
+I agree that Albert's idea makes sense.
+Have gimp assume a landscape or portrait orientation automatically depending on whether the rectangular area swept out by the user is wider or higher.
+Making this depend on the user's mouse action is not discoverable.
+This is now implemented in trunk and seems to work reasonably well.
+1. I first \"take a shhot of the aspect ratio\" by selecting all the original landscape photo.
+2. I freeze the aspect ratio (with the appropriate checkbox)
+3. I shrink the rectangle to permit him to be rotated by 90Â°
+4. I \"rotate\" him by taking my calculator, and calculating 1/[aspect ratio], and putting it by hand
+5. I've now a perfect portrait zone wich I can adapt freely to my flower; and I'm happy :)

@@ -1,0 +1,14 @@
+When I try to export reports that contain graphs gnuCash just creates an empty html file.
+Also it is not clear that the export can only do html files.
+The first time I ran export I triped to save as .jpg and it created a html file named foo.jpg
+In other words, you can only print the diagrams to postscript but not export them to HTML.
+This is not going to change before the gnome2 port is completed, because we need to switch to a different graphical library before anything related to this can be changed.
+We should be able to coax anything into giving us a PNG; GOG supports SVG export, too.
+This shouldn't be tagged 'enhancement' anymore, but brought up higher.
+It turns out that gtkhtml (at least the version I have on Ubuntu 9.04) doesn't support inline images.
+The gnucash-1.8.x series is no longer developed.
+We may keep this enhancement request as a reminder, though.
+1. In gnuCash go on reports and create any report that contains a graph
+2. In the report window click on Export
+3. Save export to \"foo.html\"
+

@@ -1,0 +1,32 @@
+The folders pane in Thunderbird that lists my e-mail accounts and local folders does not allow me to select several folders at once.
+For instance I should be able to click on my James folder to select it, shift-click on my John folder to select it without deselecting the James folder, and then drag them *both* into my Friends folder.
+The first folder is deselected.
+Expected Results:
+Kept both selected.
+Possibly there are other conventions on other platforms for multiple selections.
+But multiple selections should be possible,
+This is highly-desirable in my opinion.
+This is pretty basic stuff.
+It's been a bit of a showstopper when migrating Outlook users over to Thunderbird since heavy users often have tons of folders to organise their emails.
+Importing their mail just dumps these folders into Local Folders and then they can't be re-organised in their inbox without going through them all one-by-one, which is just silly.
+On latest trunk multiple folders can be selected but there is completely no benefit of it: on drag and drop only 1 folder is moved, CM shows only 3 entries (open, open in new tab, properties) and even they are useless ;) (nothing happens / empty tab).
+proposed fix
+The items that I think make sense for multi select:
+Get Messages
+o if only servers, or it's only newsgroups/feeds
+Open
+o though I question that we should have this item *at all*
+Open in new Tab
+Unsubscribe
+o if it's newsgroups only
+Delete
+o would have been useful, but the confirmation dialogs are not in js, we have multiple delete models etc so i gave up and just disabled it for multi selection
+Compact
+Mark Folder/s Read
+Mark Newsgroup/s Read
+Other notes:
+->FIXED
+User-Agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+Build Identifier: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+1. Click on a local folder
+2. Shift-click on a different local folder

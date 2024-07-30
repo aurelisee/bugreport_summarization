@@ -1,0 +1,22 @@
+When moving a large amount of files to my collection, amarok2 opens a file dialog for every single file that it moves.
+Make a directory where you would like your music collection to be stored.
+Go in to amarok2 and set it up so that the new collection area is included.
+Then, right-click on local collection, select organise and select the new destination for the files.
+Even my Core 2 Duo with 2 GB of RAM could not handle 16,000 file dialogs, and crashed my whole system hard, requiring a reboot.
+Sorry, I can't reproduce this.
+I have the following options ticked on in the Organise files option.
+It might be that one of those options trigger this, or the combination.
+Once I started messing around with what is ticked, the problem went away.
+Now I am also unable to reproduce it.
+I have been able to reliably reproduce the bug.
+Use the files tab of amarok, then click on the directory that you want to move the files from, select move to collection.
+Ignore \"the\" in artist names
+Group by file type
+Replace spaces with underscores restrict to ASCII
+VFAT safe filenames
+Overwrite destination
+I still can't reproduce this.
+I downloaded the source of amarok 1.94, and compiled it with gcc 4.2.3
+Fix boolean logic which caused the progress info to be shown when overwriting tracks during a collection copy.
+Version:            (using KDE 4.1.2)
+Amarok version 1.94

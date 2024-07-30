@@ -1,0 +1,7 @@
+According to the javaDoc in Platform.getResourceString(Bundle,String), this method has been deprecated and one should use the NLS class or the BundleFinder.find().
+The NLS class doesn't seem to provide me with the same functionality that Platform.getResourceString does, so I am assuming that BundleFinder would do the job that I need.
+I don't think that replacement functionality was ever implemented.
+As there are no current plans to act on them (and there has been no actions done in the last 2 years) I think we need to remove those comments - they make a rather confusing Javadoc.
+The method Platform.getResourceString(Bundle,String) is not deprecated at this time;
+the comments should have been added to the implementation code or to a bug report, not to the Javadoc of the Platform class.
+Removed incorrect comments from the Platform class.

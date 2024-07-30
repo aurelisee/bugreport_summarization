@@ -1,0 +1,22 @@
+There needs to be a way to open sidebar resources, such as the history and bookmarks, in their own window.
+It's more convenient to have a single history window that doesn't take up screen real estate than having to open the history in whichever window I'm currently browsing.
+I really hate sidebars and would want to be able to disable them in place of these windows before I would migrate to Firefox.
+I don't see a bug for adding a history window.
+how about something like about:history?
+similar to about:config - just a full page tree with a search/filter field at the top.
+sure, the sidebar needs a few things fixed like searching urls, but other than that, i think it's fine for most uses - exactly what sidebars are for - a quick way to access something without leaving/obscuring the current page.
+and an about:history page would nicely fill in the gap left on the advanced end.
+a whole new history window is probably overkill, and a page could just as easily be opened in its own window or in a tab.
+chrome://browser/content/history/history-panel.xul
+not sure if you're asking for a whole new history window, or just the ability to open the sidebar history in its own window.
+if the latter is the case, then just open the above chrome url in a new window.
+Seamonkey offers tabs for Title, Location, Last Visited, First Visited, Hostname, Referrer, and Visit Count.
+Plus, I'd like to be able to open this easily, such as with /-\\H.
+Please add the Mozilla history window in Firefox!
+The Mozilla history window is just perfect!
+EHM, Enhanced History Manager, is an extension that does it nicely.
+I agree that the firefox history is limited at best.
+Mozilla history was excellent since you could re-trace your browsing using the timestamp and find collections of pages you'd visited.
+User-Agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7b)Gecko/20040316
+Build Identifier: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6)Gecko/20040206 Firefox/0.8
+2. Being able to see and sort the history.
