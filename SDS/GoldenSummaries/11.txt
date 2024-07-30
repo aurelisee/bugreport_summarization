@@ -1,0 +1,11 @@
+When images are rescaled now the GIMP always defaults to linear scaling.
+Sometimes I want to do a bunch of images with cubic scaling.
+It would be handy that the scale dialog just remembered the last setting and always present that one.
+The default interpolation routine can be choosen in the Preferences dialog.
+I didn't know about the preferences setting until I saw this bug report.
+This would clutter the interface even more.
+Just always remembering the last setting is conceptually by far the easiest for new users.
+I think a \"set as defaults\" button would clutter the UI.
+This change remember the settings across dialog invocations.
+Closing as FIXED.
+(Please reopen if you strongly disagree, but please not without a non-ugly suggestion for a GUI)

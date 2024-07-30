@@ -1,0 +1,16 @@
+I'm using the SWT library, ran the \"Hello World\" example:
+and SWT fails to load, it always exits with java has exited due to signal 4 (SIGILL).
+I see the window flash open, then immediately it crashes.
+There is nothing in the logs.
+I'm running Mac OS X 10.4.11, so still on Tiger.
+If you are launch from the command line, are you using the -XstartOnFirstThread option?
+I'm running on leopard w/o any problems.
+I tried running in Eclipse, from command line, and exporting a project as a runnable jar from Eclipse.
+No crashes.
+I just tried adding the -XstartOnFirstThread option and everything worked fine.
+No crashing, everything is wonderful.
+http://www.eclipse.org/swt/faq.php#carbonapp
+java version \"1.5.0_13\"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_13-b05-241)
+Java HotSpot(TM) Client VM (build 1.5.0_13-121, mixed mode, sharing)
+

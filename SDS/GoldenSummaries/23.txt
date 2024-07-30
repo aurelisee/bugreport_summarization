@@ -1,0 +1,21 @@
+--> if i drag and drop a folder from a location to an other, cpu use for thunderbird process is more than 50%.
+--> Even if the folder is empty
+--> It occurs with subfolder move inside Local Folders
+--> It occurs with folder move inside a pop account (for example moving Inbox->test to Draft->test
+--> It DOESN'T occurs when moving a folder from a pop account to an other (for example moving AccoutA --> Inbox --> test to AccountB --> Inbox -->test ... Butin this case, by design, folder is copied, not moved --> it seems that this is
+the delete which is the problem
+- Memory doesn't change during the move time ... only a high level of cpu use
+- Delete key or Right-click delete (so move to trash) got the same bad result
+- Renaming a folder take a long time too
+- Checking pop account take more resources than before ... 10 to 20\" of high cpu resource for checking mail, slowing a lot of windows applications
+- Same thing for RSS folders ...
+ohoh ... thus bug seems related to my 10000 temp files in temp folder: tmprules-xxx.dat
+I've deleted all of them --> filters works again AND this bug seems solved by removing them
+bad news: new tmprules begin to appairs ...
+I guess the really low perf behaviour was coming that TB parsed all 10000 rules files for all received mail ...
+same thing when moving a folder, it parsed the 10000 rules files to see if these have to be updated after the move
+Resolved fixed as bug 375292 is fixed on branch 1.8 and trunk
+Computer: Dell Latitude D820 laptop, Core 2 Duo 2GHz, 2Go Ram, 100Go HD 7200rpm
+OS: Windows Vista Business
+Thunderbird: TB nightly 2.0.0.10pre (2007111403) ... but problem occurs since long time
+

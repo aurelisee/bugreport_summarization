@@ -1,0 +1,15 @@
+If you need struct fields in any widget, please file a bug report,  they should never be required to use a widget.
+Accordingly, I took a look at the places where the latest PyGtk wrappers directly access widget data attributes to provide needed functionality.
+I found 43 examples, identified in the table below.
+Some of them are bogus and already  have accessor functions, I believe:
+Also, most of them are for deprecated widgets.
+But there are many there we should probably have functions for.
+When considering accessor functions, you might also want to consider raising the API up to a bit higher level.
+For example, the Combo widget should probably have its own value-changed signal and direct access to the underlying entry and list widgets should be deprecated with some higher level functions written for the Combo widget to get at necessary functionality.
+Since the GtkList widget is already deprecated, this stuff is going to break in applications someday anyway.
+No kidding about the breakability in the combo box: this is already pretty much broken in GTK-- (C++ binding), where they use a different implementation for the (deprecated) list, which basically makes it impossible to access list data.
+A change in the GTK+ API to allow access to the list items through a function would make this a whole lot more usable.
+Make the list in the combo a GList.
+This would also make working with the combo easier...
+Not sure if there's a good way of handling arbitary  widgets with associated text without creating some sort of ListItem
+The ongoing gseal work is finally taking care of this.

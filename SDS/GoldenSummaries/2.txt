@@ -1,0 +1,15 @@
+That pref was thought to be for extensions which wanted to completely replace our own Session Restore functionality.
+While this has worked somehow for Tab Mix Plus, we've had several issues with people ending up both Session Restore and Tab Mix Plus disabled (see bug 435055 and its duplicates).
+Furthermore, there are several code points which will also break when Session Restore has been disabled (such as the list of recently closed tabs).
+Instead of adding try-catch-blocks wherever we use Session Restore, I'd much rather encourage extensions authors to override both nsSessionStartup and nsSessionStore to provide the same API with their own functionality (or implementing a dummy-API and making sure for themselves that they've correctly replaced all known consumers).
+This would also make the lives of those other extension authors simpler who so far can't be too sure that the Session Store component actually works (through whatever implementation).
+a problem with this patch is that the session data is still stored in memory while the app is running, and by removing this pref, there's no way to disable that.
+some users do not want the recently-closed-tabs menu, and others don't want any session tracks stored in memory at all.
+That's what browser.sessionstore.max_tabs_undo is for: setting it to 0 effectively disables the feature.
+Then again, we don't save any data that wouldn't be in memory, anyway, or do we?
+Yes, agreed the pref is not ideal for this purpose.
+onemen: This patch significantly affects Tab Mix Plus:
+Instead of disabling SessionStore, you'll now have to replace it by shipping a component which implements the same API.
+This will make the lives of people using the SessionStore API (such as Session Manager) somewhat simpler, as they can just use the API without having to worry too much about the implementation behind it.
+Sounds like this has impact for extension authors and so should be documented on MDC
+I currently have only one problem , how to disable the restore after restart.

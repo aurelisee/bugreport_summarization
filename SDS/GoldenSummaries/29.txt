@@ -1,0 +1,36 @@
+let's see this example:
+hello1
+hello2
+hello3
+If you go with the cursor to hello2 and press ctrl-i, hello2 is moved even further to the right.
+The right (and expected) behaviour is that hello should be moved to the left so it is right under hello1.
+In my eyes, this really needs to be fixed.
+For Kate, ctrl-I semantics have always been to unconditionally insert a 'positive' indent.
+hello2 should be moved to the left, because it is not aligned with the line  above.
+Right, so you are looking for an 'Align' action.
+This is more of a 'wishlist' since Kate doesn't really have this (see below).
+It has unconditional indent left and right.
+If you want hello2 to move left go to Tools and hit 'Unindent' which will move it left to the tab stop.
+It will even out the misaligned blocks of code most of the time if it can.
+This is available in cvs.
+Currently it works only if you use the 'cstyle' auto-indenter.
+The default shortcut is CTRL + TAB (controlled tab) and will align the current line OR the block of text you select according to normal c/c++ conventions.
+How does this work with things inside parenthesis, like parameter lists and conditionals?
+I'd like to have it as in emacs:
+if ( foo == 1 &amp;&amp;
+bar == 2 ) {
+doit();
+In this case the second condition should be aligned with the first one, not according to normal stuff.
+int foo(
+int bar,
+char *baz,
+struct sizzle *gee
+Parameter lists are aligned just like you expect but it needs a reference character in the 'int foo (' line to judge what col to align to after that.
+Also, closing parenthesis are not aligned with the opening one.
+If this is really a problem for you, open up another wishlist item with appropriate examples.
+there is one little bug though:
+".	.	foo();"
+".	.	bar();"
+if your cursor is in the line between foo() and bar(), in the line where no tabs are made yet and you press now the shortcut for the new align, the cursor just won't move under foo().
+I didn't want to indent empty lines as that would leave quite a bit of useless leading spaces when selecting large regions and hitting Align -- it's also MUCH slower if I do not skip these lines when formatting an entire document.
+Version:            (using KDE Devel)

@@ -1,0 +1,11 @@
+In amarok2-svn I like the the new contextview , but I found the new bottom bar for managing applets annoying , as it covers parts of other applets sometimes , like lyrics one , so that you miss a part of it.
+The real solution is to make it not cover applets, not make it appear/disappear on mouse over.
+The toolbar should be like the panel in kde, it gets it's own area to draw in (a strut in window manager terms).
+The applet should end where the toolbar begins.
+Applets should not be larger than the viewable area, if there's an applet above it, then the lower applet should get a smaller sizehint, and resize if necessary when it's the active applet (and therefore the only one on the screen)
+Basically, no applet should continue on off the screen, it should end at the panel.
+You are reporting a bug on a non-completed feature ;)
+will be fixed in 2.1.1, done locally.
+I found it probably fixed in trunk :-)
+version:           svn (using Devel)
+OS:                Linux
