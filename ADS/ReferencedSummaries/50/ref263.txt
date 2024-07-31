@@ -1,0 +1,5 @@
+It will be helpful if an option changing numerically the permits of the files is provided on Konqueror, and when selecting the file permissions, the numerical number would appear. 
+We can use a patch that adds a line edit to the permission page of the properties dialog. However, some people are against this feature since it is understood by only a very small user group. 
+It is more effort to make right click more efficient.version: 2.1
+compiler: gcc version 2.95.4.20010319 (debian prerelease)
+os: linux 2.4.4 i686

@@ -1,0 +1,2 @@
+Appointment creation causes conflict when ok is pressed and conflict cannot be resolved by deciding for either (or both) dates and UI doesn't close. 
+It is also found that the there is a lot of overlapping in the process.

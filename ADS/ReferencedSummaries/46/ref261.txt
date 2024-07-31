@@ -1,0 +1,6 @@
+When there are some component uninstall, the xpcom-startup trigger them, this will caused a problem. 
+The problem is that the EM is also a component. 
+One solution is to make XRE main validate the path. 
+Some people think design dependency is hard and just involve loading nsExtensionManager.js won't work. 
+Enunerate the registry in EM code and rewrite the manager is a solution to fix this bug. 
+A patch is created to fix this bug and pass the verification.

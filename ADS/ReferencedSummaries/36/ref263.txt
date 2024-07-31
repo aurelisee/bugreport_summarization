@@ -1,0 +1,10 @@
+the bug is the actual is different with expected.
+expected: zooms to fit paragraph on screen.actual:pans to the top left edge of the paragraph, but no zoom. the reasons about this bug.
+this bug was happening because we're calling zoomtopage from the drawinterval after the zoomtoelement.
+current design does not support zooming during page load as that zoom setting will be lost as soon as the page loads. 
+suggestion for fix.
+The fix is to move the _maybezoomtopage=false to zoomlevel setter, and make it unconditional.
+i think a better way would be to add a flag like _manuallyzoomed that turns off zoomtopaging during pageload. 
+two attachment can fix this bug.
+so while we probably do need to fix the zooming-while-loading case, this simpler patch fixes the bug i'm seeing on cnn.1) load cnn.com
+2) double tap on the paragraph of text under the image on the top left

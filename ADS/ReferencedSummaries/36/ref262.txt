@@ -1,0 +1,5 @@
+Zoomtoelement sometimes does not work. 
+This bug happened because of the calling time. The patch is only worked for the first time. 
+A suggestion is to fix the zomming while loading case. 
+It is fixed by attachment 361437.1) load cnn.com
+2) double tap on the paragraph of text under the image on the top left

@@ -1,0 +1,5 @@
+The reporter need the support of relative urls in components utils import. 
+A solution is to let jsms to know the uri.
+ A new solution is attached string onto the global object. 
+Two imported submodules are pointing to the same scope. 
+This is implemented as components utils may be a better way.

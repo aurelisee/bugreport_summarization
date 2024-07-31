@@ -1,0 +1,8 @@
+I'm requesting that additional talos hardware be deployed to triple the bandwidth available to tracemonkey talos on at least windows and mac, as soon as it can be acquired. 
+there were, however, three talos boxes that had been marked as hidden on the waterfall and were not being displayed. 
+this set up was under load over the weekend, mostly, i believe, when we were trying to track down talos crashes and so forth by bisecting our changeset history. 
+if they ' ve been hidden it can be resolved through the tinderbox admin page - unfortunately, there ' s a bug in tinderbox wherein if machines have fallen off the waterfall due to idle time they are sometimes re-added as hidden when they do their new report. 
+file a bug under webtools tinderbox, bug 390349, but had a credibility problem. 
+talos does skip builds, but at the moment not by design - see bug 457885. 
+if this bug is now about inappropriate skipping of builds it should be duped to the active ftppoller failures bug. 
+I've added text to the top of each tinderbox waterfalls for mozilla-central, mozilla-1.9.1 and tracemonkey giving a count of machines for each project branch.

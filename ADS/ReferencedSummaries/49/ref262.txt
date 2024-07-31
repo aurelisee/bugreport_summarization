@@ -1,0 +1,4 @@
+Keyboard did not respond anymore after the Alt+Shift+Tab. 
+The keyboard is still accessible. 
+The problem is that it does not release the grab when a shortcut is set that is not triggered. The shortcut do not produce the x11 keysequence that is expected.version: 3.96.1 (using kde devel)
+os: linux

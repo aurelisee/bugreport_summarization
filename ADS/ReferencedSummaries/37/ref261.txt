@@ -1,0 +1,8 @@
+While debugging, a suspicious problem about methodjit segment fault shown in strace and further steps to reproduce it are requested. 
+The steps for reproducing it are run Thunderbird, install Thunderbird Conversations,click "Apply Changes" on setup prompt, click on a collapsed thread in inbox using the keyboard and the Right arrow / Left arrow keys, repeatedly expand / collapse that thread. 
+Thunderbird crashed frequently in first 10 seconds of startup, crash reported thus, a through review with a fix patch is requested.- on x86_64, build thunderbird 3.4 (comm-central + mozilla-central)
+- run thunderbird, install thunderbird conversations from tools > addons
+restart thunderbird
+click apply changes
+click on a collapsed thread and, using the keyboard and the right arrow / left arrow keys, repeatedly expand / collapse that thread
+proceed that way, possibly moving to other threads with the keyboard, until you segfault

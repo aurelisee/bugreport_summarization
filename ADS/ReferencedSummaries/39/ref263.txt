@@ -1,0 +1,8 @@
+The peoblem is that thunderbird's tabmail does not honor onbeforeunload event handlers. 
+Some reasons and suggestion, can lead to dataloss,onbeforeunload of course must be programmed. 
+A patch for improve and that should basically fix the issue. 
+suggestion about improve and new patch:just do return and do a test. 
+The real fault is that the box really is popping up twice. 
+new patch and new method,changing the way,using mc.tabmail.closetab. 
+Andrew worry about other problem, window.close() being invoked inside a content window.
+But this problem are being trackd in bug 638493.- open a gmail content tab, - compose a new message, - type some text in the message body, - close the tab

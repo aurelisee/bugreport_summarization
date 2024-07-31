@@ -1,0 +1,4 @@
+A suggestion on adding basic telemetry support to thunderbird. 
+It has some privacy concerns. 
+The suggestion had some mistakes. 
+For the patch we have some ref.

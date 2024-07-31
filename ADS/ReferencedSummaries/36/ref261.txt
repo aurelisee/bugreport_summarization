@@ -1,0 +1,5 @@
+On loading CNN and double tapping the paragraph text under the image, no zooming happens, because the zoomToPage is called from the drawInterval after the zoomToElement. 
+The fix is to move the _maybeZoomToPage=false to zoomLevel setter, and make it unconditional, while, Other minor functional changes could be remove setting of _maybeZoomToPage in prepareForPanning, maybeZoomToPage and removed Math.max(). 
+It is explained that zoomToPage is meant to be called for the duration of page loading, zooming is not supported by current design, use _manuallyZoomed instead. 
+check _maybeZoomTopage before the final _endLoad zoomToPage call would fix that and set maybeZoomToPage to false if (_clippedPageDrawing), in zoomToPage thus, the patch suppose to fix the issue.1) load cnn.com
+2) double tap on the paragraph of text under the image on the top left

@@ -1,0 +1,5 @@
+problem,AMO won't let me put version strings in. 
+Michael give two attachments for admin portion and adjustments.
+This patch remove dependencies on minor/major/release/build/subver fields. 
+Mike give a suggestion for a column which has been fixed.removed a column from the header, but didn't change the template that generates the rows of the table -- is that right. 
+About mike's worry for sort,michael asid that should be okay after all.

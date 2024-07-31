@@ -1,0 +1,9 @@
+the problem is sending a messages are not indexed.
+The fake header is wrongly indexed. 
+this problem is related with other id.
+Protz thinks this may fix bug 534449. 
+jonathan give the sequences after and before fix and suggestion. 
+the new patch says that msgkeychanged should not try to do anything smart if gloda hasn t indexed the fake header yet. 
+new phenomenon, restart gets them indexed and restart gets them indexed. 
+Andrew said that,ideally, we would like to augment the existing unit test for msgkeychanged in gloda to make sure we don t handle messages that have not been indexed. 
+David's attachment can fix protz and gloda is seeing msgsclassified for the fake header, which means it is indexed instantly.

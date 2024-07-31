@@ -1,0 +1,11 @@
+phenomenon,some debug crashes in Thunderbird extension and Thunderbird startup. 
+list some backtraces and log about the problem. 
+debug procedure.this is triggered by chrome code using let-bindings in a thunderbird extension.
+this is the function that exhibited the funny boolean behavior.
+a build of thunderbird conversations to play with ok, here s the (pretty involved, sorry) debug procedure. 
+mrbkap found the bug.bug 658351 have all the extensive details,the patch can fix the issue.- on x86_64, build thunderbird 3.4 (comm-central + mozilla-central)
+- run thunderbird, install thunderbird conversations from tools > addons
+restart thunderbird
+click apply changes
+click on a collapsed thread and, using the keyboard and the right arrow / left arrow keys, repeatedly expand / collapse that thread
+proceed that way, possibly moving to other threads with the keyboard, until you segfault

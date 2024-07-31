@@ -1,0 +1,9 @@
+"Error while trying to send email. 
+There were problems" and "E-mail successfully sent" notifications appear together while sending an email and afterwards the email lost. 
+It is noticed that the other issue is more sent-mail and malformed address - centric. 
+and proposed patch fixed the issue.0) start kmail-mobile
+1) open composer ( write new mail )
+2) open action flap->configure transport
+3) press delete for every transport
+4) add recipient, enter subject and text for the mail
+5) press send

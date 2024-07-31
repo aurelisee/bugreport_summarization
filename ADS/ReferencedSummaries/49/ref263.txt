@@ -1,0 +1,5 @@
+The keyboard will not work after pressing Alt+Shift+Tab. 
+This problem is in kglobalaccel, it doesn t release the grab when a shortcut is set that isn t triggered. 
+A hotfix for bug #153211 can fix this problem, however it can not fix the similar issue pressing alt+printscr which also does not produce the expected x11 keysequence. 
+This problem is still in 4.2.version: 3.96.1 (using kde devel)
+os: linux

@@ -1,0 +1,2 @@
+Rendering is broken and appointments never appear in calender and time range problems. 
+It seems that the calendar views trigger a bad misbehavior in the OpenGL stack on the N900, causing random rendering defects at best and device crashes at worst.

@@ -1,0 +1,8 @@
+Contradictory notifications after sending when no transport configured. 
+It is encountered in different situation. 
+Conflicting notifications is probably the cause.0) start kmail-mobile
+1) open composer ( write new mail )
+2) open action flap->configure transport
+3) press delete for every transport
+4) add recipient, enter subject and text for the mail
+5) press send

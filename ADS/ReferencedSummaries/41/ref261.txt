@@ -1,0 +1,4 @@
+Multimessage summary buttons are too long, depends on Gnome system, except delete other buttons are not icon, buttons_have_icons must be set to true to resolve this issue. 
+New patch fixed the issue by attaching a palette but it need to be ensured that multimessageview.xhtml is loaded only once however, hread summary toolbar needs some working. 
+in second patch buttonbox in multimessageview.css seems to take care of the top padding issue and small update to look all right on OS X but vertical center, and the gradient looks weird also in windows. 
+A slightly modified patch making use of child selectors, tried to specify #headingwrapper which fixed the issue.

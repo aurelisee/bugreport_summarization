@@ -1,0 +1,5 @@
+A bug was intially created as a clone of bug 472411 to make it impossible to use the talos reports to effectively determine and slow down. 
+There is an idea that when the set up was under load there were some idle talos machine bug they were hidden. 
+If these idle talos machine were hidden which can be resolved through the tinderbox admin page bug the results can not be avaliable for us either because of a bug. 
+But no matter how many talos boxes the tree has it will still skip builds by design. 
+We can check if we have any machines set up that can be deployed to by checking the count of machines for each project branch.

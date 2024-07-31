@@ -1,0 +1,7 @@
+phenomenon,The buttons for the multimessageview are too big by default. 
+This did not happen with 3.0.x.It probably depends on the Gnome system theme. 
+Andreas find the true reason and give a fix and a improvement. 
+others agree the improvement,Jonathan give a suggestion. 
+updata the patch,remove two lines from #buttonbox in multimessageview.css.
+But there are still some problems. 
+improve twice for the patch,the final version looks good.

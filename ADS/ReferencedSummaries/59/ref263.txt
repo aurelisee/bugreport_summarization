@@ -1,0 +1,4 @@
+Added accounts do not show up in tree view. 
+Some people think it is a duplicate bug that has been fixed. Felix explained the bug. 
+It also happened in some other application. 
+Stephen tried to fixed the bug buy not striping the domain from the user name when configuring an account, but volker disagreed with him. In the end, the bug is caused by the server bug, and it has been fixed.

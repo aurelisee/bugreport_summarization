@@ -1,0 +1,3 @@
+Calendar view renderig broken when appointment in current selection. 
+The appointment can not be seen in this version. 
+Calender views trigger a misbehavior in the opengl stack causing random redering defects.

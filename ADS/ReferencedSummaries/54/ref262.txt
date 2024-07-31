@@ -1,0 +1,3 @@
+The menu placed in the wrong place the at the first click.version: (using kde kde 3.4.2)
+compiler: gcc 4.0.2 20050806 (prerelease) (debian 4.0.1-4)
+os: linux

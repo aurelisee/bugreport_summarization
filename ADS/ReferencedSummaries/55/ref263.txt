@@ -1,0 +1,2 @@
+Calender View Rendering breaks when appointment in current selection, it also affects the new month view. 
+It seems that the calendar views trigger a bad misbehavior in the opengl stack on the n900, not using openGL will make all problems go away.

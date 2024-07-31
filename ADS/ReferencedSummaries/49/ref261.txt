@@ -1,0 +1,7 @@
+A serious problem occurs while try using Alt+Shift+Tab shortcut the keyboard did not respond on KDE4 systems though it works after Alt+Tab sequence. 
+The problem is in KGlobalAcce, it doesn't release the grab send by X11. 
+A patch fixed the issue however, a similar issue pressing Alt+PrintScr still occurs, it is further suggested to check whether the label of the shortcut button is now the same as that in the rc-file, if differ then the same problem. 
+On assigning Alt+Shift+Tab and Alt+Print shortcuts to Konqueror doesn't work properly, in particular, Alt+Shift+Tab creates a Qt key sequence of Alt+Shift+Backtab and seemingly Alt+Print creates Alt+Shift+Print in Qt key sequence. 
+So this is indeed the same problem. 
+It is discovered that only Alt+Shift+Print and Alt+Print are triggered by this bug and it appears in 4.2 version too.version: 3.96.1 (using kde devel)
+os: linux

@@ -1,0 +1,5 @@
+Mac does not apply update fetches. 
+The active update xml supposed to be deleted after the update is applied. 
+The xml in different os is different. 
+For more msg we can ref bug 303024. 
+Changing nsupdateservice may fix it and a patch is created.OS X 10.4.2 Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8b4)Gecko/20050730 Firefox/1.0+

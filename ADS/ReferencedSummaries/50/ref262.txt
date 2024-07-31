@@ -1,0 +1,5 @@
+There should be a option that allowed to insert the numeric values of permits of the file. 
+File permissions selected by the user should not be shown as an octal number. 
+The corresponding file where the change must be done is in kdelibs.version: 2.1
+compiler: gcc version 2.95.4.20010319 (debian prerelease)
+os: linux 2.4.4 i686

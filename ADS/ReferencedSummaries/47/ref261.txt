@@ -1,0 +1,8 @@
+The tracemonkey talos need additional computing power to triple the bandwidth. 
+The bug should be fixed as soon as possible, to catch beta3 and rc1 schedules. 
+Over the weekend, the set up is under load. 
+There are bugs in the tinderbox server if the machine fall off the waterfall because of the idle time. 
+No matter how many talos boxes the tree has, it will skip build by design. 
+A patch is created, text are added to each of tinderbox waterfalls, for each branch, tracemonkey give a count of machines. 
+The branch for buildbot is update, and if a poll finds many directories, it will only look at the newest one. 
+The patch is created and verified.

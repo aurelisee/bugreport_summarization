@@ -1,0 +1,9 @@
+Segmentation fault in BooleanIntToString. 
+Some error message may be related. 
+There is recommend on using it in safe side. It is stable on 32 linux. 
+There is patch to fix it.- on x86_64, build thunderbird 3.4 (comm-central + mozilla-central)
+- run thunderbird, install thunderbird conversations from tools > addons
+restart thunderbird
+click apply changes
+click on a collapsed thread and, using the keyboard and the right arrow / left arrow keys, repeatedly expand / collapse that thread
+proceed that way, possibly moving to other threads with the keyboard, until you segfault

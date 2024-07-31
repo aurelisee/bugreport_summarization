@@ -1,0 +1,2 @@
+A confict warning is shown when pressing the ok again after creatig a new appointment. 
+It is a duplicated bug.

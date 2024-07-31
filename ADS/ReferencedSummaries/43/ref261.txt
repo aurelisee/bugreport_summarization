@@ -1,0 +1,5 @@
+The AMO version managerment doesn't support the firefox version string. 
+The bug is a little urgency, because it's influence the people's extension. 
+After the patch is created, the version string can be uploaded and faq can be viewed in the public site. 
+In the patch, there are some lines need to be removed from it. 
+The sort in descend is need, it will improve the effect.

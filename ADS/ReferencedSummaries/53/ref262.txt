@@ -1,0 +1,4 @@
+Dolphin does not change the directory location to the floppy one when the pc floppy drive is mounted after pressing the drive icon. 
+An error occurred when press the pc floppy dirve icon when the floppy drive is mounted. 
+There is no way to unmount with dolphin when the floppy drive is mounted.version: 0.9.5.3.97.1 (using kde devel)
+os: linux

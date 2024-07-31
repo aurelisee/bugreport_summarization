@@ -1,0 +1,4 @@
+There raise a problem that in gwenview 1.4.1 when selecting the zoom option fit to window it doesn t work on an image that is smaller to the image window size, while it works in the other situations. 
+We have to wait for kde4.1 where we can enlarge small images when auto zoom is activated.version: 1.4.1 (using kde kde 3.5.5)
+compiler: gcc version 4.1.2 20061115 (prerelease) (debian 4.1.1-20)
+os: linux

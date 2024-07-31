@@ -1,0 +1,5 @@
+Thunderbird tab mail causes problem with onbeforeunload events while composing an email and closing it without saving, might lead to dataloss. 
+Tab types should offer a chance to refuse being closed, tryclosetab method asks the browser to hold the page through its content viewer, if unload is permitted, test suggested. 
+Another issue with modal closure on mozmail is found and asked for testing which revealed that it is aCallerClosesWindow=true not called issue. 
+Test resolves the javascript issue regarding window.
+close method which actually regressed by other bug and new patch fixed this issue.- open a gmail content tab, - compose a new message, - type some text in the message body, - close the tab

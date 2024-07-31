@@ -1,0 +1,5 @@
+Sent messages are not indexed anymore. 
+It can be recovered from the problem without blowing away the database. 
+Restarting thunderbird should be enough. 
+This bug is due to 646225. 
+This bug is fixed on trunk.

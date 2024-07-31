@@ -1,0 +1,6 @@
+After delete a file in $profile/extensions,when Mike start tbird ,it still tries to load those components. 
+User can uninstall the extension ' s pointer file by selecting uninstall from the em ui and this will add the .autoreg file which will cause the compreg.dat to be rebuilt. 
+Darin think thatem is a xpcom component itself.
+One solution would be to make xre_main validate the paths in extensions.ini before initializing xpcom. 
+After discuss,this is fixed with the extension manager rewrite, also the new component registration makes it impossible to load extension components before profile-after-change now. 
+In the future,a situation like this cannot happen with the profile-after-change notification.

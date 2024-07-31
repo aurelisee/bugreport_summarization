@@ -1,0 +1,4 @@
+Dragging linked images causes drop of relative image path. 
+It is a nscontentareadragdrop issue. 
+It is duplicate with 128416. 
+Use linknode to fill urlstring.

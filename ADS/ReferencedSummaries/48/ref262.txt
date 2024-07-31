@@ -1,0 +1,5 @@
+I can not donwload the pdf file. 
+Maybe this is a failure in the directory services code for osx for retreiving the users download folder. 
+It might be the problem of path. 
+The problem had been resoveld by rebuilding a valid directory. 
+A patch can also solve the problem.

@@ -1,0 +1,4 @@
+Thunderbird tabmail does not honor onbeforeunload event handlers. 
+We should offer tab types a chance to refuse being closed. 
+This patch need test because it has bug. 
+Changing the way the tab close fixed the patch bug.- open a gmail content tab, - compose a new message, - type some text in the message body, - close the tab

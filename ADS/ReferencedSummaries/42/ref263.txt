@@ -1,0 +1,8 @@
+at the thunderbird-stdlib project for collection of jsms,there are some problems should be solved.Jonathan need some suggestion. 
+jonathan add a middle-ground solution which can allows jsms to know which URI they're being imported from.He also give his reasons. 
+bsmedberg give some problems.
+Does this work with..paths, or does that confuse the xpconnect module cache. jonathan answered the problems and give a new attachment.
+so it looks like the xpconnect module cache is not confused when i use a..path, but there s no reason why it should. 
+A.sel. feel uncertain and jonathan give the answer.
+why is this in xpcomutils.jsm and not implemented as components.utils.importrelative or even better implemented in cu.import itself to differ between urls and relative paths?
+Jonathan said.

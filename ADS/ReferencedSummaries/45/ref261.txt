@@ -1,0 +1,8 @@
+On the mac system, when update fetches, it doesn't apply anting, even by manually. 
+It unknow the bug is caused by the server or the other thing. 
+The other platform is fixed, except the mac system. 
+Active-update.xml is supposed be be deleted from the system, but it retained and the contant is different in windows and mac. 
+Directly remove the active-update.xml doesn't work. 
+Auto update feature sometime work but sometime unwork. 
+Two updater.app may influence the result, After the folder is removed, the problem resolved. 
+A patch is created and pass the verification and test.OS X 10.4.2 Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8b4)Gecko/20050730 Firefox/1.0+

@@ -1,0 +1,2 @@
+A new patch about basic telemetry is added which changes the index rate, Gloda database size, time to second gloda query for conversation, besides, count times per hour people detach, probe screen size are suggested to work on. 
+An ambiguity between whether we are just indexing messages really slowly or are working some other type of jobs though some more proper comments need to be added.

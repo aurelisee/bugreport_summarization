@@ -1,0 +1,6 @@
+Dragging the linked image should drop the absolute link target, not the relative path. 
+No matter test on linux or windows, it is always wrong. 
+Because there are a lot of linked images, so the bug is important. 
+The problem is caused by the nsContentAreaDragDrop::BuildDragData, it need add the GetAnchorURL method. 
+A patch is created to ask for test and verify. 
+The patch is approved.

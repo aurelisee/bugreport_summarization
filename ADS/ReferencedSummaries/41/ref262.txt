@@ -1,0 +1,5 @@
+Thread summary buttons are too big in linux. 
+These buttons did not have icons. 
+It may needs to specified with the javascript.
+Variety patches can fix it. 
+However it does not look right on mac.

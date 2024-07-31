@@ -1,0 +1,3 @@
+When reading a freshly received mail, a conflict warning came out. 
+Volker fixed the bug. 
+Sabine verified the bug.

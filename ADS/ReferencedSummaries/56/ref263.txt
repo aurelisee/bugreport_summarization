@@ -1,0 +1,10 @@
+When closing the composer while a mail composed did not have a recipient, the draft would lost. Till fixed the bug, but some other bug came out, Sabin made another bug report. 
+Volker fixed the bug, and it is corrected now.after clicking on ok in the pop up dialogue asking the user to specify a recipient the composer closes and the email is lost instead of saved as draft
+this seems incoherent with the save as draft functionality that i tested today and which works fine
+- launch kmail mobile
+- click on write new email button
+- after entering a subject and a few words, open the actions tab and click on save as draft
+- a no recipients found - kmail mobile pop up dialogue opens with the following message you should specify at least one recipient for this message
+- click on ok
+- the user can open the actions tab and specify the recipient s email
+- and then click on send the email is properly save as a draft and stored in the draft folder

@@ -1,0 +1,3 @@
+The kicker width is not left aligned, 100% and on button position and testing showes that if QT is compiled properly this issue doesn't appear.version: (using kde kde 3.4.2)
+compiler: gcc 4.0.2 20050806 (prerelease) (debian 4.0.1-4)
+os: linux

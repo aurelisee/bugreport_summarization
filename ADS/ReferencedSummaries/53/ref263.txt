@@ -1,0 +1,4 @@
+Dolphin doesn't show floppy drive contents when select PC Floppy Drive in the spaces panel. 
+It is a bug in hal, it can't be fixed unitl hal is fixed. 
+The bug still exists in kde 4.3.4 and hal.version: 0.9.5.3.97.1 (using kde devel)
+os: linux

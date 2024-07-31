@@ -1,0 +1,9 @@
+Contradictory notifications came out after sending, when no transport configured, email afterwards lost. 
+It looks bug 249993, but it is different. 
+Volker fixed the bug, it was because that no sentsuccessfully() after failed(). 
+The composer view is kept open but the error message is shown.0) start kmail-mobile
+1) open composer ( write new mail )
+2) open action flap->configure transport
+3) press delete for every transport
+4) add recipient, enter subject and text for the mail
+5) press send

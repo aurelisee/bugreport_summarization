@@ -1,0 +1,5 @@
+It is advised to add the numerically changing permits in Konqueror as done by using chmod or at least some fixed numerical values should appear to assist user.
+ A new patch added a small line in which user can change values manually and also use ones in octal format. 
+It is further commented that the patch should help user understanding the unix permissions therefore a help could guide user to write better values.version: 2.1
+compiler: gcc version 2.95.4.20010319 (debian prerelease)
+os: linux 2.4.4 i686

@@ -1,0 +1,5 @@
+File cause nightlies to crash on startup. 
+Ns can not know about xpcom and you can make xre validate. 
+The relationships between extensions are set all disabled. 
+It simpler to juse enumerate the registry install locations. 
+The bug is fixed with the extension manager rewrite.

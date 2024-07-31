@@ -1,0 +1,2 @@
+Accounts do not show up in the tree view but in the account view in the action flap. 
+It might be a duplicate bug.

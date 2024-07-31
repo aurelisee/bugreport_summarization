@@ -1,0 +1,6 @@
+Add three basic Telemetry support to Thunderbird.
+This patch adds three news fields to telemetry.h, fixes a couple comments, and makes the error code more meaningful in one case. 
+comments,it might be worth adding another flag,use a unit of messages per 10secs. 
+suggestions about the patch,change the method to return rv,change the method to mozilla. 
+the real concern and improvement,give new patch.
+so the only worker that bumps the _indexedmessagecount is the folder-message-indexer, and there s an if that says if we didn t index any message, don t add a probe which answers the concern.

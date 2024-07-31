@@ -1,0 +1,7 @@
+The pdf file can not be downloaded and saved when click the button 'save to disk'. 
+The configuration of firefox may be wrong, so some discussion on the values of preference. 
+It is supposed that the new userDownloadsDirectory code is a path, and maybe it cause the problem. 
+A different error occured after rebuilding with the path. 
+Base64 shows error '/' implicate wrong things. when debugging, a breakpoint needs added and step by step to find the error. 
+It will be better to have some test case to test the existent and non-existent download directory. 
+After test, the patch pass the verify.

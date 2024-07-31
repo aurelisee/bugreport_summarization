@@ -1,0 +1,10 @@
+the problem is that select "save to disk" for pdf,not downloaded or saved. 
+After discuss,Jim think the problem is that "in the new userdownloadsdirectory code i've made the assumption it ' s a path". 
+He think "should be getting the complex value as an nsilocalfile instead.". 
+for the patch v.1,tested on windows,works great.
+But it show different error on mac. 
+Gavin give some suggestions.
+He think this patch does fix the problem,but need to remove the dead code. 
+Jim give the new patch.
+Gavin think that is not good and should go with the firt patch but just additionally remove the second " if(bres)" check. 
+Jim give the v.3 which be tested.

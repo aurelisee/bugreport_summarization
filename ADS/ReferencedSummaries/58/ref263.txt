@@ -1,0 +1,4 @@
+When creating a new appointment, a confict warning is shown after pressing ok for some time, the appointments are created but the ui does not close. 
+It looks like bug 251082 and 251322. 
+A naive guess is that a resource_creation function does not signal back, create gui/operations may be made more synchronous. 
+Till fixed the bug by fully qualify types in signal declarations.

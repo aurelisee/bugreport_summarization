@@ -1,0 +1,4 @@
+If the kicker width is minor than 100%, and it isn't left aligned, then the first time click on the k-menu, it starts left aligend and not on the k-menu button position. 
+It can be fixed by compiling with the patches provided by the kde project in the qt-copy module.version: (using kde kde 3.4.2)
+compiler: gcc 4.0.2 20050806 (prerelease) (debian 4.0.1-4)
+os: linux

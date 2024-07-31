@@ -1,0 +1,1 @@
+Reading a freshly recieved mail leads to a conflict warning.

@@ -1,0 +1,4 @@
+The option that fit to window zoom action does not work on an image that is smaller to the image wimdow size. 
+The option will be available in kde4.1by default.version: 1.4.1 (using kde kde 3.5.5)
+compiler: gcc version 4.1.2 20061115 (prerelease) (debian 4.1.1-20)
+os: linux

@@ -1,0 +1,2 @@
+A conflict dialog appears in time and flag fields but no indication is given. 
+A patch fixed the issue and further testing doesn't reveal it.

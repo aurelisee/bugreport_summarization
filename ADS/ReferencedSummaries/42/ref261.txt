@@ -1,0 +1,6 @@
+Support are needed to the relative URLs in components utils import (JSM, JS modules). 
+A patch is created by a non-expertise persion who make a middle-ground solution. 
+ImportRelative function in xpcomutils may need to be added. 
+New patch is add to add more information and fix some limitation. 
+It will be better not make firefox 4 as the deadline, but rather thunderbird 3.3. 
+The bug is fix and some discussion is between the developers.

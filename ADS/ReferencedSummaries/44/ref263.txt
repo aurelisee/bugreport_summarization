@@ -1,0 +1,4 @@
+the problem is dragging linked images causes drop of relative image path at different OS. 
+R.K.Aa think that is a duplicate bug report and it's true. 
+Mike think this is a problem in nsContentAreaDragDrop::BuildDragData,that should be change to GetAnchorURL(linkNode, urlString). 
+Mike create an attachment which is right.use linknode to fill urlstring if we ' re dragging image-within-link this works for me, and seems " obviously right".

@@ -1,0 +1,9 @@
+problem,when update form nightly,the new build doesn't apply even running updater.app by hand.After restart,the update archive gets deleted. 
+mike find the update applies *once*, and then subsequent updates do not get applied and list the steps to reproduce and find the problematic file active-update.xml. 
+About active-update.xml, darin find,although it can update,the file still in directory after he update.
+And which can't be moved. 
+Gary find that using the auto update feature has been working on alternate days.
+Actually,the file is downloaded to update.mar. 
+Darin noticed that the updates/0/ folder contained a copy of updater.app.when he deleted the entire updates/ folder, the problem went away, and he was able to update. 
+The fault is ,under other systems (linux and windows), updates/0/updater.app is not a directory.
+the solution is probably to change nsupdateservice.js to pass |true| to the nsifile::remove method.OS X 10.4.2 Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8b4)Gecko/20050730 Firefox/1.0+

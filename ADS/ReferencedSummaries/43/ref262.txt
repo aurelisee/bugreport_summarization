@@ -1,0 +1,3 @@
+App version management does not permit specific version. 
+Crypto hashes patches are fine.
+Order by version desc sort works well.

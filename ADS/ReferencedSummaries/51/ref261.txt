@@ -1,0 +1,4 @@
+Zome option fit to window doesn't work for images smaller than image window size but there is an option in configuration settings that make it enable. 
+It is suggested to make this as a default option for future releases and added.version: 1.4.1 (using kde kde 3.5.5)
+compiler: gcc version 4.1.2 20061115 (prerelease) (debian 4.1.1-20)
+os: linux

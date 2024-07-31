@@ -1,0 +1,4 @@
+The default behaviour on left and right mouse click on the kicker mediaapplet should be changed in kde 3.5.5, because it doesn't match the common use. 
+The bug report was closed without fixing because it had been changed in kde4.version: (using kde kde 3.5.5)
+compiler: gcc version 4.1.2 20061115 (prerelease) (debian 4.1.1-20)
+os: linux

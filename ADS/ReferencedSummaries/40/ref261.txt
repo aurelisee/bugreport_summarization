@@ -1,0 +1,3 @@
+A fake header is wrongly indexed when IMAP messages also found in bug 574441, because getMessagesCollectionForHeaders returns nothing on that message and msgKeyChanged assumes indexing is done. 
+It is observed that on restarting the Thunderbird kicks off the indexing and messages goes to inbox and starting Thunderbird from terminal outputs lot of debug information which helps in debugging the code. 
+A new patch fixes this issue.
