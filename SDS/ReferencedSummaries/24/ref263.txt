@@ -1,0 +1,7 @@
+The folders pane in Thunderbird does not provide a usable implementation of multi select.
+Multiple folders can be selected, but once these folders are \"used\" in some way (for example, they are all moved into a different folder), only one folder is actually moved.
+This is confirmed by several others, and is highly desirable behaviour.
+The proposed fix applies to many uses of multi select, and is fixed and marked resolved.User-Agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+Build Identifier: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+1. Click on a local folder
+2. Shift-click on a different local folder

@@ -1,0 +1,9 @@
+It takes a lot of CPU time to move a folder to another location in the same account when many tmprules-xxx.dat files exit in temp directory.
+Deleting or renaming a folder cause the same problem.
+In addition, it takes 10 to 20 percent more CPU time to check emails.
+The problem can be temporally solved by deleting the 100,00 temp files in the temp folder.
+However, the temp files will appear gradually and cause the same problem again.
+In fact, the underline cause for this bug maybe the same as for bug 362539.
+The patch fixes bug 410739 can fix this bug too.Computer: Dell Latitude D820 laptop, Core 2 Duo 2GHz, 2Go Ram, 100Go HD 7200rpm
+OS: Windows Vista Business
+Thunderbird: TB nightly 2.0.0.10pre (2007111403) ... but problem occurs since long time

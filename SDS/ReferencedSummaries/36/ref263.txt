@@ -1,0 +1,7 @@
+When using Amarok to move files into a music collection, a file dialog is opened for every file, which in this case was 16,000 file, and crashed the machine.
+There was trouble reproducing the bug, until it is figured out that the \"Overwrite destination\" option was causing the bug.
+The faulty logic that caused this bug is now fixed.Version:            (using KDE 4.1.2)
+Amarok version 1.94
+Make a directory where you would like your music collection to be stored.
+Go in to amarok2 and set it up so that the new collection area is included.
+Then, right-click on local collection, select organise and select the new destination for the files.

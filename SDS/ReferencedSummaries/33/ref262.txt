@@ -1,0 +1,5 @@
+When one uses the file browser to navigate to a song in the collection and select â€œmove to collectionâ€, and at the same time ensure that the new file name is the same as the old file name, the song is renamed to itself, then deleted.
+The cause of this bug is that CollectionLocation removes the source files after the copying operation.
+An patch is added to prevent this problem by making sure that the source and destination are different before moving and removing files.Version:           svn (using Devel)
+Compiler:          gcc 4.3.2 gentoo
+OS:                Linux

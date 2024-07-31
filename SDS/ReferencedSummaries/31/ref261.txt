@@ -1,0 +1,5 @@
+It was requested to provide some productivity features, e.g., extensible hyperlink support, etc and  improve the current search/replace dialog.
+A few other issues associated with text editor were raised, too, including the ctrl-backspace problem and support for multiline text
+For the search/replace dialog, there would be minimal improvements, but not a complete redesign.
+. For the ctrl-backspace problem, it was suggested to file a separate bug report.
+. For extensible hyperlink support, some people preferred it to be much lower.

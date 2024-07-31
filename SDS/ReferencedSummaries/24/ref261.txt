@@ -1,0 +1,9 @@
+This is an enhancement request for Thunderbird email client so that user is able to select multiple folders using shift click and move them at once to another folder.
+This is a highly desirable feature and is important for migrating heavy users over to Thunderbird from Outlook who have lots of folder to organize.
+The functionality to select multiple folders is available on latest trunk but on 'drag and drop' only one folder is moved.
+The proposed fix lists various possible options available on multiple select like- Get Messages, Open, Unsubscribe(for newsgroups), Delete(it is decided that option to delete would be disabled for multiple select because of some technical difficulties), Mark folder/newsgroup read.
+Some more related issues are also listed like-delete on newsgroup to unsubscribe was broken, save search wasn't enabled for news and tools menu folder commands.
+Proposed changes are approved and bug is fixed.User-Agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+Build Identifier: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+1. Click on a local folder
+2. Shift-click on a different local folder

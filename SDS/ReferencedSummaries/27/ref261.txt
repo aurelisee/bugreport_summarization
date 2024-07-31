@@ -1,0 +1,7 @@
+This a defect related to GUI of Amarok music player which bottom bar for managing player covers parts of other applets sometimes.
+A suggestion is made that it should appear/disappear on mouse over, however the real solution would be to make it not cover applet.
+Bottom bar should be like panel in KDE which does not cover a window by default and applet should not be larger than viewing area whether it is resizable or not.
+In other words, there should be not part of applet which is inaccessible.
+There was some discussion debating whether this is a defect or non-completed feature.
+The bug is finally fixed.version:           svn (using Devel)
+OS:                Linux

@@ -1,0 +1,4 @@
+This thread is about a bug which causes crash in releng platform of eclipse.
+The bug affects running of SWT test suite and is emerged because of malfunctioning in main thread pool.
+The reason for crash is that pool was not removed from the thread local dictionary and got reused.
+One resolving suggestion is to only release the main thread pool when device count goes to zero, but finally the idea for fixing the bug is making sure pool is always valid, so another display will not use a released pool.

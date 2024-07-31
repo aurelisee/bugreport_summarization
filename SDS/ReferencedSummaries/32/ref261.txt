@@ -1,0 +1,8 @@
+This is an enhancement request for making a separate window for history in Firefox and not relying on sidebar(ctrl-h).
+There is some disagreement about need for this enhancement.
+A suggestion is made to make an about page for history similar to about:config, which can complement the sidebar and a new separate history window would probably be an overkill.
+\"chrome://browser/content/history/history-panel.xul\" can also be used to show history information in a separate window.
+There is another request to make history more detailed for example providing information like title, location &amp; last visited and also making this functionality as easily accessible as sidebar.
+A general observation is made that Mozilla history page was better and Firefox does not support a decent history functionality.
+However, there is an extension to Firefox(EHM, Enhanced History Manager) that solves the problem nicely.User-Agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7b)Gecko/20040316
+Build Identifier: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6)Gecko/20040206 Firefox/0.8

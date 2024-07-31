@@ -1,0 +1,3 @@
+This is a request for a new button that swaps between x and 1/x (portrait/landscape) orientation of selection rectangles in GIMP.
+The use case scenario is one where the user selects and entire image and scales the selection rectangle to maintain the aspect ratio, but then wishes to switch from portrait to landscape orientation or vice versa.
+This feature was implemented in trunk.

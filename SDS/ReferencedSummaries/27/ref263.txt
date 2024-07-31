@@ -1,0 +1,5 @@
+The bottom bar for managing applets sometimes covers the applets, obscuring the bottom part.
+Some think it could be only displaying on mouseover, but it is decided applets should never be drawn underneath.
+This bug is caused by the incomplete feature of resizing applets, and will be fixed when that feature is completed.
+A few months later the bug is fixed.version:           svn (using Devel)
+OS:                Linux

@@ -1,0 +1,8 @@
+An enhancement request for adding support for text-editor improvements in selecting, spell checking, searching and hyperlinking text has been made.
+A suggestion for improving the current search/replace dialog has also been made.
+Few improvements which can be made have been pointed out like Ctrl-Backspace doesn't work in all editors, searching multiline text etc.
+The problem of Ctrl-Backspace not working in all editors was reported to be solvable by pushing the behaviour of TextFieldNavigationHandler down to Platform Text.
+since JFace doesn't depend on text editor plug-ins it can't adopt those.
+Also a request for making the support for hyperlink much lower was made because UI Forms would like to port from Formtext to StyledText bearing in mind the keyfeatures additions in StyledText.
+Also support for Return key in 2 ways for multiline textboxes like Run-Arguments has been made to handle adding CR/LF to the current text box and to send return key to the parent dialog.
+The request bug was marked as fixed with a new version release.

@@ -1,0 +1,6 @@
+When using Alt+Shift+Tab to switch between applications, the keyboard does not respond anymore.
+However, the mouse still works.
+The problem is caused by KGlobalAccel because it does not release the grab when a shortcut is set yet un-triggered.
+Some other shortcuts may also cause this problem, e.g. Alt+Print.
+In fact, one can check if two shortcuts cause the same problem by comparing the label of one shortcut button after pressing it with the label of another shortcut in the rc-file.
+However, although a patch is added, it seems that the same problem still exists in KDE 4.2 and KDE 4.2 Beta 2.

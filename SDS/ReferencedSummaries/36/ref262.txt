@@ -1,0 +1,8 @@
+Moving files within Amarok inappropriately causes a dialog to be opened for each file under certain conditions.
+The following options must be selected to reproduce the behaviour: (1) Ignore \"the\" in artist names, (2) Group by file type, (3) Replace spaces with underscores/restrict to ASCII, (4) VFAT safe filenames, (5) Overwrite destination.
+A bug fix was added whereby boolean logic was corrected to avoid showing progress info when overwriting tracks during a collection copy.
+Version:            (using KDE 4.1.2)
+Amarok version 1.94
+Make a directory where you would like your music collection to be stored.
+Go in to amarok2 and set it up so that the new collection area is included.
+Then, right-click on local collection, select organise and select the new destination for the files.

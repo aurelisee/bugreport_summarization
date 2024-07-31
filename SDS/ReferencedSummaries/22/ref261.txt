@@ -1,0 +1,8 @@
+An infinite loop is triggered when Lightning attempts to access a calendar that no longer exists, despite receiving a correct 404 result.
+This problem occured when safeRefresh() was called from within calDavCalendar.js and has been fixed.User-Agent:       Mozilla/5.0 (X11; U; Linux x86_64; fr-FR; rv:1.8.1.13) Gecko/20080311 Iceweasel/2.0.0.13 (Debian-2.0.0.13-1)
+1. create a calendar on your server
+2. subscribe to it via Lightning
+3. quit Thunderbird
+4. erase the calendar from your server
+5. relaunch Thunderbird
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); fr; rv:1.8.1.12)

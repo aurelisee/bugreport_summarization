@@ -1,0 +1,7 @@
+This is a defect related to code indentation in Kate.
+Current line of text is not align as expected in the code on pressing ctrl-i and all it does is moves to the next tab stop.
+It is later clarified that Kate always inserts positive indent to a line on ctrl-i rather than formatting the code, so it is an expected behavior.
+However, this functionality of formatting code is available in CVS which aligns code(current line or block of text) in right formatting for C/C++ on pressing CTRL+TAB.
+It is tested if it shows same behavior on an example as it does on emacs.
+It works almost perfectly apart from some deviations like- closing parenthesis are not aligned with the opening one and this can be filed as a new enhancement request.
+It also does not work on empty lines which is intentional because it would leave useless leading space and also make formatting slower for the whole document.Version:            (using KDE Devel)

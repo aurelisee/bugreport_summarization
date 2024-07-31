@@ -1,0 +1,4 @@
+This report is about a bug in KDE which occurs when user presses Alt+shift+tab for switching between keyboard layouts.
+After pressing this key combination keyboard does not respond any more.
+It turns out that the problem is in KGlobalAccel which doesn't release the grab when a shortcut is set that isn't triggered and a hot fix is provided to solve the problem.
+Finally users claim the same bug for combination of alt+printScr which is also fixed by developers.

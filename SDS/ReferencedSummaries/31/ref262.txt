@@ -1,0 +1,6 @@
+This is an enhancement request which talks about miscellaneous productivity features that should be added for example- triple-click, extensible hyperlink support and spell checking.
+There is also a requirement to improve search/replace dialog, however that would be limited to minimal improvements like being able to resize it.
+The other things to look at include-support for searching multiline text and improving usability of search dialog.
+There were concerns about keeping extensive hyperlink support to minimal as it is not as important for porting UIForms from FormText to StyledText, however that discussion also need to be moved to other threads.
+There are also some requests about text editor widgets but they need to be filed as separate bugs.
+The bug has been closed but there is no discussion about the changes made.

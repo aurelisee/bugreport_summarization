@@ -1,0 +1,9 @@
+If a song is moved from a file browser to a song collection where one with a same name exists then the song gets deleted.
+A patch was made which checks for the song to be present in the collection before removing it after the move operation but was found to be incorrect.
+Another patch was then made which checks for the KURLs to be identical before copying which was later modified to include cleaned URLs.
+It was pointed out that problem with same src and dest wasn't the one which was causing this behavior but it's that since the file is being moved from a file browser, a special code which checks source collection doesn't get called.
+It was then pointed out by the initial patch maker that the removal code is never called and it's moving a file to itself which is deleting the file.
+slotJobFinished is not called in the current form which results in slotCopyOperationFinished in not being called and hence removal code in not being called.
+A patch was then created where slotCopyOperationFinished is called when there are no jobs created which resolved the problem.Version:           svn (using Devel)
+Compiler:          gcc 4.3.2 gentoo
+OS:                Linux

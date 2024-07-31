@@ -1,0 +1,14 @@
+This is a defect related to Konsole where ctrl+c does not stop an background process.
+It is surprising that this bug is dependent on the process currently running on Konsole(for example it works for strace but not for ruby).
+It is discovered and confirmed later that bug was introduced in revision 760614.
+Bug sometimes disappear when user types something(cursor becomes filled), but this does not happen always.
+It was suggested that Session::sendSignal() may have the problem but it is realized that it is only called at the end of the terminal session to kill the main shell process.
+Another change was suggested in function void Pty::lockPty(bool lock), but this function is called when Ctrl+S or Ctrl+Q is pressed.
+Changing interrupt key from ctrl+c to ctrl+y also does not solve the problem.
+It was discovered that problem disappears in two scenarios, first running \"konsole --nofork\" and second starting Konsole normally (with no arguments), then attach to it with strace (using strace -ttt -p ).
+Problem is finally fixed by resetting all signal handlers to the default (SIG_DFL) in the child process after forking.Version:            (using Devel)
+OS:                Linux
+sleep 10 and press ctrl+c
+so now i use ctrl+z; kill %1; fg
+1.  Run \"konsole --nofork\" (without strace) and see if the problem is still there.
+2.  Start Konsole normally (with no arguments), then attach to it with strace (using strace -ttt -p &amp;lt;pid of konsole>) and see if the problem is still there.

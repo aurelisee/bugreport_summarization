@@ -1,0 +1,6 @@
+In KDE4, after using the Alt+Shit+Tab keyboard shortcut, the keyboard becomes nonresponsive.
+The bug is confirmed by others.
+The problem is found in KGlobalAccel and fixed.
+A similar bug is found when using the Alt+Print Screen and Ctrl+Print Screen shortcuts, for the same reason as before.
+. The new fix is checked in.
+The bug appears again in KDE 4.2 and it is not clear whether it is fixed in this version.

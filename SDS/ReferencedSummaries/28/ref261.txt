@@ -1,0 +1,11 @@
+Wishlist to turn off the displaying of contact messneger online status.
+Opposite option to display
+
++CSS.
+No technical issue but time consuming.
+It could be complicated.
+Current contract list codes are flexible
+Agree to disable it.
+Bug is fixed.Version:           0.9.0 (using KDE 3.3.0, Gentoo)
+Compiler:          gcc version 3.3.3 20040412 (Gentoo Linux 3.3.3-r6, ssp-3.3.2-2, pie-8.7.6)
+OS:                Linux (i686) release 2.6.8-gentoo-r3

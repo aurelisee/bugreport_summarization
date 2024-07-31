@@ -1,0 +1,9 @@
+This thread is about a bug in thunderbird mozilla which occurs when user wants to select multiple folders or mailboxes from the folders pane.
+when user tries to select another folder by shift+click, previous selection is lost.
+People have discussed on the importance of this feature for example its benefit for migrated users from outlook.
+further in the thread it turns out that multiple selection is resolved, but dragging multiple items is not supported.
+The suggestion for fixing the bug is to make some items enabled for multiple selections, among them are open, delete, compact, mark as read.
+The bug is fixed by using the suggestion mentioned above, and also some other bugs are found in this thread which was handled by delevopers.User-Agent:       Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+Build Identifier: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US;rv:1.8b2) Gecko/20050528 Firefox/1.0+
+1. Click on a local folder
+2. Shift-click on a different local folder

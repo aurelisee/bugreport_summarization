@@ -1,0 +1,12 @@
+This report is about a bug in lightning which is a application developed by Mozilla.
+This bug occurs when a subscribed calendar in lightning is deleted from the server.
+As a result, in this situation lightning gets stuck in an infinite loop using 100% of CPU, despite the fact that server has sent 404 error.
+The expected result in this situation is to stop sending requests when 404 error is received.
+For resolving this bug, after realizing that there exists many connections to the server at the same time, it turns out that the bug is happening when a method named safeRefresh() is called.
+This bug is fixed after the developers add a condition to safeRefresh() function which check for error 404 and if this error is found, no refresh is done.User-Agent:       Mozilla/5.0 (X11; U; Linux x86_64; fr-FR; rv:1.8.1.13) Gecko/20080311 Iceweasel/2.0.0.13 (Debian-2.0.0.13-1)
+1. create a calendar on your server
+2. subscribe to it via Lightning
+3. quit Thunderbird
+4. erase the calendar from your server
+5. relaunch Thunderbird
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); fr; rv:1.8.1.12)

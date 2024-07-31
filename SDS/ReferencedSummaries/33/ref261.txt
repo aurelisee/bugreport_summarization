@@ -1,0 +1,8 @@
+A bug was reported that using the file browser, a file when copying or moving it onto itself was deleted.
+A patch for this was provided, but it was incorrect.
+A semi correct patch tried to compare the KURLs are identical before attempting to copy.
+The workflow of how the removing happened was discussed.
+Another bug was raised that slotCopyOperationFinished gets called independently of slotJobFinished.
+A patch was created to fix these problems.Version:           svn (using Devel)
+Compiler:          gcc 4.3.2 gentoo
+OS:                Linux

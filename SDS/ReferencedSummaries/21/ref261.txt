@@ -1,0 +1,5 @@
+Automatic testing have been failing for the most recent builds, probably due to crashes in BrowserTests.
+A patch is offered which changes resource pools so they are only released when their device count goes to zero.
+The patch is pushed back for the next release candidate as it hasn't been tested properly.
+A simpler patch is offered, which checks the pool validity.
+The automated testing system is set to start performing the tests which were crashing it again.

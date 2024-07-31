@@ -1,0 +1,13 @@
+Find callers of functions does not work properly.
+Problem reported in ver 2.1.3.
+Suggest to upgrade to ver 3.
+KDE3 can open KDE2 projects and both of them can run on the same PC.
+FTP to download KDE3
+KDE3 is good and wait for stable ver.
+Issue still exists.
+Expected feature is similar to Find Usage in IntelliJ IDEA.
+Highlight Usage is in wishlist.
+Suggested behaviour.
+Function Call Tree view is in wishlist
+The feature is not clever enough.
+Highlight of usage of variables has been implemented in KDE4.Version:            (using KDE KDE 3.1KDE 1.2)

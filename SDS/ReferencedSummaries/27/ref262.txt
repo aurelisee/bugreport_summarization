@@ -1,0 +1,4 @@
+In the anarok2-svn contextview the bottom bar sometimes obscures applet content.
+Applets should not be larger than the viewable area, and should be given an appropriate sizehint.
+This bug was fixed in 2.1.1.version:           svn (using Devel)
+OS:                Linux

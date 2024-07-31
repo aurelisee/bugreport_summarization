@@ -1,0 +1,6 @@
+This thread is about adding one functionality to KDE which allows users to find places in the code that a function is called.
+In KDE 2 users can use 'grep' but it has some limitations such as ignoring overloaded functions and white space at the end of function name.
+It turns out that KDE 3 also does not have such feature, but there is a suggestion of using regular expressions to handle this functionality
+some suggestion for adding highlight feature and adding shortcut keys for finding caller of functions is made.
+Last suggestion is having a 'function call tree' or 'call graph'.
+Finally this functionally is added in KDE 4.Version:            (using KDE KDE 3.1KDE 1.2)

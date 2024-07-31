@@ -1,0 +1,4 @@
+Moving an email folder or subfolder in Thunderbird results in large delays when there are a large number of \"tmprules-N.dat\".
+Resolved as part of the fix for bug 375292 on branch 1.8 and trunk.Computer: Dell Latitude D820 laptop, Core 2 Duo 2GHz, 2Go Ram, 100Go HD 7200rpm
+OS: Windows Vista Business
+Thunderbird: TB nightly 2.0.0.10pre (2007111403) ... but problem occurs since long time

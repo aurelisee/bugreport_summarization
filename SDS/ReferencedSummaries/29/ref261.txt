@@ -1,0 +1,7 @@
+When using shortcut CTRL+I to align codes, the line below will always move right for Kate.
+But sometimes, we expect the line below moves left to align this line with the above line.
+However, Kate does not have this feature.
+To move the line below left, one can select the â€˜Unindentâ€™ or â€˜Clean Indentationâ€™ options.
+This feature do exist in CVS.
+In CVS, lines are aligned according to normal C/C++ styles.
+At last, empty lines are ignored when align documents since the empty lines may introduce many useless leading spaces or make the alignment of documents very slow.Version:            (using KDE Devel)

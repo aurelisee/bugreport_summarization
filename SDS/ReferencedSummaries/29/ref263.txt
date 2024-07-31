@@ -1,0 +1,8 @@
+A bug for indentation was filed which was later reported to be a new feature rather than a bug.
+The report was made about out of indentation phrases which should be aligned with the line above it rather than the positive indentation scheme followed by kate.
+The requested behaviour was that of align section in which the entire section selected gets aligned with respect to itself.
+A suggestion to try using 'Clean Indentation' was made for aligning misaligned blocks.
+This requirement was then found to be present in the cvs which did the alignment of the current line or the selected text using normal c/c++ conventions.
+It was found to work for expression in parenthesis but for arguments it was found to work with limited correctness.
+A suggestion to open another wishlist was made if this was a problem.
+It was pointed out that if there's no text in a line then it's not aligned which was later reported to be a feature.Version:            (using KDE Devel)

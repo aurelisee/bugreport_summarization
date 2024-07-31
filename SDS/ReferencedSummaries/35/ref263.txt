@@ -1,0 +1,14 @@
+There is a problem with the zoom out view which jumps around to focus on the new added activity and throws the rest out of focus.
+Also adding a new activity makes drag and drop to move the view to other activities unusable.
+Zooming in and the zooming out makes the last activity and the currently added activity visible.
+For showing 3 added activities the processes of zooming in and out has to be repeated twice.
+Also the order in which the activities is added is not maintained during this process along with the layout being messed up.
+The offset of the activity overview changes when double clicked on the first activity.
+The performance when zooming out has also been reported to be very slow for some users.
+But at the same time people using nvidia have reported a decent performance.
+The issue was resolved by making the view not move more than necessary to show the newly added activity, which also fixed the issue with dragging the view around.Version:            (using Devel)
+OS:                Linux
+1. Zoom out.
+2. Add Activity.
+3. Zoom in.
+4. Zoom out.

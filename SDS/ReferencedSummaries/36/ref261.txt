@@ -1,0 +1,9 @@
+This is a defect related to Amarok music player on KDE.
+Application crashes when trying to move a large number of files to a collection because of large number of file dialogs opened even on powerful machine.
+A suggestion is made to either make transfer sequential or not displaying a file dialog.
+The bug is hard to reproduce on different machines and requires very specific option ticked on in \"Organize Files\" option.
+There is a problem with boolean logic which caused the progress info to be shown when overwriting tracks during a collection copy and this modification fixes the bug.Version:            (using KDE 4.1.2)
+Amarok version 1.94
+Make a directory where you would like your music collection to be stored.
+Go in to amarok2 and set it up so that the new collection area is included.
+Then, right-click on local collection, select organise and select the new destination for the files.

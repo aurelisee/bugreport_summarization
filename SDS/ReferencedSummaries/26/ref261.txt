@@ -1,0 +1,4 @@
+KDevelop's feature to find callers of functions does not work.
+If it did work, it would not do a good job for a number of reasons.
+It is suggested that the author of the bug upgrade from version 2 of KDevelop, which is no longer under development, to version 3.
+It is stated that version 3 has fixed many bugs, but it is unclear whether this fixed the bug at hand or not.Version:            (using KDE KDE 3.1KDE 1.2)

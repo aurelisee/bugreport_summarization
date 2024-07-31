@@ -1,0 +1,5 @@
+In Thunderbird, dragging and dropping a folder into another, or renaming a folder, causes the CPU usage to jump to over 50%, and takes more than a minute of processing.
+The bug happens because there are more than 10000 files in the temp folder, called tmprules-xxx.dat.
+It occurs because Thunderbird tries to parse all 10000 rules files to determine if they need to be updated after the file move.Computer: Dell Latitude D820 laptop, Core 2 Duo 2GHz, 2Go Ram, 100Go HD 7200rpm
+OS: Windows Vista Business
+Thunderbird: TB nightly 2.0.0.10pre (2007111403) ... but problem occurs since long time

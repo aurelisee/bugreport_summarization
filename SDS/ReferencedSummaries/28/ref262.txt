@@ -1,0 +1,8 @@
+An initial request for hiding the contact network icons in Kopete was made as to the reporter it didn't matter and was causing unnecessary clutter.
+Another person made a request for an opposite setting in which the contacts are sorted by their networks.
+It was suggested that a customization using CSS could be provided.
+It was also pointed out that KHTML widget could be used for the customization.
+It was then suggested that many people might be interested in showing the contact networks and if there's enough demand then an option to disable it can be implemented.
+A fix was made in trunk where the user can define the list layout and also icons can be hidden if required.Version:           0.9.0 (using KDE 3.3.0, Gentoo)
+Compiler:          gcc version 3.3.3 20040412 (Gentoo Linux 3.3.3-r6, ssp-3.3.2-2, pie-8.7.6)
+OS:                Linux (i686) release 2.6.8-gentoo-r3

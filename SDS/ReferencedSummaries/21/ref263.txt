@@ -1,0 +1,7 @@
+Browser tests crashes.
+Comment out crashing tests in RC1.
+It does not affect the usability.
+Issue caused by the strategy of releasing pools.
+New strategy.
+Should test more.
+New fix and new problem.

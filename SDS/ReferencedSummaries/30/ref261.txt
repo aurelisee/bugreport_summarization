@@ -1,0 +1,7 @@
+This is a feature enhancement request to include a swap button to change selection in photo from landscape to portrait.
+There is a suggestion to keep it for next version but it possibly can be implemented as part of version 2.4.
+A suggestion was made to use mouse to make selection and choose landscape or portrait selection based on the shape of the selection, if it is closer to landscape or portrait and it can save adding another button to UI.
+However, it is argued that this enhancement is different from suggested above, the use case can be described as fixing the aspect ratio in one view, then resizing the box so that it can rotate and then rotating it by 90 degrees.
+It is emphasized that the above suggestion of using mouse makes sense and can be useful to select region initially, however a toggle button is still required.
+Also, if mouse is only way to change selection from landscape to portrait, there is no way for user to discover that this feature exist.
+The enhancement is implemented and tested.

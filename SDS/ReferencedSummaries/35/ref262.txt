@@ -1,0 +1,10 @@
+When a new activity is added, only the new activity is shown.
+After rooming in then rooming out, both activities can be shown.
+However, dragging around the old activity does not work, the place of the old activity jump to another place, and the place of the new activity seems arbitrary.
+In addition, switching activity also makes the view jump suddenly to another place.
+Since the operations of adding activity and rooming out are useful, the above problems should be solved.Version:            (using Devel)
+OS:                Linux
+1. Zoom out.
+2. Add Activity.
+3. Zoom in.
+4. Zoom out.

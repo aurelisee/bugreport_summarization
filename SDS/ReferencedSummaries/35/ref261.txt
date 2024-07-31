@@ -1,0 +1,8 @@
+Problems with the zoom out view were reported: adding activity focused view on the new activity until zoom level changed, and dragging around the view didn't work right after adding an activity.
+Some people thought add activity option (and zoom out) should be removed in the 4.1 final, but other people didn't agree.
+. One fix of dragging the view around was suggested.Version:            (using Devel)
+OS:                Linux
+1. Zoom out.
+2. Add Activity.
+3. Zoom in.
+4. Zoom out.

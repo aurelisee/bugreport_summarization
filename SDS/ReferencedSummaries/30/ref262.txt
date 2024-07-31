@@ -1,0 +1,7 @@
+An enhancement feature has been request here which swaps the aspect ratio of the selection box between landscape and potrait.
+A different input scheme was suggested in which the user draws a selection box and depending on the dimensions it is snapped to either a landscape or potrait aspect ratio (Albert).
+But since the aspect ratio swap was required by the reporter after the selection box has been drawn this idea wasn't carried forward although the idea seemed pertinent and useful.
+For a swap button it was also suggested to use the first point of the selection box as a pivot for flipping.
+Also it was suggested that initial aspect ratio could be set to that of the image.
+A toggle button for setting the initial aspect ratio from the image, previous selection or the scheme suggested by Albert could be implemented.
+However it was stated that making the output depend on user's mouse action is not discoverable and hence the user wouldn't be able to find out how to swap.
