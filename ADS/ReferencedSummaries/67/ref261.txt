@@ -1,0 +1,6 @@
+When moving a large amount of files to a collection, amarok2 opens a file dialog for every single file that it moves and is it possible to move the files sequentially, or not display a file dialog. 
+It have been reliably reproduce by using the files tab of amarok, then click on the directory that you want to move the files from, select move to collection.version: (using kde 4.1.2)
+amarok version 1.94
+make a directory where you would like your music collection to be stored
+go in to amarok2 and set it up so that the new collection area is included
+then, right-click on local collection, select organise and select the new destination for the files

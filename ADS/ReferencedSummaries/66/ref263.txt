@@ -1,0 +1,6 @@
+Viewing multiple jpg images in tabs will slow down konqueror. 
+This is because konq redraw all the tabs when open another. 
+After the images are loaded, the performance is normal again. 
+The bug closed since it was not an issue in 3.5.version: 4.0 (using kde 3.1.9)
+compiler: gcc version 3.2.3
+os: linux (i686) release 2.4.22-ck2

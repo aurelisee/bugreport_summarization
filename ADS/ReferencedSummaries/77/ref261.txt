@@ -1,0 +1,4 @@
+crash just after in ldap_op_finish. 
+This patch fixes the issue and will be committed for 2.8.1. I just posted a backtrace there, as I still have issues when searching LDAP for addresses. 
+The backtrace is different, and the original one posted is from a much older Evolution version.
+Bug 449609 and it's dups (and their dups) look related to that issue.

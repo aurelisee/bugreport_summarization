@@ -1,0 +1,2 @@
+Gimp should use libgimpprint. 
+It will be added in new version.

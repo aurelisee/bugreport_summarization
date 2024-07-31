@@ -1,0 +1,7 @@
+kspread does not display spreadsheets the ui appears, but where it is supposed to render the cells there is just what was on the screen before. 
+cpu usage jumps to 100%, and i can exit it normally with the file menu the same error message is documented on but theirs is still working.version: 2.1 rc 1 (using 4.3.3 (kde 4.3.3), compiled sources)
+compiler: gcc
+os: linux (i686) release 2.6.31.6
+kde version: 4.3.3
+qt version: 4.5.3
+glibc version: 2.11

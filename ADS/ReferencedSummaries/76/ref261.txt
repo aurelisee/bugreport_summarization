@@ -1,0 +1,7 @@
+removing tracks from list, one of which is playing. 
+I cannot trigger this crash on purpose. The trace looks fine anyways.
+ I haven't been able to reproduce this with 0.9.1cvs from today.
+Marking this FIXED.steps to reproduce: 1. select artist
+play a song
+2. select all tracks, one of which is currently being played
+3. right-click and remove from playlist

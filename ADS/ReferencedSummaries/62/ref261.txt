@@ -1,0 +1,5 @@
+OK/Apply icon isn't displayed when using Crystal SVG and it is asked which icons should be put there. 
+It is further requested that the issue should be fixed by someone who knows KDE and can also fix code.version: (using kde devel)
+installed from: compiled sources
+compiler: 3.2.3 -
+os: linux

@@ -1,0 +1,7 @@
+gimp should use libgimpprint.gimp should depend on libgimpprint-4.2 and only ship the plug-in that exports the libgimpprint functionality to the user. 
+I have done the necessary changes in my local 1.2 tree. 
+The HEAD branch now depends on libgimpprint. 
+The plug-in code is based on what was shipped with gimpprint-4.2.1 but ported to gtk+-2.0. 
+Committed the change to the stable branch. 
+The fix is part of the stable release 1.2.4.
+Closing this bug.

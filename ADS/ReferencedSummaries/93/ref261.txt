@@ -1,0 +1,7 @@
+A crash happens when selecting a pls-file in the filebrowser in new audio-project. 
+The pls file is created by rhytmbox. 
+The totem playlists are different from rhythmbox. 
+The bug has been fixed.1. start brasero
+2. open new audio-project
+3. in the filebrowser, select a pls-file
+4. crash.

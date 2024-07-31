@@ -1,0 +1,8 @@
+playback skips to the next song but the entry is not visibly removed. 
+this leads to a crash when the first entry is played again and attempted to eleminate. 
+Can't duplicate this with HEAD as of today. 
+This patch delays the entry deleted signal until the next rhythmdb_commit.purge playlist
+add two files
+play the first entry
+right-lick it and select eleminate
+playback skips to the next song but the entry is not visibly removed

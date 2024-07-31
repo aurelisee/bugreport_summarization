@@ -1,0 +1,6 @@
+In the collection I selected all the songs I want to move to the new directory, and right-click and then Organize files.
+After some operation,What I would expect is that a new directory to me made in /media/Evert250GB/Tunes,This directory stays empty. 
+The reason of the problem is "didn't drag down the token 'Collection Root'". 
+Removed "Collection root" Token from Token pool and placed before the FilenameLayoutWidget as a constant token. 
+A path is now forced to begin with the current collection's root.version: 1.94 (using kde 4.1.3)
+os: linux

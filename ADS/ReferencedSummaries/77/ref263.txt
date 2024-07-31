@@ -1,0 +1,4 @@
+A bug occured after in ldap operation finished, and some stack trace and running status is reported. 
+The bug is confirmed as the stack trace is show the details of the bug. 
+A patch is created and committed. 
+The bug and bug 274240 are different bugs, they are from different evolution version.

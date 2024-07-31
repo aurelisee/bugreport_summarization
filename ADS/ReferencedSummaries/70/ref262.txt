@@ -1,0 +1,5 @@
+Multi file rename number of digits. 
+Files are named in the selected order is important. 
+A patch to fix it.version: (using kde 4.3.5)
+compiler: gcc 4.3.3
+os: linux

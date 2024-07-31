@@ -1,0 +1,9 @@
+In the gimp module we have multiple text domains and maintain multiple po directories. 
+In each of these, 'intltool-update -m' detects a long list of files that are missing from POTFILES.in. 
+We would like to fix this. 
+The gnome-games module is also annoyed by this bug. 
+allowing directory to be skipped could be a good thing to add for intltool. 
+Fixed in SVN trunk. 
+You can now ignore directories by simply placing the directory name in POTFILES.skip. 
+We are now using this feature in gimp trunk. 
+Seems to work nicely with intltool 0.40.0.

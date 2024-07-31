@@ -1,0 +1,8 @@
+The amarok gui becomes completely unusable or unresponsive, and when switching between screens and back it does not redraw, making whole memory drained up and it seems that amarok is trying to load all data in to ram before starting to move them. 
+Collection managemnt in new patch resolved this issue and now 20GB of data could be moved instantly.version: (using kde 4.1.2)
+compiler: gcc 4.3.2 -march=native -o2 -pipe
+os: linux
+to reproduce: right-click on my local collection, and then pick organize files
+ticked sort by file type, and replace spaces with underscores, restrict to ascii
+then clicked on continue
+the amarok gui becomes completely unusable, and when switching between screens and back it does not redraw

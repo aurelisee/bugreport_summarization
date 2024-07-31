@@ -1,0 +1,6 @@
+In gnome-control-center or ostree.
+but filing it here first and then it can get reassigned. 
+Stack trace. 
+I believe this is fixed by this commit in gnome-3-8 and master, please test.
+Yep, that did the trick. 
+Closing as Fixed.

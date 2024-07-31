@@ -1,0 +1,5 @@
+The list of mirrors on http://www.gimp.org/download.html doesn't list any mirrors under the "United States" heading. 
+I added a harmless "" that should fix the problem. 
+Fixed again (updated the old files that were restored after the disk crash). 
+Changing all www.gimp.org bugs from gimp product to the gimp-web product, including old closed/fixed bugs, and reassigning. re-resolving old bugs. 
+Re-assigning all open and closed bug reports related to ftp mirrors to the "ftp mirrors" component.

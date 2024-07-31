@@ -1,0 +1,8 @@
+The playlist entrise do no removed, and this will lead to a crash. 
+The bug is been marked as a duplicate of other bugs. 
+With cvs head, a patch is created, entry was being deleted while it still had outstanding changes. 
+The patch works find.purge playlist
+add two files
+play the first entry
+right-lick it and select eleminate
+playback skips to the next song but the entry is not visibly removed

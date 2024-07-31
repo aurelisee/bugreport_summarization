@@ -1,0 +1,7 @@
+Some information about when open a rhythmbox playlist within brower panel, there is a crash. 
+Some people can not reproduce the bug. 
+So, another stack trace is reported. 
+After discussion, the bug is fixed.1. start brasero
+2. open new audio-project
+3. in the filebrowser, select a pls-file
+4. crash.

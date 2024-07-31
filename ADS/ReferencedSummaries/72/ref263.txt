@@ -1,0 +1,4 @@
+Digikam configure script misleading, it should reports too old rather than libraries missing. Nothing can be done for this, because of the pkgconfig macro from cmake. 
+To fix it, kde could switch to the new cmake pkgconfig wrapper.version: 1.3.0 (using kde 4.4.4)
+os: linux
+steps to reproduce: compile digikam 1.3.0

@@ -1,0 +1,7 @@
+Crash occured when open a rhythmbox pls within browser panel. 
+After some backtrace and sample file is created, the bug can be reproduced. 
+The sample .pls file make the brasero crash. 
+After removed unneeded signal connection and rename callback, the bug is fixed.1. start brasero
+2. open new audio-project
+3. in the filebrowser, select a pls-file
+4. crash.

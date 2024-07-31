@@ -1,0 +1,5 @@
+Shortcut for rename should be f2. 
+For more information other bug can refer.
+ It can solve by use other key.version: 0.11.9 (using kde 3.2.2, gentoo)
+compiler: gcc version 3.3.3 20040217 (gentoo linux 3.3.3, propolice-3.3-7)
+os: linux (i686) release 2.6.5-gentoo

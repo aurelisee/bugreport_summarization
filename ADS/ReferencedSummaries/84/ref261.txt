@@ -1,0 +1,9 @@
+the short descriptions registered by Script-Fu scripts should be reviewed and localized before we can enter the string freeze for 2.4. 
+Please use Milestone + Priority==Urgent instead of Severity==Blocker.
+Please consider doing the string review for Tiny-Fu instead of Script-Fu. 
+Patch for blurb changes.
+I have employed the phrase "selected region (or alpha)" in describing the scripts that.
+I have chosen to use the word "alpha". 
+Updated patch.This patch fixes a couple of oversights in the previous one. 
+The script-fu-select-to-foo scripts are deprecated and do not any longer register a menu entry. 
+I have backed out this part of the patch, as well as the change to test-sphere.scm.

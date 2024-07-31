@@ -1,0 +1,3 @@
+Move files bug nothing created. 
+The reporter did not drag down the token collection root.version: 1.94 (using kde 4.1.3)
+os: linux

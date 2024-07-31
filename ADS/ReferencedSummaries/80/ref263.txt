@@ -1,0 +1,2 @@
+After some option are configured, the mail does not reveive the change. 
+What worse, the configuration check is broken in the stable tree.

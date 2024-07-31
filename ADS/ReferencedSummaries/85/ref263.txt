@@ -1,0 +1,3 @@
+The sidebar is too narrow by default to fit the entire words. 
+To fix this bug, at least 188px need to fit the word. 
+After increase the default width, the words can be seen entirly, so the bug fixed.

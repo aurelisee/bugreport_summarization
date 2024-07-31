@@ -1,0 +1,5 @@
+intltool-update no longer works because of missing file. 
+remove missing file from POTFILES.in. COnfirming. l10n.gnome.org also reports trouble. 
+Raising prio. 
+this is still valid for me. 
+Should be fixed now.

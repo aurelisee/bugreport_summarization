@@ -1,0 +1,5 @@
+In the gnome modules, the attributeerror the split attribute is none in nonetype object. 
+If continue build outside the jhbuild, it passed. 
+A second run dosen't work, using python_path either. 
+A patch is created to fix this bug, fix handling of untranslated translators-credits, changed the xml2po file. 
+Some other bugs are duplicate of this bug.

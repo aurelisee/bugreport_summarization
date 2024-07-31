@@ -1,0 +1,6 @@
+crash on Rhythmbox Music Player.
+invoke rb when gnome-settings-daemon is not running. 
+we weren't checking whether the pixbuf could be loaded before using it.
+Now fixed in cvs.distribution: ubuntu 6.06 (dapper)
+gnome release: 2.15.91 2006-08-10 (jhbuild)
+bugbuddy version: 2.15.91

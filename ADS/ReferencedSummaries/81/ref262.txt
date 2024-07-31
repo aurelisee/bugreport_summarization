@@ -1,0 +1,4 @@
+When we have multiple text domains and maintain multiple po directories,a long list of files that are missing from potfiles.in. 
+There is a solution that we can skip the listed directory entirely. 
+Allowing directory to be skipped and annoying the gnome-games module could be a good thing to add for intltool . 
+Using this feature in gimp trunk seems to work nicely with intltool 0.40.0.

@@ -1,0 +1,8 @@
+When moving a large amount of files, excessive memory will be used. 
+After a long time, amarok does not eat up huge amounts of memory anymore, the bug gets closed.version: (using kde 4.1.2)
+compiler: gcc 4.3.2 -march=native -o2 -pipe
+os: linux
+to reproduce: right-click on my local collection, and then pick organize files
+ticked sort by file type, and replace spaces with underscores, restrict to ascii
+then clicked on continue
+the amarok gui becomes completely unusable, and when switching between screens and back it does not redraw

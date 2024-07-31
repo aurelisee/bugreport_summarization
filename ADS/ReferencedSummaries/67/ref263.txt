@@ -1,0 +1,7 @@
+Moving files opens too many fils dialogs. 
+The bug appeared in the amarok file browser, compiled by gcc 4.2.3 from amarok 1.94. 
+The bug fixed by fixing boolean logic which caused the progress info to be shown.version: (using kde 4.1.2)
+amarok version 1.94
+make a directory where you would like your music collection to be stored
+go in to amarok2 and set it up so that the new collection area is included
+then, right-click on local collection, select organise and select the new destination for the files

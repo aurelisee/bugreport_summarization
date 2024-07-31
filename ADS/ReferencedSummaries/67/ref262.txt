@@ -1,0 +1,6 @@
+Moving files opens too many file dialogs. 
+They discuss the reproduce steps.version: (using kde 4.1.2)
+amarok version 1.94
+make a directory where you would like your music collection to be stored
+go in to amarok2 and set it up so that the new collection area is included
+then, right-click on local collection, select organise and select the new destination for the files

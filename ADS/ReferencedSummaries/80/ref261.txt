@@ -1,0 +1,5 @@
+To define the sendmail-location and sets the variable MAILER.
+I have just fixed this problem in the HEAD branch. 
+Merged the changes from the HEAD branch. 
+The fix is part of the stable release 1.2.4. 
+Closing this bug.

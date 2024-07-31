@@ -1,0 +1,4 @@
+While connecting to IRC, ICQ, Jabbar etc some kind of protocol freezes the GUI completely though it produces in some cases and not always. 
+On further investigation it is found that UI freezes when tow or more accounts are connected at the same time it doesn't only lag but freezes.version: 0.8.3 (using kde 3.2.3, gentoo)
+compiler: gcc version 3.3.3 20040412 (gentoo linux 3.3.3-r6, ssp-3.3.2-2, pie-8.7.6)
+os: linux (i686) release 2.6.7-ck5

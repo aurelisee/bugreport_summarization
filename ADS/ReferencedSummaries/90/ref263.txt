@@ -1,0 +1,2 @@
+The images splash because of relating to the page size. 
+The used image caused the problem, the size of the image should be pre-defined.

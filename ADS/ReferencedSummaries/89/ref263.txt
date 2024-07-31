@@ -1,0 +1,5 @@
+256x256 size icons are needed for various place in gnome shell. 
+A attachment is created, including the source svg. 
+Another refesh d version with more constrast and better canvas usage are attached. 
+Some bug are duplicate of this one. 
+After test, the bug is fixed.

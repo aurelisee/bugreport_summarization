@@ -1,0 +1,5 @@
+Some people want to disble the displaying of status icons of contacts. 
+But some people don't think so. 
+A coder wants to add the feature for the next version of kopete that user can hide the icons or changer order.version: 0.9.0 (using kde 3.3.0, gentoo)
+compiler: gcc version 3.3.3 20040412 (gentoo linux 3.3.3-r6, ssp-3.3.2-2, pie-8.7.6)
+os: linux (i686) release 2.6.8-gentoo-r3

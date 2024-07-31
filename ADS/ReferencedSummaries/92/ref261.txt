@@ -1,0 +1,4 @@
+Seahorse crashed when right click a ssh-key and select delete. 
+The bug has been fixed.1. open seahorse
+2. right-mouse-click a ssh-key and select delete
+3. crash

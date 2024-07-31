@@ -1,0 +1,2 @@
+The splash image seems to be relative in size to the page size. 
+The bug has been fixed.

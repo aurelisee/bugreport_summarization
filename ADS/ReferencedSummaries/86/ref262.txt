@@ -1,0 +1,2 @@
+Buttons_have_icons is set to false and i still get a icon on the add. 
+A solution is to create an attachment (id=139723) screenshot of preferences window.

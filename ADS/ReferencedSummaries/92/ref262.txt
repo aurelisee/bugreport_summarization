@@ -1,0 +1,6 @@
+Some stack trace and running status is reported about the seahorse crash when right-click and delete. 
+This bug should be fixed with some previous commit.
+ Though the bug is fixed, there are another unexpected behavior. 
+The bug is fixed and comfirmed.1. open seahorse
+2. right-mouse-click a ssh-key and select delete
+3. crash

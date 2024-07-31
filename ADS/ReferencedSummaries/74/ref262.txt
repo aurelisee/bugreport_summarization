@@ -1,0 +1,7 @@
+Playlist entries do not always get removed.
+ It is got fixed already. 
+The entry was being deleted while it still had outstanding changes.purge playlist
+add two files
+play the first entry
+right-lick it and select eleminate
+playback skips to the next song but the entry is not visibly removed

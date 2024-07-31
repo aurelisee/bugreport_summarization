@@ -1,0 +1,4 @@
+Multi File rename number of digits should have leading zeros for sorting. 
+Now patch created to allow having leading zeros when renaming files.version: (using kde 4.3.5)
+compiler: gcc 4.3.3
+os: linux

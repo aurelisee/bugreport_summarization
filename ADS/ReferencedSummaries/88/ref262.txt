@@ -1,0 +1,4 @@
+The problem is that the online/offline icons are done in the old gnome style and doesn t match the rest of the icons in the interface. 
+Someone raise priority as there is patch and ui freeze is near. 
+It looks that put gtk in 32x32 have a good reasult. 
+If you want this for 2.24,just commit to trunk.

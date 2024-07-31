@@ -1,0 +1,7 @@
+OK/Apply icon isn't displayed when using Crystal SVG. 
+Not sure which icon to use here. 
+There was an icon in fact, a green check mark. 
+New files were added, and this should be fixed by someone who can also fix the code.version: (using kde devel)
+installed from: compiled sources
+compiler: 3.2.3 -
+os: linux

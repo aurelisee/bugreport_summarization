@@ -1,0 +1,3 @@
+The problem is that http://www.gimp.org/download.html doesn t list any mirrors under the united states heading. 
+That is beacause the script generates the list of mirrors from defines/mirrors_list.def is forgetting the last line and adding a harmless should fix the problem. 
+Changing all bugs from gimp product to the gimp-web product, including old closed/fixed bugs, and reassigning can also solve the problem.

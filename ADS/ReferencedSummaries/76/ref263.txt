@@ -1,0 +1,7 @@
+When removing tracks from the playlist, the song is still playing, rather than ceased. 
+The bug occured only once, try to reproduce. 
+The bug can not be triggered and can not be reproduced. 
+The stack trace looks well, so the bug is marked as fixed.steps to reproduce: 1. select artist
+play a song
+2. select all tracks, one of which is currently being played
+3. right-click and remove from playlist

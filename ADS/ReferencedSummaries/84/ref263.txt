@@ -1,0 +1,5 @@
+Script-Fu blurb its description, so need reviewed and localized. 
+A way to resolve it is to review for tiny-fu instead of script-fu. 
+A patch is created, and a phrase 'selected region' to describe it. 
+A upgrate patch fix some oversights in the previois one. 
+The ogiginal one is replaced by the new one, so the bug is fixed.

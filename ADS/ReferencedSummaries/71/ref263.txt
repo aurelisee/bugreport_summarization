@@ -1,0 +1,8 @@
+Kspread is not rendering spreadsheet cells. 
+The kspread is compiled from source, with missing a dependency. 
+This is a duplicated bug for bug 210534.version: 2.1 rc 1 (using 4.3.3 (kde 4.3.3), compiled sources)
+compiler: gcc
+os: linux (i686) release 2.6.31.6
+kde version: 4.3.3
+qt version: 4.5.3
+glibc version: 2.11

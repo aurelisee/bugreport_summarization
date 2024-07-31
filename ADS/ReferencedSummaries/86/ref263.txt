@@ -1,0 +1,2 @@
+After the variable is set to false, the icon on the add button still there. 
+A better way is to remove the button.

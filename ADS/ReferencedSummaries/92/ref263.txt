@@ -1,0 +1,6 @@
+Seahorse creshed when click a ssh-key and delete, the segmentation fault. 
+Some stack trace and running status is reported. 
+this bug should be fixed this one commit. 
+Even though the cresh does not occur anymore, the hehaviour is not as expected.1. open seahorse
+2. right-mouse-click a ssh-key and select delete
+3. crash

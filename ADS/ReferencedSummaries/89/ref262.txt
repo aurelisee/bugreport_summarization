@@ -1,0 +1,3 @@
+A 256x256 variant would be good to have for the os x port and we can create an attachment icons in all sizes. 
+Using the method above will make a bug. 
+Jared's solution can work well.

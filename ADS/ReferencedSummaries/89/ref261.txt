@@ -1,0 +1,2 @@
+A 256x256 variant is needed for various places in gnome shell. 
+The source svg needs to be kept in the repository.

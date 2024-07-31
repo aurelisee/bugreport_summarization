@@ -1,0 +1,4 @@
+Actions freeze the gui. 
+This is fixed with new socket api in somebody view.version: 0.8.3 (using kde 3.2.3, gentoo)
+compiler: gcc version 3.3.3 20040412 (gentoo linux 3.3.3-r6, ssp-3.3.2-2, pie-8.7.6)
+os: linux (i686) release 2.6.7-ck5

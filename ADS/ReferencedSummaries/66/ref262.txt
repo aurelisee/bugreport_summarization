@@ -1,0 +1,5 @@
+Viewing multiple jpg images in tabs will slow down knoqueror. 
+The problem is the redraw effort. 
+The bug is fixed in new version.version: 4.0 (using kde 3.1.9)
+compiler: gcc version 3.2.3
+os: linux (i686) release 2.4.22-ck2

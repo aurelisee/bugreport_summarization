@@ -1,0 +1,5 @@
+A suggestion of removing tracks from list. 
+In recently there have some fixes to stop these.steps to reproduce: 1. select artist
+play a song
+2. select all tracks, one of which is currently being played
+3. right-click and remove from playlist

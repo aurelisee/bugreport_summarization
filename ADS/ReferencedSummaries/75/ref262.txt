@@ -1,0 +1,2 @@
+A suggestion of removing gpilotd conduit mgmt from potfiles. 
+It is fixed.

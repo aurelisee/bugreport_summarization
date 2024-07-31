@@ -1,0 +1,3 @@
+Nonetype object has no attribute splic. 
+Many applications have this bug. 
+Untranslated strings are allowed to mark.

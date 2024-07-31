@@ -1,0 +1,4 @@
+While organizing files, nothing happened. 
+It is because that the token collection root wasn't dragged down. 
+The bug gets fixed by removing collection root token from token pool and placing before the filename as a constant token.version: 1.94 (using kde 4.1.3)
+os: linux

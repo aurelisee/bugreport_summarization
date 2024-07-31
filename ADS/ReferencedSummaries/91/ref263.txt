@@ -1,0 +1,4 @@
+When clicking a launcher on second screen, the gnome-panel creshes. 
+The cresh happens because the launcher animation window is created in the wrong screen. 
+A patch is created, but the bug still appear in other version. 
+The problem is fixed in the development version, and will be available in next release.version: 2.24.0

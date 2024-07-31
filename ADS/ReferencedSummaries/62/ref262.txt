@@ -1,0 +1,6 @@
+Apply icon is not displayed when using crystal svg. 
+People are finding the icon. 
+It note that icon are differently.version: (using kde devel)
+installed from: compiled sources
+compiler: 3.2.3 -
+os: linux

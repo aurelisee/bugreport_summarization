@@ -1,0 +1,4 @@
+Sound mixer is not positioned correctly; 
+the problem is much more complicated: It depends on the height of the panel and whether icons are shown and the direction of the panel and a newer non-public version is available which makes this issue resolved.version: unknown (using kde 3.2.2, gentoo)
+compiler: gcc version 3.3.2 20031218 (gentoo linux 3.3.2-r5, propolice-3.3-7)
+os: linux (i686) release 2.6.5-gentoo-r1

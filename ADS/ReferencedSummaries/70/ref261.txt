@@ -1,0 +1,6 @@
+My video editor does not support sorting the files on date... nor does it do the "natural" name sorting. 
+It sorts on names the POSIX way. 
+the files renamed to test1-9 should have been renamed to test01-09 so that the files are always in the correct order. 
+I read the patch description better and I needed ## in the rename.version: (using kde 4.3.5)
+compiler: gcc 4.3.3
+os: linux

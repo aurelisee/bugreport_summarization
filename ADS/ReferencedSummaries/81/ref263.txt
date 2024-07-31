@@ -1,0 +1,5 @@
+The POTFILES.skip should support skipping directories and then if you want to skip a lot of files, it will be easier. 
+This is reported as a bug not a feature request. 
+No matter how the bug is fixed, people will obtain benefit from it. 
+A patch is created to support the directory, just place the directory in the potfiles.skip. 
+The patch works well.

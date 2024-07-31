@@ -1,0 +1,3 @@
+And I found that if I continued the build outside of jhbuild it passed (or it could be that running it a second time would make it pass too, but I didn't check that). 
+Fix handling of untranslated translators-credits.
+we allow marking of untranslated strings now. ***has been marked as a duplicate of this bug.

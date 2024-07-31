@@ -1,0 +1,4 @@
+In the configuration of gimp, there is a symlink that point to gimptool, but it collides with gimp. 
+It's intention is good, but the problem occur in gimp.m4. 
+A way to resolve it is not install the symlink. 
+A patch is created, and make 1.2.6 as the final release.

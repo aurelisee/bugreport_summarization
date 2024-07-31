@@ -1,0 +1,3 @@
+When clicking the lanucher on the second screen, the gnome creshed, some information are reported. 
+The bug is due to the the launcher animation window is set in the wrong screen. 
+A patch is created, and some other version find the bug, they are all fixed.version: 2.24.0

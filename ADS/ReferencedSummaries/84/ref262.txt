@@ -1,0 +1,4 @@
+Sven thinks that the short descriptions registered by script-fu scripts should be reviewed and localized before we can enter the string freeze for 2.4. 
+A person do not think so,and he consider doing the string review for tiny-fu instead of script-fu. 
+Creating an attachment (id=74057) patch for blurb changes and an attachment (id=74061) updated patch. 
+The end solution is backing out the patch above,as well as the change to test-sphere.scm.

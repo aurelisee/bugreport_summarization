@@ -1,0 +1,3 @@
+Since of missing files in git master, the intltool-update doesn't work. 
+The bug confirmed in other version, so upgrate the priority. 
+The bug is pinged several times and eventually be fixed.

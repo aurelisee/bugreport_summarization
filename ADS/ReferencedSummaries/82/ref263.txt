@@ -1,0 +1,4 @@
+The gimp download does not support United States, the list does not contain the mirror. 
+The reason is that the script missing the last line. 
+A harmless code is added to fix this bug. 
+Change all the related bugs to propagate the change.

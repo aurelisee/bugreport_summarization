@@ -1,0 +1,4 @@
+The problem is that gimp.m4, which provides AM_PATH_GIMP(), the automake macro to check for gimp-1.2 does not use gimptool-1.2 as it should. 
+Probably the only thing we can do about this is to not install the symlink and to document that gimptool-2.0 needs to be used with gimp-2.0. 
+Fix:don't install the gimptool links. 
+I've fixed the gimp.m4 script in the gimp-1-2 branch.

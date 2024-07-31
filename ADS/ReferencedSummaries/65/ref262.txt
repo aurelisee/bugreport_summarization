@@ -1,0 +1,4 @@
+Sound mixer is a positioned wrong. 
+A detail explaination by others.version: unknown (using kde 3.2.2, gentoo)
+compiler: gcc version 3.3.2 20031218 (gentoo linux 3.3.2-r5, propolice-3.3-7)
+os: linux (i686) release 2.6.5-gentoo-r1

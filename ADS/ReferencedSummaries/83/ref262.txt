@@ -1,0 +1,2 @@
+There is a probelm that the automake macro to check for gimp-1.2 does not use gimptool-1.2 as it should,which means that if people have gimp-2.0 installed makefiles and configure scripts written to work with gimp-1.2 start to break. 
+One solution is that we should consider to do a 1.2.6 release as a final release in the 1.2 series and use gimptool-1.2, not gimptool (bug #139024).

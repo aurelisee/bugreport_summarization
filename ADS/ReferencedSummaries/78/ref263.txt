@@ -1,0 +1,4 @@
+A bug occured on rhythmbox music player, some stack trace and running status is reported. 
+No checking the pixbuf whether be loaded before using it.distribution: ubuntu 6.06 (dapper)
+gnome release: 2.15.91 2006-08-10 (jhbuild)
+bugbuddy version: 2.15.91

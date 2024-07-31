@@ -1,0 +1,2 @@
+under OSTree or gnome-control-center, when going to the background setting, there is a segfault. Some stack trace and running status is reported. 
+The bug is introduced by the previous commit in gnome-3-8.

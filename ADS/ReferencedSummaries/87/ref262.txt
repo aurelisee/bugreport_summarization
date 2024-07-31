@@ -1,0 +1,3 @@
+I think there is a bug in gnome-control-center or ostree. 
+To solve the problem,we need know the a stack trace from the crash. 
+There is a solution to sovle this problem.

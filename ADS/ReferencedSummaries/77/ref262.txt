@@ -1,0 +1,2 @@
+Crash just after in ldap finish. 
+It is dup with a bug one year ago.

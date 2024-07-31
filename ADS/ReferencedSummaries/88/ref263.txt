@@ -1,0 +1,3 @@
+The online and offline icons are in the old style, and they does not match the rest of the icons. The priority is raised as the freeze is near. 
+A disscussion on whether use non-square or square icons is open. 
+A patch is created, and it will for 2.24.

@@ -1,0 +1,3 @@
+if /desktop/gnome/interface/buttons_have_icons is set to "false" I still get a icon on the "Add..." button in the "Font & Colors" preferences tab. 
+Fix:screenshot of preferences window. 
+Should be fixed on trunk now.

@@ -1,0 +1,4 @@
+Gimp should use libgimpprint to print instead of using a outdated print plug-in. 
+The code is changed, using g_malloc and g_free instead of molloc and free in all the place. Fixing this bug will bring some advantages, for example adding new printers and so on. 
+The branch depends on libgimpprint, need more time to do the change. 
+After some translation, the bug will be fixed.
