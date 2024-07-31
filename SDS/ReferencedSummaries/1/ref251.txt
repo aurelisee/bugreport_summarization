@@ -1,0 +1,16 @@
+A problem was noticed with the WIP patch from bug 469443 applied.
+When typing in the search box, sometimes search-suggestion entries would be displayed above the divider.
+The problem is nsSearchSuggestions.js is passing the SuggestAutoCompleteResult result, instead of it being the previous form history search result.
+The bug wasn't visible before 469443, because nsFormFillController::StartSearch tries QI to provid result to nsIAutoCompleteSimpleResult.
+The search-suggestion result is nsIAutoCompletResult now, so QI fails and Satchel is doing a new search everytime.
+A fix was proposed, but wasn't quite right.
+Satchel should be smarter about throwing away a previous result when the previous result's search string doesn't have a common prefix.
+Another fix was proposed later, where the service's form history result copy is discarded when startSearch() is called with a null previous result.
+There was a ._formHistoryResult in the SuggestAutoCompleteResult wrapper and also a ._formHistoryResult in SuggestAutoCompleteIt.
+It was suggested to rename one of them to _fhResult.
+The one in the wrapper was renamed to _formHistResult.
+This bug was pushed http://hg.mozilla.org/mozilla-central/rev/097598383614.1) type \"b\" in the search field.
+2) form history finds 1 entry (\"blah\"), search-suggestions finds \"baaa\", \"bloop\", \"bzzz\", the autocompete menu shows these in order with a divider between \"blah\" and \"baaa\".
+3) type an \"l\" in the search field (\"bl\")
+4) startHistorySearch()'s previous result contains [\"blah\", \"baaa\", \"bloop\", \"bzzz\"], Satchel filters this down to [\"blah\", \"bloop\"] to match the new \"bl\" search string
+5) nsSearchSuggestions's onReadyState() change is called with updated search suggestions, builds up a new list of results, but sees that the form history result now has *two* entries.

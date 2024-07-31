@@ -1,0 +1,8 @@
+When typing in the search box, sometimes suggestion entries are displayed above the divider, where the previous matching searches are displayed.
+The problem is that nsSearchSuggestions.js is passing the SuggestAutoCompleteResult instead of the previous history search result, so entries from suggestions leak into history result.
+A patch was added to fix this problem.
+Further changes added to fix a problem with the patch.1) type \"b\" in the search field.
+2) form history finds 1 entry (\"blah\"), search-suggestions finds \"baaa\", \"bloop\", \"bzzz\", the autocompete menu shows these in order with a divider between \"blah\" and \"baaa\".
+3) type an \"l\" in the search field (\"bl\")
+4) startHistorySearch()'s previous result contains [\"blah\", \"baaa\", \"bloop\", \"bzzz\"], Satchel filters this down to [\"blah\", \"bloop\"] to match the new \"bl\" search string
+5) nsSearchSuggestions's onReadyState() change is called with updated search suggestions, builds up a new list of results, but sees that the form history result now has *two* entries.
