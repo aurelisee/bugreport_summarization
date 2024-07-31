@@ -1,0 +1,4 @@
+A crash happens when closing seahorse with show password dialog open. 
+The bug has been fixed.1. open seahorse 3.2
+2. doubleclick a saved secret in the keyring
+3. close seahorse main window without closing the information window --> crash

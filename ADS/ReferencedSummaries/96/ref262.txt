@@ -1,0 +1,10 @@
+Some information about the seahorse does not display password tab reported. 
+Moving the password tab does not fully happen. 
+Someone's migration to gtkbuilder make mistake and caused the bug. 
+After find the reason, the bug is fixed and tested.architecture: i386
+distrorelease: ubuntu 9.10
+nonfreekernelmodules: wl
+package: seahorse 2.27.5-0ubuntu1
+procversionsignature: ubuntu 2.6.31-4.23-generic
+sourcepackage: seahorse
+uname: linux 2.6.31-4-generic i686

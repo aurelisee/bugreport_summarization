@@ -1,0 +1,4 @@
+A crash happens when copying item with or in name in alacarte. 
+The attachment has been created to fix it.1. open alacarte
+2. try to copy item with / in name
+3. crash

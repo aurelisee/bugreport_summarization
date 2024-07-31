@@ -1,0 +1,11 @@
+Seahorse does not display the password tab so that people can not view or delete password. 
+Some stack trace and running status is reported. 
+The password tab does not fully happen. 
+The bug is caused by the migration to gtkbuilder. 
+The patch is tested and confirmed.architecture: i386
+distrorelease: ubuntu 9.10
+nonfreekernelmodules: wl
+package: seahorse 2.27.5-0ubuntu1
+procversionsignature: ubuntu 2.6.31-4.23-generic
+sourcepackage: seahorse
+uname: linux 2.6.31-4-generic i686

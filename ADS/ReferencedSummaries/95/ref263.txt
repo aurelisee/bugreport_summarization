@@ -1,0 +1,5 @@
+Alacarte crashed with IOError when the name contains /. 
+A patch is created, using - to replace all the /. 
+After the fix is pushed, the bug reproduced in other version.1. open alacarte
+2. try to copy item with / in name
+3. crash

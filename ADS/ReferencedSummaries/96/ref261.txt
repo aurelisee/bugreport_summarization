@@ -1,0 +1,9 @@
+Seahorse does not display passwords when launching from the terminal results. 
+The bug happened during the migration to gtkbuilder. 
+The bug has been fixed.architecture: i386
+distrorelease: ubuntu 9.10
+nonfreekernelmodules: wl
+package: seahorse 2.27.5-0ubuntu1
+procversionsignature: ubuntu 2.6.31-4.23-generic
+sourcepackage: seahorse
+uname: linux 2.6.31-4-generic i686

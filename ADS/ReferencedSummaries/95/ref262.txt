@@ -1,0 +1,5 @@
+Some information about the alacarte crashed with IOError. 
+A patch is created with replacing the / in the filename with -. 
+Another bug is reproduced in the ubuntu.1. open alacarte
+2. try to copy item with / in name
+3. crash
