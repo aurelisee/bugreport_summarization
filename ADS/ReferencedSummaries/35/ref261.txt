@@ -1,0 +1,7 @@
+To fix bug 327208, additional CNAMES, all locals except ko-kr and ja-jp locals which already have CNAMES need to be added to start.mozilla.com. 
+The Yahoo is set up to handle ja-jpm.start.mozilla.com pointing to ja-jp.mozilla.search.yahoo.com previously there were some problems with it, therefore, a path with all fixes must be ensured. Redirecting the ja-jpm.start.mozilla.com at virtual-redirect.mozilla.org is suggested and it is further suggested to change the zone file. 
+It is decided after some discussion 
+1) The zone file except ja-jpm need to be pushed 
+2) redirect hack from 1.5 version 
+3) setup VHost. 
+Finally, all the zone updates are done and ja-jp-mac, jp-jpm is no longer a redirect but a CNAME.

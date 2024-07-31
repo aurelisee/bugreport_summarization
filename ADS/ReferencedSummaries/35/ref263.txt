@@ -1,0 +1,7 @@
+To fix bug 327208,additional cnames need to be added to start.mozilla.com. 
+this needs coordination from marketing first as they need to verify that the correct destination domains exist at yahoo/google first. 
+the main issue is that we need to ensure that yahoo is set up to handle ja-jpm.start.mozilla.com pointing to ja-jp.mozilla.search.yahoo.com. 
+Mike suggest that why don't we just point ja-jpm.start.mozilla.com at virtual-redirect.mozilla.org, and then redirect from there to ja-jp.start.mozilla.com. 
+Mike allocate taskes,push this zone file except for ja-jpm,do the same redirect hack as done in 1.5 for the mac,don't force the extra latency on japan users. 
+Justin suggest that we need to get the yahoo vhosts setup correctly (for ja-jp-mac and ja-jpm) so we can move both of these off virtual-redirect and to cnames in parallel. 
+The problem is resolved.Working on http://ja-jpm.start.mozilla.com to get supported.
