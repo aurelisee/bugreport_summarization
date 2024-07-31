@@ -1,0 +1,1 @@
+The bundlerFinder class is missing and NFS doesn't provide the correct implementation which contradicts with Javadoc. I was noticed that this functionality was never implemented and comments in documentation are wrong. The WTP uses the same functionality so comments were moved from documentation to implementation. Incorrect comments are removed and methods are deprecated.
