@@ -1,0 +1,4 @@
+The blocklist update file become a 0 byte file. 
+It may because the update coincided. 
+You can update the blocklist for a new version or turn it off. 
+They also talk about the late update.

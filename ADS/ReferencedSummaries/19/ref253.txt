@@ -1,0 +1,1 @@
+The menu 'fully qualify duplicates' in the open type dialog does not affect the qualification but appends the container info. This is a problem on the name rather than the function. The names were changed and the menu was reordered.

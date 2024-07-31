@@ -1,0 +1,3 @@
+The wrong version of flash is shipped with Tegra therefore it showed be changed by a safer version, also, it didn't warn about the Nvidia QuickTime plugin which is wrong too.
+Device trial is underway and some warnings should be added in case if problem arises or a polite error message.
+all these issues are tested, verified and released for Beta 2.

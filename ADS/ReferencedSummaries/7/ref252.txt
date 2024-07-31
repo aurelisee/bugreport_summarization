@@ -1,0 +1,3 @@
+Validation of patch root provided manually in the create local diff wizard, only existing paths are accepted. Even though the root's validation isn't necessary, a path is need to be enter which maybe out of current workspace. If patch root is outside the workspace or it is not a valid path, a warning information is expected. Someone create a patch, but it contains more issues, after the patch 2, the bug is totally fixed.Reporter noticed a problem with patch 469443 about the search box display. 
+The reason is because of the null historyresult. 
+It is fixed in attchment and suggest to discard the old form.

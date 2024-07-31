@@ -1,0 +1,2 @@
+During Workbench.init all extensions are immediately loaded even though it is not properly loaded; this cause many troubles for upstream bundle. It could be easily reproduced by loading org.eclipse.jdt.ui from CVS then the patch and starting the target workspace.1. load ' org.eclipse.jdt.ui ' from cvs with tag=v20100316-0800
+2. start a target workspace == > boom!

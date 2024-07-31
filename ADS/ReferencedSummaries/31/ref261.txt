@@ -1,0 +1,5 @@
+Even after two updates Help->Check For Updates doesn't find anything but comments says it is fixed, seems to affect windows. 
+Apparently, it is related to other bug and it might resolve itself after nightly builds because there are two updates with same ID. 
+Further testing and nightly builds fixed this issue so it is fixed and verified.Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9pre) Gecko/2008050209 Minefield/3.0pre
+Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9pre) Gecko/2008050206 Minefield/3.0pre
+Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9pre) Gecko/2008050204 Minefield/3.0pre ID:2008050204

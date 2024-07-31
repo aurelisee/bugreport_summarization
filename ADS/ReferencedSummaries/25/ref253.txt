@@ -1,0 +1,9 @@
+when typing in the search box, sometimes search-suggestion entries would be displayed above the divider. 
+the problem here is that nssearchsuggestions.js is passing the wrong previousresult to form history. 
+Patch v.1 was created, but was not quite correct. 
+Patch v.2 was created, fixed the problem. 
+The name was changed to _formhistresult.1) type " b " in the search field
+2) form history finds 1 entry ( " blah " ), search-suggestions finds " baaa " , " bloop " , " bzzz " , the autocompete menu shows these in order with a divider between " blah " and " baaa "
+3) type an " l " in the search field ( " bl " )
+4) starthistorysearch() ' s previous result contains [ " blah " , " baaa " , " bloop " , " bzzz " ], satchel filters this down to [ " blah " , " bloop " ] to match the new " bl " search string
+5) nssearchsuggestions ' s onreadystate() change is called with updated search suggestions, builds up a new list of results, but sees that the form history result now has *two* entries.

@@ -1,0 +1,1 @@
+Adaptermanager.computeclassorde(class) implementation does not match iadaptermanager javadoc and reads as a contradiction. The javadoc comment is not perfectly clear. This bug came out because of an inadvertent change on spec during a large batch of changes to add support for the adapters extension point. The spec was fixed.

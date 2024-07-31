@@ -1,0 +1,9 @@
+When using multiple builds with the same profile,it gives a "engine has no properties" error and a blank search dropdown. 
+someone think this a duplicate bug.
+bug 342122 has been marked as a duplicate of this bug. 
+Ria find when he copy the application to another place, suddenly the gray text and the plugins are working again.
+Gavin think those reason is that Ria changing the last-modified date of the .autoreg file. 
+Gavin want to leave his open until bug 335102 lands. Gavin think they shouldn't wait for bug 335102.
+Joey give a patch. 
+That patch was suggested and checked.
+i'd kinda prefer "!!a " to make it clear it's the boolean value that matters.Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9a1) Gecko/20060619 Minefield/3.0a1

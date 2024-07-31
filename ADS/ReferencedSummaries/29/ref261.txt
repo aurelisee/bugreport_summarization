@@ -1,0 +1,2 @@
+On windows CE the browser hangs as the spinning in for loop for weightlists is a main reason for it. 
+A pacth fixed this issue and a bogus OS2 font list caused this problem.

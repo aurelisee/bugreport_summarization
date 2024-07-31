@@ -1,0 +1,4 @@
+On startup "engine has no properties" error occur, when _buildSortedEngineList pre-allocates an array of a certain size, then fills the engine in order from the storage file, having undefined or empty items. 
+For this patch change ast-modified date of the .autoreg file is required, besides, run a build after unzipping it. 
+Using other patch for bug 340331 is suggested to fix the array problem but code is wrong and a separate path is required to resolve the issue. 
+Being little complicated it is advised either to apply a separate patch to fix it or fix it online.Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9a1) Gecko/20060619 Minefield/3.0a1

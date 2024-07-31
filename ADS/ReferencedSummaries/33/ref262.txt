@@ -1,0 +1,4 @@
+Duplicate bug can not be cc on the web. 
+It is depend on the group the reporter belong. 
+The reason is the check. 
+There is a patch can fix it.

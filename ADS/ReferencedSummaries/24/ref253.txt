@@ -1,0 +1,1 @@
+r3_5_maintenance branch was in inconsistent state. After rolling back build_notes and binaryfileoutputstream, everything was safe, but not commit the change. Some recent changes were made so the version number could not be too low. The cause here was when Walter Harley released 3.5, he did not branch all the plug-ins, and he forgot it and did not communicate it to anyone else.

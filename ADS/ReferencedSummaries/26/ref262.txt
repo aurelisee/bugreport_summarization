@@ -1,0 +1,4 @@
+Windows ce hanging on some ssl sites. 
+It is a duplicate bug. 
+It may because the common root cause.
+Another reason is the cpu priority. We use sleep calls to reduce the effect and fixed it.Using Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre)

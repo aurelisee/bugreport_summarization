@@ -1,0 +1,5 @@
+A problem in search box functionality is noted, which puts search suggestion entries above the divider separating them from previous matching searches. 
+This is happening because the incorrect data structure is being passed to the form history, which contains both form history and search suggest entries. As the results change as the user types in the search box, this allows suggestions to leak into the form history, resulting in the separator appearing to be in the wrong place. 
+An incomplete patch is offered, but the system needs to be smarter about throwing away previous results. 
+It turns out there are .formHistoryResult fields in two data structures, one of which needs to be discarded. 
+It is suggested and accepted that one should be renamed for clarity.

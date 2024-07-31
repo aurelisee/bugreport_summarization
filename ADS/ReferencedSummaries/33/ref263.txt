@@ -1,0 +1,8 @@
+problems is that users with editbugs privs cannot edit a duplicate anymore. 
+frdric find the reason and give a patch.
+The problem was that $self- > check($dup_id) was called in all cases. 
+To avoid creating the same bug object three times in a row, frdric altered check() a bit to accept either a bug id or a bug object. 
+instead of letting check take a bug object,new patch create a new bugzilla bug method.
+Then we can re-use that method. 
+For applying cleanly on 3.2,the third version are created.
+The method that validatebugid doesn't return a bug object be added.

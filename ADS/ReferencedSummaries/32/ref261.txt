@@ -1,0 +1,3 @@
+On doing Alt + Arrow crashes while using on Gmail Compose Window, appearing also on textareas/inputs as well, appearing both on linux and windows. 
+The problem is detected with the space in the compose window which seems invisible space when cursor from the left side, via pressing right-arrow also no respect for space, pressing left-arrow and right-arrow keys will skip right over the invisible space.
+This crash appears later too and wordbreaker, fixed and checked in.

@@ -1,0 +1,4 @@
+In the viewer, the strange dots are show in the table item lable and no longer can click some elements. It happens several days ago when st the font in on a particular item. A new LabelDecorator is added at the SWT level, maybe it has something to do with the bug. A screenshot and reproduce steps are created to show details about this bug. once the dots appear, the top items can't be select. It's caused by the fix for another bug, and now it's fixed and verified. the other bug is a duplicate of this bug.1. download eclipse sdk build i20060131-1200 for windowsxp
+2. extract the attached workspace to c:
+3. start eclipse using -data c:\tmp == > picture 1
+4. execute step 2 to 4 from comment 0 == > picture 2

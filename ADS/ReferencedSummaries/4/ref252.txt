@@ -1,0 +1,1 @@
+FlatComponentDeployable.members legecy calls create ModuleFile using a java.io.File with no references to the workspace file which expect to file system resource. need to fix it in the JEE side since it is a regression from 3.1. A patch is created and through testing, it was approved. This is a stop-ship defect and there is a work-around.

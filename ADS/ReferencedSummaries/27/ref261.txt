@@ -1,0 +1,4 @@
+It has been noticed that a 0 bytes file is pushed in log therefore, a test is required to check if it is a legal update. 
+The automatic update coincides with AMO and update seems fine but it ran at a different time than the FX update. 
+The xml file need to update by hand as the old one is invalid, further testing revealed that the actual file is removed somehow from server. 
+It is decided to move forward with blocklist plan and a script will make this easier to fix.

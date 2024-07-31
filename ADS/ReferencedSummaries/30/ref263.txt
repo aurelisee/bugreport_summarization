@@ -1,0 +1,3 @@
+Even after two updates Help->Check For Updates doesn't find anything but comments says it is fixed, seems to affect windows. 
+Apparently, it is related to other bug and it might resolve itself after nightly builds because there are two updates with same ID. 
+Further testing and nightly builds fixed this issue so it is fixed and verified.

@@ -1,0 +1,2 @@
+Dani Megert found that workbench contributed sourceprovider can cause troubles on start. He thought it should be done to fix it, either protect the code to not load the extensions or initialize default services after colors and fonts. Paul Webster tried this problem. Dani found this fix caused a major issue, according to bug 316701.1. load ' org.eclipse.jdt.ui ' from cvs with tag=v20100316-0800
+2. start a target workspace == > boom!

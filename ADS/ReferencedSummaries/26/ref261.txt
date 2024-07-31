@@ -1,0 +1,3 @@
+Tegra device causes some problems when some SSL sites are visited. 
+On changing the priority level of KTL threads some of the functionalities work fine and on further testing it is revealed that one Thread is using the whole CPU and starving others. 
+SSL threads makes decoupling for Mozilla's single threaded network engine thus a pollable even it required to make it better.Using Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre)

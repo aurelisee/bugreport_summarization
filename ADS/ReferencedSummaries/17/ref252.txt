@@ -1,0 +1,1 @@
+When annotation encounter the corrrupt array of the nested annotations, it will be confused and caused a exception. Sometimes it will ignore the legal annotation and sometimes it will not. A patch is created to fix this exception and previous flakiness. Any illegal array will be treated as an empty nested annotations.

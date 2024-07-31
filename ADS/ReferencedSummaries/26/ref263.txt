@@ -1,0 +1,6 @@
+The tegra device locks up hard after visiting a ssl site, but not every ssl site does this. 
+The bug looks like one thread is spinning on the cpu and starving everything else, because of a potential loop. 
+ssl thread is used to decouple mozilla's single-threaded network engine and the ssl r/w calls, pollable event is used by ssl thread to wake up the network. 
+The bug may be that the ssl tread failed to created a pollable event. 
+some tests need to be done. 
+In the end, it is because of the high-priority thread nothing.Using Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre)

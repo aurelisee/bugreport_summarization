@@ -1,0 +1,9 @@
+A problem in search box functionality is noted, which puts search suggestion entries above the divider separating them from previous matching searches. 
+This is happening because the incorrect data structure is being passed to the form history, which contains both form history and search suggest entries. As the results change as the user types in the search box, this allows suggestions to leak into the form history, resulting in the separator appearing to be in the wrong place. 
+An incomplete patch is offered, but the system needs to be smarter about throwing away previous results. 
+It turns out there are .formHistoryResult fields in two data structures, one of which needs to be discarded. 
+It is suggested and accepted that one should be renamed for clarity.1) type " b " in the search field
+2) form history finds 1 entry ( " blah " ), search-suggestions finds " baaa " , " bloop " , " bzzz " , the autocompete menu shows these in order with a divider between " blah " and " baaa "
+3) type an " l " in the search field ( " bl " )
+4) starthistorysearch() ' s previous result contains [ " blah " , " baaa " , " bloop " , " bzzz " ], satchel filters this down to [ " blah " , " bloop " ] to match the new " bl " search string
+5) nssearchsuggestions ' s onreadystate() change is called with updated search suggestions, builds up a new list of results, but sees that the form history result now has *two* entries.

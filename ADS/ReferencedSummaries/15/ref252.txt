@@ -1,0 +1,1 @@
+In the PostgreSQL the sequence is not support after it is created. There is a patch hopefully fix it, make DTP support PostgreSQL sequence. But the patch is strange, but it can't point out the changes and geh plugins. When applied the changes, the file update go to the bug branch, but the new files go to local master branch.

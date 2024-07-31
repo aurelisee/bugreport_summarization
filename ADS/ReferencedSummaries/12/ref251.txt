@@ -1,0 +1,1 @@
+The fuzz factor should be consider for individual hunk rather than for all as in some case after applying shifting the hunk value becomes invalid, thus, a highly prioritized issue. The patch has modified the code and it is calculated for individually now, preview provided. The test case shows that the default value is MAXIMUN_FUZZ_FACTOR, it should be 3.

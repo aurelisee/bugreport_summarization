@@ -1,0 +1,2 @@
+When opening the content pane in tools -> options, the browser will reliably hang on windows ce. After debugging, it seems to indicate we're spinning in the for loop. 
+It is because "600" was writen to "6", and the bug was fixed.Verified fix on Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre) Gecko/20090811 Firefox/3.6a2pre

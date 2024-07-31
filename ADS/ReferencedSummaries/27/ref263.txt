@@ -1,0 +1,5 @@
+The xml file blocklist.xml disappeared after automated blocklist update, it became a 0-byte file.
+Do an automatic update and land the update by hand to figure it out. 
+The switch was turned off to prevent it happend on 1.9.2. 
+An attachment was made to handles the problem. 
+If start auto-updating aurora, a new bug will be filed.

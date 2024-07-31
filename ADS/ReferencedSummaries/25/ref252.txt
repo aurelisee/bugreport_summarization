@@ -1,0 +1,7 @@
+Reporter noticed a problem with patch 469443 about the search box display. 
+The reason is because of the null historyresult. 
+It is fixed in attchment and suggest to discard the old form.1) type " b " in the search field
+2) form history finds 1 entry ( " blah " ), search-suggestions finds " baaa " , " bloop " , " bzzz " , the autocompete menu shows these in order with a divider between " blah " and " baaa "
+3) type an " l " in the search field ( " bl " )
+4) starthistorysearch() ' s previous result contains [ " blah " , " baaa " , " bloop " , " bzzz " ], satchel filters this down to [ " blah " , " bloop " ] to match the new " bl " search string
+5) nssearchsuggestions ' s onreadystate() change is called with updated search suggestions, builds up a new list of results, but sees that the form history result now has *two* entries.

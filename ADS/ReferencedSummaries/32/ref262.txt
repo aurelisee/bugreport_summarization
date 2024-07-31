@@ -1,0 +1,5 @@
+Alt plus arrow crashed the software. 
+It is duplicate. 
+It is a general bug on different os. 
+There is a related issue on this bug. 
+Double clicking also bring crashing.

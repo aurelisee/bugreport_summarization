@@ -1,0 +1,5 @@
+When using alt+arrow to move the cursor around word-by-word in text boxes, it always crashes in the gmail compose window. 
+The bug crashes not only windows specific but also linux. 
+The space is there while we're not showing it and the arrow keys don't seem to respect the space.
+When coming at the invisible space from the left side or the following line, via pressing arrows, it can't reach the right position. 
+When double-clicking the first word in the sentence it will crash.

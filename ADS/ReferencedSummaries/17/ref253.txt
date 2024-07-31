@@ -1,0 +1,1 @@
+Previous to m6 dali was a bit flaky when encountered some nested annotations. Recent changes caused dali to throw an exception. A patch was proposed to fix these two bugs by treating an array of nested annotations as an empty nested annotations. This bug is fixed by the fix for bug 274692.

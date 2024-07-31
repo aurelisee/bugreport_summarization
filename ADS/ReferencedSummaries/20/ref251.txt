@@ -1,0 +1,4 @@
+On clicking the package view some elements get corrupted-an old issue, a regression from SWT. A new LableDecorator is found which might be the cause of the problem which later revealed not true, a final screenshot of the problem is requested also. Screen shot shows the labels are appearing strange and modifies the name though the similar bug was already resolved.1. download eclipse sdk build i20060131-1200 for windowsxp
+2. extract the attached workspace to c:
+3. start eclipse using -data c:\tmp == > picture 1
+4. execute step 2 to 4 from comment 0 == > picture 2

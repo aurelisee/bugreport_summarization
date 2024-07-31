@@ -1,0 +1,4 @@
+There were some strange dots in talbe item labels, and some elements in the packages view could not be clicked and the label gets into "org.ec". This bug used to happend in 3.0 days. This bug was first seen in i20060110-1026. This bug was caused by the fix for bug 119207. This bug was fixed for 20060215 vi and m5(i20060217-1115).1. download eclipse sdk build i20060131-1200 for windowsxp
+2. extract the attached workspace to c:
+3. start eclipse using -data c:\tmp == > picture 1
+4. execute step 2 to 4 from comment 0 == > picture 2

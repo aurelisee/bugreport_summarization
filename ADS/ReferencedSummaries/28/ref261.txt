@@ -1,0 +1,2 @@
+On windows CE the browser hangs as the spinning in for loop for weightlists is a main reason for it. 
+A pacth fixed this issue and a bogus OS2 font list caused this problem.Verified fix on Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre) Gecko/20090811 Firefox/3.6a2pre

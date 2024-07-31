@@ -1,0 +1,5 @@
+A suggestion on creating additional cnames. 
+However the suggestion need to be verified whether the web support. 
+The verified can be simplified by redirect. 
+There is a scoop on solution. 
+The bug finally fixed.

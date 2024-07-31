@@ -1,0 +1,6 @@
+When createing a new WebProject, the newly created runtime is unable to seen in the drop down, but when the second created, The first can be seen. Bug 213006 and 214404 is a duplicate of this bug. Using tomcat 5.5, the latest build can also reproduce this bug. Since it can be a confusing regression for the users to deal with, the severity raised to major. A patch is created, due to the size of the change, it need further testing.0. ensure you don ' t have any installed server (runtimes) defined
+1. open the create new dynamyc web project wizard
+2. enter the name for the web project
+3. using the target runtime " new " button, create a new runtime
+4. the runtime should be displayed in the combobox, but is not there
+i was using tomcat 5.5

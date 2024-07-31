@@ -1,0 +1,1 @@
+Corrupt arrays of nested annotations are created when the user edited one of the nested annotations in JPA detail view. A patch fixed this problem, any bogus element will be treated as empty.

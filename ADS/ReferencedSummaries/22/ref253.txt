@@ -1,0 +1,1 @@
+When updated from head, an api error got on the project and in the problems view, no way to got it off. This error is to alert users they are using api tooling, they need to set up a baseline. The error should be marked a warning, and it would be nice to have one workspace "error", or make it have a configurable severity. This was fixed for 3.4m6.

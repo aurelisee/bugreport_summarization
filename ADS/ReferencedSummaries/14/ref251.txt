@@ -1,0 +1,1 @@
+The schema is not refreshed when mysqlcatalogdatabase.refresh() is called though the right listeners are called. The schemasLoaded' and 'catalogsLoaded' should be set to Boolean.TRUE and it should be tested to become a part of early release. Though lack of manpower the problem is fixed and asked for further testing.

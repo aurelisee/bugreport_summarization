@@ -1,0 +1,4 @@
+The flash check should be disable. 
+Pulling the checker overall would be fine. 
+You can refer the website for detail. 
+It can be fixed by a attachment.

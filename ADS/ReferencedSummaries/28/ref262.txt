@@ -1,0 +1,4 @@
+The windows ce hanged whan opening the content pane. 
+The call length effected the loop. 
+Font weight may be the reason of the bug. 
+Finally it is fixed with test.Verified fix on Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre) Gecko/20090811 Firefox/3.6a2pre

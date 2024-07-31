@@ -1,0 +1,14 @@
+there have been at least two updates since, but help- > check for updates doesn ' t find anything. likely related to bug 431866, but comments there imply that this should be fixed. 
+i ' m not sure which of the two 2008050209 builds i ' m using is there any way to fix this by changing snippets or something. 
+seems to affect windows as well,probably a different bug than bug 431866, might be all updates broken. 
+linux updates are mia as well. 
+blocker. 
+apparently this is related to the underlying issue of bug 431270. also, this will might just resolve itself when the 20080504 nightlies are available. right now the updates being served are corrupted because there were two builds with the same buildid. 
+there ' s been a full nightly since, and and clobber after that (that didn ' t have the same build id). 
+this bug is also affecting more than just mac, which is what bug 431866 was about. 
+well, it ' s 11am est and i haven ' t gotten my 20080504 nightly, so looks like gavin ' s right, and this is a different issue. 
+we ' re losing significant test coverage from nightly users with rc1 coming up very fast. 
+as further info, i just checked for updates for a build from about a week ago and it found and installed the 0502 nightly. 
+fixed now,the snippets causing the problem where removed to resolve the immediate problem,nightly updates for the fx & tb 1.5.0.x builds have been disabled to prevent it recurring.Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9pre) Gecko/2008050209 Minefield/3.0pre
+Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9pre) Gecko/2008050206 Minefield/3.0pre
+Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9pre) Gecko/2008050204 Minefield/3.0pre ID:2008050204

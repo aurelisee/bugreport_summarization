@@ -1,0 +1,1 @@
+The problem is that the result can represent a bigger value than we actually need for some hunks, which is in combination with shifting can result in invalid hunks being applied. To solve the problem, one possible way is to create a patch that chanes matching strategy so that a fuzz factor is set and used individually for each hunk. The patch and both test cases released to head.
