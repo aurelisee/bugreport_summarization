@@ -1,0 +1,2 @@
+Nautilus 2.22.0 returns a \"file not available\" error when doing a dnd or deleting a directory on a proftpd served using gvfs.
+This bug was fixed by implementing a new system for handling 550 error messages.

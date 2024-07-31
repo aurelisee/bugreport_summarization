@@ -1,0 +1,3 @@
+When running a simple SWT example with the latest version, a Mac user experiences a crash on start up.
+It is revealed that he must use the -XstartOnFirstThread option when starting SWT applications, or it will crash.java version \"1.5.0_13\"
+I'm running Mac OS X 10.4.11, so still on Tiger.

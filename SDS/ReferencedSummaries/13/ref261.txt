@@ -1,0 +1,7 @@
+This is a defect in GIMP plug-in to capture screenshot- first, there two different entries for same functionality-\"Screen Shot\" and \"Screenshot\", second, there is an option to select region to grab but it does not work.
+It is explained that the two entries might be there to test two different versions of the program and this is a work in progress.
+This bug report was submitted to alert developers this functionality is broken but since it is reported on development version, which is expected to have incomplete functionality and hence should not be reported as a bug.1. Launch GIMP 2.3.11 Development for Windows on a Windows 2000 platform.
+2. Got o File->Acquire->Screenshot.  (Note the two different entries for \"Screen Shot\" and \"Screenshot\".)
+3. Tick \"Select a Region to Grab.\"
+4.  Set the delay.
+5.  Click \"Grab.\"

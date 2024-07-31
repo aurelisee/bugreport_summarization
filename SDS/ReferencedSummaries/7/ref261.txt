@@ -1,0 +1,5 @@
+Some internal about pages in Firefox are hardcoded to be left-to-right, which causes some cosmetic problems in localized right-to-left versions of Firefox.
+Adding an extra option in the CSS file is suggested.
+However, fixing this in the markup language itself is more preferable.
+The directionality of internal pages are suggested to be controlled by an option mentioned in the language packs, which might cause problems in some pages.
+The problem is pushed to a higher level and left to be dealt with by localization authors after all.

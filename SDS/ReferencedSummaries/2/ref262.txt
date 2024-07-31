@@ -1,0 +1,4 @@
+It is suggested to remove the preference that removes the session storing feature, because disabling it breaks some features.
+It was originally intended for extensions to disable when they do their own session restore, but can leave users with it still disabled after the extension is disabled.
+Instead the extension writers should extend the API to do session restoration themselves.
+Those users concerned with the privacy implications can disable other settings to effectively to the same thing.

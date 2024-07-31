@@ -1,0 +1,5 @@
+This thread is not actually about a bug and is just about a user who could not use SWT library in Mac OS X.
+It is necessary to use -XstartOnFirstThread option when trying to use SWT library in OS X.
+Here the user is ignorant of the fact that using this option is necessary, so he gets SIGILL error, the window crashes without anything in the logs.
+After using this option, no error message is produced.java version \"1.5.0_13\"
+I'm running Mac OS X 10.4.11, so still on Tiger.

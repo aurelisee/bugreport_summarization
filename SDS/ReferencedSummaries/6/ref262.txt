@@ -1,0 +1,3 @@
+The JavaDoc for Platform.getResourceString(Bundle,String) states that the method has been deprecated.
+It is confirmed that the method is not deprecated, and that the comments should have been added to the implementation code or to a bug report, not to the JavaDoc of the Platform class.
+The fix is to remove the comments from the Platform class.

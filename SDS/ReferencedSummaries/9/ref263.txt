@@ -1,0 +1,7 @@
+This report is about the mailto: links in firefox which do not always work with web based e-mail clients when user clicks on these links.
+Users claim that this option is supported for stand alone e-mail applications (e.g. thunderbird) and also when webmail compose extension is installed.
+It turns out that a more general topic is discussed in another thread.
+This bug is fixed in newer versions of firefox.User-Agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)Gecko/20050915 Firefox/1.0.7 (ax)
+Build Identifier: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)Gecko/20050915 Firefox/1.0.7 (ax)
+Using Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1) Gecko/20090615
+Firefox/3.5

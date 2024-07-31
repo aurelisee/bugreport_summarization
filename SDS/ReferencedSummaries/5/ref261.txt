@@ -1,0 +1,10 @@
+This is a suggestion for enhancement so that lines added in a patch can be counted during \"Apply Patch\" wizard.
+Regular expressions which counts lines starting with '+' is preferred and simplest approach to achieve this.
+Same approach can also be extended to lines removed just by replacing '+' by '-' in the regular expression.
+As the first fix tried, user can specify the regular expression on the preference page and it is empty by default.
+This solves the problem but does not work out of the box.
+So another fix is tried which does not require that a regular expression is provided, however user can specify his/her own regular expression on the preference page.
+On testing it was realized that this also counts empty lines and a suggestion was made that output should also specify non-empty lines as filtered output like-\"Patch contains 207 added and 29 removed lines (151 / 27 filtered)\".
+The default behavior is simple and user has a choice to make changes to regular expression to achieve more sophisticated output(for example it ignores empty lines).
+This fixes the current issue and a more sophisticated default behavior is not required.
+Filter idea is good but it should be dealt as a separate bug.

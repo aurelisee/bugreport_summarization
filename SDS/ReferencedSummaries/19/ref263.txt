@@ -1,0 +1,7 @@
+An accessibility concern is raised as both Window-Eyes and JAWS seem to fail to read out the title of groups of radio buttons and other controls.
+A work-around in Window-Eyes is provided, and specific examples of the failure are listed.
+Further testing with various versions of JAWS does not show this problem.
+A stand-alone example applet is given to demonstrate the problem, but again it cannot be reproduced by others.
+The JAWS configuration files are compared.
+Finally, the problem is shown to be specific to JAWS on Windows XP with a specific Java environment.
+This is resolved in the new version 6.0 of JAWS.I am using JAWS 5.1.383.

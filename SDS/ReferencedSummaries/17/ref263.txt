@@ -1,0 +1,7 @@
+As gnome_help is deprecated, it needs to be replaced by a more general function, gtk_show_uri, according to GNOME goal proposal.
+Some minor problems (including the version number) are then noticed and fixed in the first patch.
+This generalization might become problematic as gtk_show_uri can take NULL as the parent widget of help dialogue.
+Passing a parent could be mandatory, but it would be best if the parent is a screen object not a widget.
+The parent could now be NULL so as to avoid calling get_screen repeatedly.
+Adding a flag to mount required space before using it is also discussed.
+It is said that calling get_screen would be helpful to avoid multi-screen bugs, but since this is rare it will become cumbersome for other cases (say 99% of cases).

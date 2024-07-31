@@ -1,0 +1,9 @@
+Struct fields are required for the functionality of a widget as the latest PyGtk wrappers access data members directly and hence C programmers would require to access them too.
+These struct fields should never be required and hence this is a bug which must be removed by implementing accessor functions.
+Some of the listed data members which are accessed in the PyGtk wrappers directly already have accessor functions while some of them are for deprecated widgets.
+The rest require accessor functions.
+Added to API fix for a future milestone but a higher level for the API is requested as GtkList widget is already deprecated which is required for accessing functionality of the Combo widget.
+Combo box is already broken in GTK-- where a different implementation for the list is used which makes it impossible to access list data.
+Hence a suggestion to make the combo a GList is made which would make working with it easier while allowing access to list items.
+It is not sure if a good way of handling arbitrary widgets with associated text exists without some sort of ListItem.
+The ongoing gseal work is handling the issues described above.

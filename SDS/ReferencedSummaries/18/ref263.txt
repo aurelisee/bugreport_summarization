@@ -1,0 +1,5 @@
+A user is trying to use the latest version of SWT library, but it even fails to run a simple example.
+The Java compiler version seems to be OK.
+It might be the way the application is launched on Tiger.
+It turns out that he needs to add option -XstartOnFirstThread while running it in command line.java version \"1.5.0_13\"
+I'm running Mac OS X 10.4.11, so still on Tiger.

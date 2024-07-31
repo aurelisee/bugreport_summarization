@@ -1,0 +1,8 @@
+GnuCash does not export reports correctly - it always exports as HTML, regardless of the chosen output format, and leaves out images.
+These problems existed due to limitations of Guppi, the graphical library used in this version of GnuCash.
+Guppi is only capable of exporting images as PostScript files and does not embed them in HTML.
+The newer gtkhtml has better HTML support, and webkit supports inline images.
+This will be fixed in GnuCash version 2.4.1. In gnuCash go on reports and create any report that contains a graph
+2. In the report window click on Export
+3. Save export to \"foo.html\"
+I can confirm this using GnuCash 2.0.5 on Ubuntu 7.04, feisty fawn...and I can confirm that it's frustrating....

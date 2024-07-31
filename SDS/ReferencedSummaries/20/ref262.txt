@@ -1,0 +1,7 @@
+Teneo installation results in the the \"Ant Home Entries\" entry on the classpath page being empty, as well as generating NullPointerExceptions in the log file.
+This is only seen when Teneo is installed and enabled.
+This behavior is questioned, as there isn't an obvious way for Teneo to affect other plugins like that.
+A set of log files, screen captures and other information is requested.
+These are provided.
+It remains mysterious how Teneo could be causing these problems, and the bug report's classification is changed.
+The problem isn't seen with the new version of Teneo and the bug is closed.

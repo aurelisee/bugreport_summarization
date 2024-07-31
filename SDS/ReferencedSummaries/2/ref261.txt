@@ -1,0 +1,5 @@
+A pref in Firefox provided for Session Store functionality causes problems when users deactivate Session Restore ability.
+In order to make removing this pref up, extension authors are suggested to take care of it in their own way.
+Some privacy issues are considered when people do not like their session history to be stored.
+However, these issues could be resolved by previously provided prefs.
+Some interferences with other packages is spotted then, but using already provided options or changing the documents will resolve it too.

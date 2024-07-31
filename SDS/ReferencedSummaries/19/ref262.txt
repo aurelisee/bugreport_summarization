@@ -1,0 +1,7 @@
+JAWS and Window-Eyes do not show group titles in some UI dialogs (where groups have a single child without a name).
+Search and find/replace dialogs are introduced as two test cases.
+Controls could be read again when they get focus or their windows have just got opened.
+The problem is not seen by some other people.
+Therefore, they install a fresh version of the software.
+However, users get different outcomes from fresh versions (both perfect and erroneous).
+Finally, it turns out that this problem only happens in Win XP when Win2K modules are mistakenly being used.I am using JAWS 5.1.383.

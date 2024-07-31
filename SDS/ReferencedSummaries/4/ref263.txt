@@ -1,0 +1,4 @@
+If the class FolderDescription has nonexistence members, its method   createExistentResourceFromHandle returns immediately, and as a result, these members will not be created.
+This problem occurs when portions of the resource tree which do not exist when the operations are created are already exist at the time of executions, because the operations remember that the portions of the resource tree don't exist.
+To solve the problem, we need to change operations so the resource descriptions are updated  according to changes that occurred
+In addition, clear documents should be added to explain the intentions of the operators.

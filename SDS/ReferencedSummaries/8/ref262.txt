@@ -1,0 +1,5 @@
+The AdapterManager.computeClassOrder(Class) implementation does not match IAdapterManager JavaDoc.
+At first it was suggested to change the spec to match the implementation.
+But it was discovered that the implementation used to match the spec, and was accidentally changed during an update.
+Since it was an accidental change, the fix is to change the implementation back to match the spec once again.
+The JavaDoc was also changed to remove a contradiction and make the methods behaviour clearer.

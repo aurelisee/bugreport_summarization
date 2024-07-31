@@ -1,0 +1,5 @@
+This report is about an incorrect deprecation comment in javaDoc for platform.getResourceString(Bundle,String).
+JavaDoc suggests using NLS or BundleFinder.find() instead of platform.getResourceString.
+Functionality of Platform.getResourceString is never implemented in any other class which is inconsistent with javaDoc.
+and many adopters are still using it.
+It turns out that javaDoc is incorrect and in fact Platform.getResourceString is not deprecated, and incorrect comments are fixed.

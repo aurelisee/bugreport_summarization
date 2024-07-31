@@ -1,0 +1,3 @@
+Some screen reading software is not able to read the group title for controls in dialog boxes.
+This bug is not reproducible by everyone, and it is determined it only affects WinXP users who have javaw.exe.manifest in jre/bin, as this causes different controls to be used.
+The problem is fixed in JAWS 6.0.I am using JAWS 5.1.383.

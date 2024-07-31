@@ -1,0 +1,4 @@
+When copying/deleting directories from FTP servers in Nautilus, a File Not Error found is given.
+Many other users experienced this using different FTP server software.
+It is discovered that the backend should return a G_IO_ERROR_IS_DIRECTORY error, but isn't.
+The SMB and FTP backends were patched to send the correct error.

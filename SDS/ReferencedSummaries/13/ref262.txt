@@ -1,0 +1,10 @@
+There are two similar entries â€œScreen Shotâ€ and â€œScreenshotâ€ in the file menu in a development version of GIMP.
+In addition, when users choose â€œScreen Shotâ€, there is no option to â€œSelect a Region to Grabâ€.
+However, when the â€œScreenshotâ€ is selected, a dialogue box will show the option of \"Select a Region to Grab\".
+Although the option exists, the real functionality has never been implemented at all because of the short of volunteers.
+Some other software such as Winsnap and IIRC Tor can be used to select a region to grab.
+Finally a plug-in is added to fix the problems.1. Launch GIMP 2.3.11 Development for Windows on a Windows 2000 platform.
+2. Got o File->Acquire->Screenshot.  (Note the two different entries for \"Screen Shot\" and \"Screenshot\".)
+3. Tick \"Select a Region to Grab.\"
+4.  Set the delay.
+5.  Click \"Grab.\"

@@ -1,0 +1,6 @@
+Rotate gesture on multitouch trackpads causes cycling tabs in Firefox, but users might accidentally trigger it and get confused.
+This gesture could be tweaked not to be triggered accidentally.
+Also, pinching gesture causes zooming in/out, but since it is more natural there is no need to remove it.
+Sometimes zooming in/out are mistaken for rotating or vice versa, but removing rotate gesture will resolve it.
+Multitouch trackpads might not be an issue for Win7 users, but it is taken out from both versions anyway.Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.2a1pre) Gecko/20090525 Minefield/3.6a1pre ID:20090525031110
+Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1pre) Gecko/20090526 Shiretoko/3.5pre ID:20090526031155

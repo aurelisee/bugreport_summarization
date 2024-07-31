@@ -1,0 +1,6 @@
+Installation of Teneo causes the entry \"Ant Home Entries(Default)\" to vanish from the preferences page.
+Null pointer exceptions in the log file and \"Malformed URL\" error on opening preferences page also result.
+A step by step clean installation of an eclipse environment shows that this problem occurs right after installation of Teneo where disabling Teneo restores things to normal.
+A request for debug information like screendump and log file using a -clean switch is made to further investigate this problem.
+The generated log files and related data did not lead to the reason behind this problem.
+The issue was later resolved with a new release of Teneo which is believed to have done a consolidation of the used libraries.

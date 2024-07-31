@@ -1,0 +1,6 @@
+A bunch of comments in the javaDoc have never been acted upon.
+As a result, some classes and functions in the javaDoc have never been implemented.
+In addition, the classes which are assumed to be dropped are in fact not deprecated.
+Therefore, the comments in javaDoc should be removed to prevent confusion.
+The removing of these comments has been added to a milestone.
+In fact, this bug is a duplicate to another bug (247983).

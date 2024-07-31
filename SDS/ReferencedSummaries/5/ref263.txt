@@ -1,0 +1,5 @@
+This thread is about a feature in eclipse which counts how many lines does a patch, change in the code.
+The first idea is embedding counter in apply patch wizard using a regular expression as ^\\+? (\\s*\\S+\\s*)+$ which counts lines starting with '+' and a space and have at least one non-space character.
+Then further discussion is about improving the regular expression which finally leads to ^\\+\\s+\\S as a default regular expression.
+Another discussion area is about counting removed lines and added empty lines, by the patch and some ideas for doing this is mentioned and implemented.
+As a solution, it is suggested to access user to put his regular expression for counting in General &amp;gt; Compare/Patch preference page and there is some discussion on what expression to pick for default value of regular expression.

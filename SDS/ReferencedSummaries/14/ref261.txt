@@ -1,0 +1,10 @@
+This is a defect in gnuCash which creates an empty html file while exporting reports with graphs.
+The current graphical code relies on a library \"Guppi\" (it is no longer maintained), which can print graphs to postscript but cannot export them into HTML.
+It was decided that bug should be kept as reminder for later release but the problem is not fixed until version 2.2.8.
+The possible reason looks like gtkhtml doesn't support saving and even it's later version doesn't support inline images, hence fix is only possible using webkit.
+In the suggested fix gnc-html-webkit pre-parses the HTML string to find &amp;lt;object&amp;gt; tag, calls GOG with the parameter values from the &amp;lt;object&amp;gt; to create a GdkPixbuf, then converts the pixels to png/base64 and embeds the HTML &amp;lt;img&amp;gt; in the original where &amp;lt;object&amp;gt; was.
+Webkit also handles export by writing that HTML to file.
+This fix is targeted for version 2.4.1. In gnuCash go on reports and create any report that contains a graph
+2. In the report window click on Export
+3. Save export to \"foo.html\"
+I can confirm this using GnuCash 2.0.5 on Ubuntu 7.04, feisty fawn...and I can confirm that it's frustrating....

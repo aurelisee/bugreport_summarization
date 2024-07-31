@@ -1,0 +1,7 @@
+Firefox supported a lot of stand alone e-mail applications, but not web based e-mail clients.
+The idea of providing an option to configure firefox to log into that web based e-mail account and open a compose new message window was suggested.
+One solution to this was to ask Firefox users to download the WebmailCompose extension from webmail services, but it was preferred to have an option in Firefox.
+The problem was fixed in a more recent version.User-Agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)Gecko/20050915 Firefox/1.0.7 (ax)
+Build Identifier: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)Gecko/20050915 Firefox/1.0.7 (ax)
+Using Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1) Gecko/20090615
+Firefox/3.5

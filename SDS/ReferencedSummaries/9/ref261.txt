@@ -1,0 +1,8 @@
+This is a suggested enhancement which will enable Firefox to support web based e-mail clients like gmail.
+Clicking a mailto link is generally useless as most of the users use web based email application.
+Other user programs and extension can possibly solve this problem, however Firefox itself should have this capability.
+This behavior can also be extended to feeds.
+Apparently Gecko 1.9 is required for this fix but using Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1)Gecko/20090615 Firefox/3.5 solves the problem.User-Agent:       Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)Gecko/20050915 Firefox/1.0.7 (ax)
+Build Identifier: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7.12)Gecko/20050915 Firefox/1.0.7 (ax)
+Using Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1) Gecko/20090615
+Firefox/3.5

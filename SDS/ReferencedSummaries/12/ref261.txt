@@ -1,0 +1,12 @@
+This thread is about a bug in GIMP(GNU Image Manipulation Program) that happens when trying to convert a grayscale image to a black and white image.
+In this situation, the conversion will take a long time for big images, which is not acceptable due the fact that this conversion is just replacing each 8bit with 1bit
+Continuing the thread, bug is confirmed but one workaround is suggested (by using Optimal Palette option) which turns out to be a wrong solution and lead to another bug thread.
+The proposed fix for this bug is to treat the palette as gray rather than rgb which decreases run time by a factor of ten.
+however this fix only works for grayscale images and rgb image conversion still takes a long time.1. Open a large grayscale image of your choice (e.g. larger than 2000*2000 pixels, maybe a scan result from your scanner)
+2. Use \"Tools/Color Tools/Threshold\" to apply some threshold choosen arbitrarily.
+3. Now you have a 8bit grayscale image, which actually consists only of color values \"0\" and color values \"255\".
+4. Choose \"Image/Mode/Indexed...\", and there:
+4.1 Colormap: \"Use black and white (1-bit) palette)\" (this should be the fastest option possible)
+4.2 Dithering: \"none\" (this should be the fastest option possible)
+4.3 Now hit \"OK\"
+5. The conversion will work, but it will take many seconds.

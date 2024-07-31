@@ -1,0 +1,9 @@
+The JavaDoc for IAdapterManager.computeClassOrder(Class) doesn't match the implementation.
+An example was provided to show the confliction.
+The comment, \"(in the example, A and its superinterfaces then B and its superinterfaces)\", in JavaDoc was not clear and it conflicted with \"a breadth-first traversal of the target class's interfaces in the order returned by getInterfaces\".
+A correct spec was proposed as \"a breadth-first traversal of the target class's interfaces in the order returned by getInterfaces (in the example, X and its superinterfaces then Y and its superinterfaces)\".
+The confliction between implementation and spec was made inadvertently while fixing bug 32498.
+Fixing the implementation was proposed as a solution.
+A test case was provided.
+A further modification, \"(in the example, X's superinterfaces then Y's superinterfaces)\", was suggested.
+It was accepted and released to the head.

@@ -1,0 +1,4 @@
+There is a rotate gesture in Firefox that is often triggered accidentally while scrolling.
+It is agreed that the rotate should be removed in Windows and OSX in the next version of Firefox.
+It is suggested that the pinching gesture be removed as well, but it is decided that that should be in a separate thread.Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.2a1pre) Gecko/20090525 Minefield/3.6a1pre ID:20090525031110
+Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1pre) Gecko/20090526 Shiretoko/3.5pre ID:20090526031155

@@ -1,0 +1,12 @@
+In GIMP version 2.2.x, converting an image from greyscale to black and white is very slow.
+An 8bit greyscale image only consists of color values 0 and 255, so converting it to a black and white image should be a very fast operation, replacing 8bit values by 1bit values.
+There is a workaround, where if you use the \\\"Optimal Palette option\\\" when selecting the \"colormap\", the conversion occurs in a fraction of a second.
+A fix is committed that gives major speedup when converting greyscale to mono, but the problem still exists for RGB images.
+This bug discovers the existence of another related bug, and there is a new bug report created for it.1. Open a large grayscale image of your choice (e.g. larger than 2000*2000 pixels, maybe a scan result from your scanner)
+2. Use \"Tools/Color Tools/Threshold\" to apply some threshold choosen arbitrarily.
+3. Now you have a 8bit grayscale image, which actually consists only of color values \"0\" and color values \"255\".
+4. Choose \"Image/Mode/Indexed...\", and there:
+4.1 Colormap: \"Use black and white (1-bit) palette)\" (this should be the fastest option possible)
+4.2 Dithering: \"none\" (this should be the fastest option possible)
+4.3 Now hit \"OK\"
+5. The conversion will work, but it will take many seconds.

@@ -1,0 +1,9 @@
+If the layer and image have different size, the plug-ins GimpZoomPreview and GimpAspectPreview will fail and can even crash.
+The bug is hard to fix because some APIs should be changed accordingly.
+Therefore, although this bug is sever, a patch was designed four years after the bug report.
+After installing the patch, the area displayed in preview is the intersection between layer and the selected part of an image.
+For GimpAspectPreview, the selection mask should be applied to the thumbnail of the whole drawable.Open a new image,
+create a layer much bigger than the image, and with a different aspect ratio.
+draw something on the drawable (using some colors)
+make a selection selecting only some parts of your drawing
+use the channel mixer.

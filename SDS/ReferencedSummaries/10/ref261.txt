@@ -1,0 +1,16 @@
+There seems to be an error in the selection mask size assignment when layer size is greater than image size which can cause the plugin to crash.
+Intersection of the layer and the active image has been proposed as a solution.
+Aspect preview code is suggested to be changed by either displaying the entire drawable or just the selection.
+The fix's milestone is set to 2.4 as it was a crash and should have been resolved before 2.4 release if possible.
+An example was requested and the same was attached.
+It was pointed out that channel mixer uses GimpZoomPreview and not GimpAspectPreview &amp; that both had problems when repro of the reporter is followed.
+Selection mask was found to have width larger than the actual mask in the preview code in the example image.
+A patch was created which handles layers with offsets and displays area which is the intersection of active area and selection.
+Selection mask has to be applied for the whole drawable for GimpAspectPreview.
+A request to commit the patch was made.
+A suggestion to commit was made.
+The fix was then committed.Open a new image,
+create a layer much bigger than the image, and with a different aspect ratio.
+draw something on the drawable (using some colors)
+make a selection selecting only some parts of your drawing
+use the channel mixer.

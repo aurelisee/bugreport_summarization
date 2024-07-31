@@ -1,0 +1,10 @@
+GnuCash fails to export reports that contain graphs to HTML, instead creating an empty file.
+It also fails to make it obvious which formats are supported.
+This failure is acknowledged, and blamed on the graphing being currently used, which isn't going to change until the gnome2 port is finished.
+Despite the gnucash-1.8.x series being inactive, the bug report is kept active as a reminder for future work.
+Two years later, it hasn't been resolved and a request is made to increase the priority of the bug report, which is done.
+Another two years pass, and possible issues of using GtkHtml and webkit are listed.
+A follow up concludes that GtkHtml won't work because it doesn't support inline images, and the webkit version will have to be used.1. In gnuCash go on reports and create any report that contains a graph
+2. In the report window click on Export
+3. Save export to \"foo.html\"
+I can confirm this using GnuCash 2.0.5 on Ubuntu 7.04, feisty fawn...and I can confirm that it's frustrating....

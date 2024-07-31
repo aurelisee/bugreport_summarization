@@ -1,0 +1,8 @@
+This bug talks about mismatch in implementation and it's specification in JavaDoc for IAdapterManager method computeClassOrder(Class).
+Javadoc uses an example which does not catch the ambiguity very well.
+A richer example is presented to realize that the search order in which classes and interfaces are returned does not match with the specification.
+Specification in JavaDoc itself is a bit ambiguous.
+There is a concern that changing implementation to match specification may lead to loss of backward compatibility.
+This bug did not exist before February 20, 2004 and an accidental change lead to this issue, hence it was decided that implementation should be changed.
+Implementation issue is then fixed and tested with richer example.
+Minor changes to documentation make specification unambiguous.

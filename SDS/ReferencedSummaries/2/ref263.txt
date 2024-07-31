@@ -1,0 +1,10 @@
+It is suggested that the browser.sessionstore.enabled preference be removed because it isn't working out as expected.
+An alternative of getting extension authors to override other settings to get the same result is proposed.
+A patch is provided.
+Possible privacy concerns are raised about how the patch works.
+Alternative solutions to the privacy issues are suggested.
+A minor change to the patch is given, but this is only because of another bug.
+The impacts of this change on another feature, Tab Mix Plus, is listed.
+The owner of this feature doesn't see a major problem, but requests a new preference be added to help with the change.
+A list of possible work-arounds is given.
+A request for proper documentation of the change is made.

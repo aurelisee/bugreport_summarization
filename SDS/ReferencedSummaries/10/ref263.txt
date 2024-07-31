@@ -1,0 +1,12 @@
+When an image and a layer have different sizes, plugins can crash because the thumbnails are based on one size only.
+It is suggested that the intersection between the sizes could be used, or limiting the area appropriately.
+The problem is bumped several times.
+An example XCF file is requested and provided to demonstrate the problem.
+The problem extends to GimpZoomPreview as well as GimpAspectPreview.
+Work is done to track down where the exact error occurs.
+A patch is provided which lets GimpZoomPreview handle the layer offsets properly.
+This is accepted to be committed in the trunk.Open a new image,
+create a layer much bigger than the image, and with a different aspect ratio.
+draw something on the drawable (using some colors)
+make a selection selecting only some parts of your drawing
+use the channel mixer.

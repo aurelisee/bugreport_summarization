@@ -1,0 +1,11 @@
+In localizations for languages that use RTL layout, the about:mozilla page is LTR.
+Other internals about pages have the same problem.
+The reason this bug has emerged is explained as being because about:mozilla has been moved out of the language pack.
+A solution using dom/chrome/global.dtd is suggested.
+A patch doing this is provided.
+There is discussion of the best way to mark directionality.
+It is suggested that a more global solution would be appropriate.
+In response, the patch is defended assuming the localizers finish their work properly.
+The case of about:robots is singled out as a special case that shouldn't be handled in this fix.
+There are calls to get this patch approved for the 1.9.0.1 release.
+Ownership of the approval is uncertain.

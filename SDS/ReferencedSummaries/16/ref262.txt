@@ -1,0 +1,7 @@
+It is pointed out that some PyGtk wrappers are directly accessing widget data attributes, which shouldn't be needed.
+A list of 43 examples is provided.
+Some already have accessor functions, and some are for deprecated widgets.
+It is suggested that accessor functions be of a higher level, deprecating the existing lower level ones.
+Applications are already going to break due to deprecated widgets, which has already become a problem for other wrappers.
+A  suggestion is made that access list items as a GList would make everything more usable.
+The entire problem is handled by a separate development team much later.

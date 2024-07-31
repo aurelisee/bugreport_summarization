@@ -1,0 +1,2 @@
+When rescaling images, GIMP always defaults to a single scaling method defined in the preferences (linear scaling by default) instead of keeping track of the last choice made by the user.
+GIMP has been updated to remember the scaling settings across dialog invocations.

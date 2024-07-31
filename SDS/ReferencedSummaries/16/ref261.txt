@@ -1,0 +1,6 @@
+Possibly from a previous discussion, it was concluded that if struct field is needed for using any widget it should be reported as a bug.
+This bug report lists 43 examples where this general rule is violated.
+It was observed that some of these already have accessor functions or occur for deprecated widgets but some of these still need a fix.
+A suggestion is made that API should be raised to a bit higher level for example to avoid deprecated GtkList to affect Combobox widget.
+Another suggestion is made to replace list in Combobox with GList.
+The ongoing work on gseal finally fixes this bug.

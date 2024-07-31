@@ -1,0 +1,5 @@
+Using gvfs svn and nautilis 2.22.0, copying or deleting a directory leads to a file not available error.
+This is confirmed by several others, it also occurs in openSUSE with all kinds of FTP servers.
+The cause is determined to be because of broken backends.
+Any attempts to open, copy or move a directory should fail with G_IO_ERROR_IS_DIRECTORY, because GIO functions and Nautilus rely on it.
+The fix is committed, and some changes are made to the implementation before the bug is marked resolved.

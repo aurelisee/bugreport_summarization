@@ -1,0 +1,10 @@
+Applications used gnome_help functions to show help files, but gnome_help was part of the deprecated gnome_help.
+A patch was created to add gtk_show_uri and gtk_show_help to GTK+.
+A few issues about the patch were raised.
+It was also suggested to remove gtk_show_help() from the patch.
+Updated patches were created according to these requests.
+Another problem was raised that gtk_show_uri allows a NULL parent, but that is not multi-head safe.
+Updated gtk_show_uri patch was created, using a GdkScreen as input.
+Some comments were made on this new patch.
+Updated patch was created according to these comments: GdkScreen can be NULL.
+The patch was committed and a function that mounts the volume before opening it was left as future work.

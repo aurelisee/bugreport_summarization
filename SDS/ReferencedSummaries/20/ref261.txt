@@ -1,0 +1,3 @@
+When Manfred Hahn installed Teneo, a set of plugins, the Ant Preferences page was corrupted.
+This behavior should not have happened, but no cause or solution is found.
+A later version of Teneo install correctly, so this issue is considered fixed.

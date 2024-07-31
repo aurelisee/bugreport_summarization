@@ -1,0 +1,5 @@
+A new feature is suggested for the Apply Patch Wizard.
+When applying a patch the number of lines added and removed is displayed.
+The default counting method works by counting all lines that start with '+ ' as added, and all that start with '- ' as removed.
+The user can also use custom regular expressions to count added and removed lines, and can configure them from the preferences.
+An extra feature is suggested for being able to filter out lines from the count, such as lines with comments or empty lines, but it is no longer discussed, or it is discussed in a different bug report (unspecified).

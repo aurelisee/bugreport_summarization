@@ -1,0 +1,10 @@
+The gnome_help functions which are currently being used are deprecated, so a patch is offered to switch to gtk_show_uri and gtk_show_help.
+This is missing updates to a symbol table, has some licensing details wrong, and gtk_show_help doesn't work on all platforms.
+Updates patches are given which fix these
+It is pointed out that gtk_show_uri is not multi-head safe due to NULL parent.
+It is suggested that it be forced to take a parent, but this is rejected.
+Instead a version which takes GdkScreen is suggested and then provided.
+It is suggested that GdkScreen should be able to be NULL and that the documentation should be improved, and this is accepted.
+Auto-mounting is also requested.
+Someone questions the utility of catering to so many special cases.
+The patch is accepted.

@@ -1,0 +1,4 @@
+When rescaling images in GIMP, the interpolation method is not saved from last time it was invoked, which causes inconvenience particularly when users want to repeat rescaling many times.
+The default method can be chosen in preferences dialog, but it might be hard to find or inconvenient to access.
+A \"save last setting\" option in the dialog box is suggested but declined because of making a mess in UI.
+Finally, the last method used is automatically saved and defaulted in the next usage.

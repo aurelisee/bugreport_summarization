@@ -1,0 +1,4 @@
+The method FolderDescription#createExistentResourceFromHandle(IResource,IProgressMonitor) does not create members that rely on the creation of other members not initially present.
+Initial suggestion is that createExistentResourceFromHandle should instead check to see if members of a FolderDescription should be created.
+Note that this is only a problem if code is structured inappropriately, and fixing it would require tracking changes to the file system that are outside the scope of the current class design.
+Javadoc was updated to clarify that the existing class does not track these changes, and additional validity tests were added.

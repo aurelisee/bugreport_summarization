@@ -1,0 +1,3 @@
+The multitouch \"rotate\" gesture for changing the active tab can sometimes be triggered accidentally, though not everybody seems to have this problem.
+This gesture was removed from Windows and OS X builds.Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.2a1pre) Gecko/20090525 Minefield/3.6a1pre ID:20090525031110
+Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1pre) Gecko/20090526 Shiretoko/3.5pre ID:20090526031155

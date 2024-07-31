@@ -1,0 +1,20 @@
+Apply threshold is fast but converting is quite slow.
+It is fast if ust the \"Optimal Palette\" option.
+The converting with \"Optimal Palette\" option is fast but plainly wrong.
+The \"plainly wrong\" issue is different.
+A solution was figured out.
+Patch codes.
+New problem could appear.
+The optimal palette does a first workround before determinating to skip both the expensive quantization and dithering stages.
+The mono palette does not need to care about the pre-workround.
+The \"mono\" operation is not rare.
+A \"convert to 1bit\" operation would adjust the internal memory requirements.
+GIMP's internal memory requirements could not be adjusted significantly.
+OpenOffice's internal memory requirements could be affected.1. Open a large grayscale image of your choice (e.g. larger than 2000*2000 pixels, maybe a scan result from your scanner)
+2. Use \"Tools/Color Tools/Threshold\" to apply some threshold choosen arbitrarily.
+3. Now you have a 8bit grayscale image, which actually consists only of color values \"0\" and color values \"255\".
+4. Choose \"Image/Mode/Indexed...\", and there:
+4.1 Colormap: \"Use black and white (1-bit) palette)\" (this should be the fastest option possible)
+4.2 Dithering: \"none\" (this should be the fastest option possible)
+4.3 Now hit \"OK\"
+5. The conversion will work, but it will take many seconds.
