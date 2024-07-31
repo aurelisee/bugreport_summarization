@@ -1,0 +1,11 @@
+when i click to download a pdf file and pick " save to disk " (it ' s the default for me, fwiw), i don ' t get it downloaded
+i sometimes *do* get a pair of exceptions in the console, though, to read instead
+however, in the new userdownloadsdirectory code i ' ve made the assumption it ' s a path
+i think that might be the problem, i should be getting the complex value as an nsilocalfile instead.
+slightly different error now, after rebuilding with the patch, probably just line-number fuzz
+> } this second block of code you ' re changing looks dead - bres can ' t be true here, otherwise you would have returned in the previous block
+this patch does fix the problem for me, though, so r+, but please do either attach a new patch here that includes the dead code removal, or file a bug to remove it separately.
+i do think you want to go with the first patch, but just additionally remove the second " if (bres) " check
+right, just verifying that the nsifile you get back from the call to getuserdownloadsdirectory() is correct for various values of the pref
+i can confirm that in the 2007-08-22-04 builds of minefield on os x 10.4, with a ' users/stephend/downloads/ ' directory, and the pref to prompt me where to save, i get the following exception thrown
+verified fixed

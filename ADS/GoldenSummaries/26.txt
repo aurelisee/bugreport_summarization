@@ -1,0 +1,13 @@
+we ' ve found a number of bugs where the tegra device locks up hard (ie, mouse pointer frozen, kernel debugger can ' t connect to it) after visiting a ssl site
+not every ssl site does this, however.
+i took a spin through existing hang bugs, and verified that the workaround mentioned at the end of these email seems to make all the sites work fine
+the debugger seems to be very finicky, so i ' ll try again with a full debug build, maybe that will help.] looking at the system process/thread info is revealing, though
+so, this very much looks like one thread is spinning on the cpu and starving everything else
+there seems to be a potential loop between nsssliolayerpoll() and nssslthread
+ssl thread is used to decouple mozilla ' s single-threaded network engine and the ssl read/write calls (which may sometimes blocked with an ui prompt)
+a pollable event is used by ssl thread to wake up the network thread when some previously requested i/o is ready to be fetched
+on platforms where we fail to get a pollable event we need to live with a busy loop while waiting for i/o to complete
+but we use sleep calls to reduce that effect
+you should see that in most scenarios the poll call is not reached but function requestpoll will " return early "
+comment 11 indicates the busy-poll can be normal, so due to the high-priority we were assigning that thread nothing else would be able to run (including the network stack, most likely)
+Using Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre)

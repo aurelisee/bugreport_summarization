@@ -1,0 +1,27 @@
+while looking for the cause of bug 196847, i got suspicious about a usage of the so called fuzz factor
+however, after taking a closer look at the code i got confused
+i think we should take a second look at the patcher algorithm
+while i was looking at the code, i became confused as well
+i agree that we have to take a good look at it.
+this is a testcase showing that the fuzz factor is not working as expected, actually is not working at all
+i ' ve modified slightly the patchtest class, so now one can use the fuzz factor as a parameter
+the major part of it are the additional tests located in " patchdata " subfolder
+the idea behind the " testpatchdatasubfolder " method from the patchtest class is that now one can easily add a new testcase by creating 3 files
+this is a working version of the patch for the fuzz factor issue
+1) the default maximum fuzz factor is 2 (which is a consequence of the fact that there are usually 3 lines of context " around " a hunk)
+2) at this moment i also decided to not match context lines inside inside dopatch[2] method as they are already checked in the trypatch[3] method in the same class
+1) in the hunkresult#calculatefuzz, it seems to scan the whole file looking for possible matches
+to me, this implies that it would be possible to get hunks matching out of order
+2) the maximum fuzz seems to be hardcoded at 2 with the assumption that there are 3 lines of context
+3) in hunk#trypatch i must admit that i can ' t really figure out what you are doing there (e.g i don ' t get the 2+2, 3+2 and 2+3 splits you are doing)
+the best approach here may be to sit down with szymon and go over the algorithm with him (i.e. i don ' t have that much knowledge about the algorithm anyway and going over it with someone there would probably be faster then doing it though a bug report or instant messaging)
+4) in regards to ignoring the context lines during the patch application, how is the case handle were there is an addition following the context lines
+wouldn ' t you need to know how many context lines to skip in order to place the addition properly
+i do agree that it can be confusing and i don ' t mind if we won ' t allow it
+i know that hardcoding the max fuzz is not enough
+i would change current 2 to lines.size() which is number of lines in a file
+i know that default values are 3 for context lines and 2 for maximum fuzz factor, but we could inform a user that he/she exceed the maximum value
+my idea was to apply the fuzz factor to any context lines, not only to the ones at the end or at the beginning of a hunk
+regarding hunk ordering, i can see that there might be some cases where changing the order of hunks would find matches that wouldn ' t otherwise be found
+regarding the default maximum fuzz factor, i ' m ok with using a hardcoded value to start with but lets use a constant for it so we can easily find references to it easily
+i raised a bug for an issue i found in tests

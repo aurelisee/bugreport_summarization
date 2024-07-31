@@ -1,0 +1,10 @@
+expected results: files removed from playlist, audio ceases
+stack trace: backtrace was generated from /opt/gnome2/bin/rhythmbox using host libthread_db library /lib/tls/libthread_db.so.1
+hmm i cannot trigger this crash on purpose
+the trace looks fine anyways.
+i haven t been able to reproduce this with 0.9.1cvs from today
+marking this fixed.
+steps to reproduce: 1. select artist
+play a song
+2. select all tracks, one of which is currently being played
+3. right-click and remove from playlist

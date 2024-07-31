@@ -1,0 +1,14 @@
++++ this bug was initially created as a clone of bug #472411 +++ tracemonkey talos is skipping revisions, making it impossible to use the talos reports to effectively determine when performance regressions occurred, and dramatically slowing down work on some parts of 3.1
+i ' m requesting that additional talos hardware be deployed to triple the bandwidth available to tracemonkey talos on at least windows and mac, as soon as it can be acquired
+the difficulty of setting up an accurate talos environment on an individual developer ' s machine compounds the problem in an unfortunate way.) can someone please update this bug with an eta on hardware arrival and machine deployment
+can i get an idea of when this set up was under load
+when i went to check to see how far behind things had fallen i found several idle talos machine and no queue in sight
+there were, however, three talos boxes that had been marked as hidden on the waterfall and were not being displayed
+over the weekend, mostly, i believe, when we were trying to track down talos crashes and so forth by bisecting our changeset history
+if they ' ve been hidden it can be resolved through the tinderbox admin page - unfortunately, there ' s a bug in tinderbox wherein if machines have fallen off the waterfall due to idle time they are sometimes re-added as hidden when they do their new report
+having hidden boxes does not mean that the talos boxes themselves were idle
+07 got a talos run and the other two didn ' t, fits pretty well with how it ' s been explained to me, that the poller runs every ten minutes, and takes only the newest of the builds which it hasn ' t seen before, so that with lucky polling those three might have produced two (but not three) talos runs, but they weren ' t that lucky
+(then there ' s the question of whether cross-machine numbers are really good enough to say that if tss was 173.74 before your patch, on qm-plinux-trunk04, and 177.38 with your patch, on qm-plinux-trunk05, then that means you regressed it as opposed to meaning that trunk05 is a hair slower or had one bad run, but luckily that ' s not my problem.)
+i ' ve added text to the top of each tinderbox waterfalls for mozilla-central, mozilla-1.9.1 and tracemonkey giving a count of machines for each project branch
+* if the count does not match what you can see on the waterfall, then ask the sheriff to see if any machines are hidden
+* if the count still does not match up, file a bug in mozilla.org

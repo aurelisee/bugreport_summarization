@@ -1,0 +1,8 @@
+no, my video editor does not support sorting the files on date..
+nor does it do the silly natural name sorting
+it sorts on names the posix way one other place i ran into this shortcoming of rename is when i was trying to import a range of pictures into ffmpeg to make a time-lapse movie
+i simply could not rename a 1000 photos ( only a few seconds of video ) so that they all follow on each other, and have the same amount of digits in the filename
+- integrate the patch from matthias fuchs from http://reviewboard.kde.org/r/5496 to allow having leading zeros when renaming files: e.g. using the name a ###.jpg results in the filenames a 001.jpg , a 002.jpg ..
+version: (using kde 4.3.5)
+compiler: gcc 4.3.3
+os: linux

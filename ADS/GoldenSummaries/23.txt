@@ -1,0 +1,12 @@
+in workbench.init() we read the source providers of the ' org.eclipse.ui.services ' extension point and there all extensions are immediately loaded (createexecutableextension) no matter whether the contributing bundle is already started
+unfortunately this happens before the workbench itself is correctly initialized (workbench colors in this particular case)
+this can cause troubles for upstream bundles that expect the workbench colors and/or fonts to be present when they get loaded
+it would be good if the workbench could initialize as much as possible before calling code that starts other bundles
+we should either - protect the code to not load those extensions
+- initialize default services after colors and fonts (this might be the simplest fix but would need extensive testing).
+this patch allows to reproduce the problem
+i could move the actual instantiation to the same place as the early startup extensions
+released > 20100507 pw
+this fix caused a major issue, see bug 316701.
+1. load ' org.eclipse.jdt.ui ' from cvs with tag=v20100316-0800
+2. start a target workspace == > boom!

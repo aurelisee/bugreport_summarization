@@ -1,0 +1,9 @@
+i noticed that in the members calls for flatcomponentdeployable.members there is a call that checks if component.isbinary, if such is the case the code will go on to create modulefile using a java.io.file with no references to the workspace file
+i am not sure why this was done this way, but our adopter product is breaking because in the case of binary ears with a web module, we are expecting to have the in workspace resources instead of the file system resource
+it seems that this is a change from the way that the old j2eeflexibleprojdeployable used to do it as seen in the j2eeflexibleprojdeployable.members call, which will call the getbinarymodulemembers and checks for the existance of workspaces resources, first and then moves on to external files.
+we are looking to get this fixed in 3.2, as this is a regression from 3.1
+we found this out during our adopters testing, although we could do the check in our side, i am not sure what other places could be broken
+i vote for fixing it the jee side since it is a regression from 3.1
+this seems like a good patch but i haven ' t tested it since i don ' t have a test case
+i would like to put this up for review today and get it in rc1 if possible.
+the fix is to simply call the right modulefile constructor based on whether the binary component ' s underlying resource is a workspace or external resource

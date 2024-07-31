@@ -1,0 +1,4 @@
+when reading a freshly received mail, a conflict dialog pop ups
+there is no indication that its a conflict dialog, though (only titled kmail mobile )
+the conflicting fields are modification time and flags (\seen)
+apply the same sparse item optimization we already have in kmail desktop when marking as read, should eventually go into messageviewer and happen after message downloading though

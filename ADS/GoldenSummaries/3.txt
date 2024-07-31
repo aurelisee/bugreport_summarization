@@ -1,0 +1,14 @@
+this ' api created runtime ' is given a id and a name that are different
+if you import the project into wtp 2.0.1 the project will not be able to resolve the runtime, because they are now identified by their id, and not by their name as it was previously done
+marking this defect as a hotbug as it breaks compatibility support between 1.5 and 2.0.1
+one idea to resolve this problem is to allow a callback to the bridge to return a different kind of id during the comparison in runtimebridgeimpl, in this way, we can support the new runtimes(id based) and the old runtimes(name based).
+since we can ' t have it both ways, not sure what we can do
+as a result of the change in 2.0, if any server runtime uses an id that isn ' t identical to it ' s name, the project will fail migration
+after moving to wtp 2.0, the project will no longer be targeted to the runtime and users have to manually reset it
+while the manual workaround is fairly easy, fixing this regression should be too - all we have to do is allow for alternate facet runtime names under the covers, or check for a migrated name if the old one doesn ' t exist when reading the facets file
+the runtime bridge and/or stub both have the id from wtp 1.5 and can provide this information back to the facet framework
+we already have an iruntime.getlocalizedname() api that makes the " alternate name " available
+also, rather than putting the backwards compatibility logic in the runtimemanagerimpl.getruntime() method, where it has wider scope than necessary, the logic can be placed in the code that reads the faceted project metadata file
+that should be fairly safe
+released fix to the 2.0.1 and 3.0 streams.
+due to the changes in bug# 137825, projects created in wtp 1.5.x don ' t have a runtime facet attached when brought into wtp 2.0.1 in wtp 1.5.x, create a project and target it to a runtime created using the api

@@ -1,0 +1,8 @@
+stack trace: traceback (most recent call last)
+the attached patch corrects the issue by replacing the / in the filename with - .
+the following fix has been pushed
+reproduced in 0.13.2-2ubuntu4: created a launcher mail/news copied to another category
+ioerror: [errno 2] no such file or directory: /home/vadik/.local/share/applications/mail/news.desktop
+1. open alacarte
+2. try to copy item with / in name
+3. crash

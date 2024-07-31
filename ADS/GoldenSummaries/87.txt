@@ -1,0 +1,9 @@
+i am not sure if this is a bug in gnome-control-center or ostree, but filing it here first and then it can get reassigned if necessary
+at least under todays ostree, going to the background panel results in a segfault and crashes the whole thing.
+without a stack trace from the crash it s very hard to determine what caused it
+program received signal sigsegv, segmentation fault
+convert_alpha (height=768, width=1024, src_y=&lt;optimized out>, src_x=&lt;optimized out>, src_stride=4096, src_data=0x11d4030 , dest_stride=4096, dest_data=0x7fffd1488010 ) at ../../gdk/gdkpixbuf-drawable.c
+162 162 ../../gdk/gdkpixbuf-drawable.c
+i believe this is fixed by this commit in gnome-3-8 and master, please test
+background: fix memory corruption when creating preview when using a single screen, the captured area was too small, and we were copying data from out-of-bounds of the pixbuf area
+yep, that did the trick

@@ -1,0 +1,12 @@
+intermittently, during start-up, a call to iproject.getadapter(projectresourcelocator.class) will return null with the first call but not null with subsequent calls
+the adapter factory is implemented in such a way that it will never return null
+so, apparently, the adapter factory is not invoked by the platform adapter manager
+if not, can anyone offer any hints as to how we can investigate, sans the debugger, why the platform adapter manager does not invoke the appropriate adapter factory?
+it sounds like some kind of race condition where the bundle is not yet active at the time the adapter request comes in, although i don t see how that is possible if you are referencing a class from the plugin providing the adapter before-hand
+if suspending in debugger alters the timing, the only debugging technique i can think of is stdout messages in plugin startup, factory instantiation, and adapter lookup to start with.
+the root of this issue is in adapterfactoryproxy and its use of the factoryloaded flag
+the summary is that factoryloaded can be set to true and accessed by another thread as true before the actual factory has been assigned in the proxy
+this results in null being returned for an adapter factory that could be successfully loaded by has not yet been loaded
+proposed solution: i have attached a patch that solves the issue by changing when the factoryloaded flag is set to true
+the intended behavior of this flag should stay the same and avoid the race condition by setting the factoryloaded flag in a finally block
+the adapterfactoryproxy.loadfactory(...) method is synchronized, but the adapterfactoryproxy.getadapter(...) method is not, so we cannot rely on the synchronized loadfactory(...) method to prevent a race condition in relation to the factoryloaded flag.

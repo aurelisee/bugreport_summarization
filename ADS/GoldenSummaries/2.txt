@@ -1,0 +1,16 @@
+i found a regression from 342 to 362, similar to what bug# 297039 describes
+when i debug the code for my application i see that the java files is open instead of the class file and i can t inspect the content of the this variable
+3. i can inspect this without issue [ok]
+angel, since the .java file source is available in the archive why are you expecting to see the .class file
+note: showing the class file or the java file from the archive does not affect the inspect action.
+i tried this on win32, i wouldn t expect that the platform makes a difference, but just in case
+looking through the code the problem seemed to be that in previous versions jdt org.eclipse.jdt.internal.launching.javasourcelookuputil.translate(iruntimeclasspathentry[]) would return a packagefragmentrootsourcecontainer because a root exists for that project, but in 362 a root doesn t exists so it creates a externalarchivesourcecontainer.
+i will have to change the definition of entrypath to be based on entry.getpath() and see if it affects the fix for bug 297039
+i did, i reverted the logic to compare the correct path elements and removed the check for if the class path entry is external or not, and it seems to be working - much more smoke testing is required and i want to add some junit tests for this scenario
+i ran through my scenario and it seems to working ok, i am certainly concern about the risk of regression as per comment# 6
+i will leave it up to you for your testing to confirm that this is the right fix and that it doesn t break other scenarios or that introduces regressions.
+however, this problem has not been reported so far, although bug 297039 has been in since 3.5.2
+the fix looks ok to me but i can t guarantee that there are no unwanted side effects
+given we re in rc4 and the bug is in since 3.5.2 i -1 this fix for 3.7 rc4.
+created attachment 198834 patch for 3.7.1
+version: 3.6.2

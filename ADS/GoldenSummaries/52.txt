@@ -1,0 +1,9 @@
+by default when i press with the left mouse on a device present in the kicker mediaapplet it shows a menu with various options, where the first one is called open a new window , opens a konqueror window showing the device contents
+a right mouse click over it shows a menu with one option configure , where i can select what devices want to appear on kicker
+what i would love is a similar behaviour described on the other wish, is that when i click with the left mouse over a device in the kicker mediaaplet it opens the konqueror window showing the device contents and with the right mouse click it show the menu that now appears with a left mouse click
+also i think that the option configure that now appears with a right mouse click isn t necessary to show, as it s the same when selecting the option configure media applet that appears on the kicker mediaapplet tile
+also i think that the menu entry called open a new window should be renamed to open the media contents or similar.
+i also close this bug report because the new stable kde stable series, kde4, changed the behaviour of the old mediaapplet with the devicenotifier plasmoid and this bug report it s no longer applicable to the new version
+version: (using kde kde 3.5.5)
+compiler: gcc version 4.1.2 20061115 (prerelease) (debian 4.1.1-20)
+os: linux

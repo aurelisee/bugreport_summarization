@@ -1,0 +1,12 @@
+rationale: i m currently writing a thunderbird-stdlib project which is basically a collection of jsms
+problem is, module a from stdlib depends on module b from stdlib too
+components.utils.import( ./moduleb.js ) from modulea.js any comments, thoughts and/or guidance will be highly appreciated, as i plan on tackling this as soon as i can find some time
+so this is a middle-ground solution, in the sense that it implements a magic __uri__ global, just like __location__, in jsms
+this allows jsms to know which uri they re being imported from, which would solve my problem
+ew version that uses the jsapi in a proper way new version of the patch
+i m not trying to make the firefox 4 deadline, but rather the thunderbird 3.3 alpha3 one which should be further in the future
+so it looks like the xpconnect module cache is not confused when i use a .
+path, but there s no reason why it should, since i m falling back to a very standard call to component.utils.import
+i ve added a alternative version of the patch that has a slightly more involved test, that checks that two imported submodules (the same submodule, but with two different paths) are pointing to the same scope with the same references, i.e
+why is this in xpcomutils.jsm and not implemented as components.utils.importrelative or even better implemented in cu.import itself to differ between urls and relative paths
+i guess i just wasn t skilled enough to implement it as you suggest at the time, and maybe the reviewer preferred a non-invasive change

@@ -1,0 +1,13 @@
+when i create a sequence on my postgresql database then query for it via org.eclipse.datatools.modelbase.sql.schema.schema#getsequences() only an empty collection is returned.
+if it fits, i'll come up with other patches for better postgres support. thanks!
+created attachment 201049 [details] pg sequences support
+created attachment 204568 [details]
+patch in egit default format
+patch exported without checking git format in egit.
+it's odd, but the patch file itself doesn't have any indication inside it as to which projects the patch changes apply
+this seems like an egit bug to me
+(when creating a patch file with cvs, the patch file includes "#p &lt;plugin name>" records.) i was able to apply the patch, but i had to figure out which changes apply to which plugins, and apply the patch twice.
+it would be helpful for future patches to create the patch for one plugin at a time, and indicate which plugin it applies to (perhaps as part of the patch name).
+when i applied the changes for the patch, the file updates went into the bug branch, but new files that i had to do an "add" for went into my local master branch
+i'll keep my fingers crossed that everything will flow through ok when i merge the bug branch into my local master branch and then push everything to the remote repository.
+one way or another, the changes got into my local master.

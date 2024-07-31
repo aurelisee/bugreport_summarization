@@ -1,0 +1,16 @@
+seahorse 2.27.5 is not displaying the password tab and thus i am unable to view or delete network passwords or wireless secrets
+launching seahorse from the terminal results in the following related errors: $ seahorse
+** (seahorse:3910): critical **: initialize_tab: assertion self->pv->tabs[tabid].widget != null failed
+see this in fedora rawhide as well: https://bugzilla.redhat.com/show_bug.cgi?id=515263
+looks like the moving the passwords tab didn t quite fully happen, and instead it sort of got removed
+this happened during the migration to gtkbuilder..
+the commit above happened shortly after the migration.
+commit 4a1bfa6a3d399d93a9b0dc7b1ab45977ef859e80
+tested and confirmed resolved
+architecture: i386
+distrorelease: ubuntu 9.10
+nonfreekernelmodules: wl
+package: seahorse 2.27.5-0ubuntu1
+procversionsignature: ubuntu 2.6.31-4.23-generic
+sourcepackage: seahorse
+uname: linux 2.6.31-4-generic i686

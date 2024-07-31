@@ -1,0 +1,6 @@
+configure allows to define the sendmail-location and sets the variable mailer accordingly
+this variable is however never passed to the mail plug-in
+to make things worse, i fear i recently broke the configure check in the stable tree
+i have just fixed this problem in the head branch
+merged the changes from the head branch.
+the fix is part of the stable release 1.2.4

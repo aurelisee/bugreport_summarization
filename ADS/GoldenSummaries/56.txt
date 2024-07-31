@@ -1,0 +1,18 @@
+when closing the composer in which a mail is composed that does not yet has an recipient, a question pops up ( discard/save as draft )
+if save as draft is selected, a message is shown ( no recipient found ...you should specify at least one recipient...) and the mail ist lost
+however, both test have in common that you need to specify a recipient whereas in kmail desktop version it is possible to save as draft without specifying a recipient (unknown is then displayed as the recipient)
+the email is correctly stored in the save as draft folder (local folders)
+however, when the user tries to reopen it in a composer a delete draft error pop up message appears
+can not delete draft
+this error message does not make sense so i have reported a different bug about that (see bug #251511)
+it is corrected now
+it is possible to save as draft an email without a recipient, subject or text
+after clicking on ok in the pop up dialogue asking the user to specify a recipient the composer closes and the email is lost instead of saved as draft
+this seems incoherent with the save as draft functionality that i tested today and which works fine
+- launch kmail mobile
+- click on write new email button
+- after entering a subject and a few words, open the actions tab and click on save as draft
+- a no recipients found - kmail mobile pop up dialogue opens with the following message you should specify at least one recipient for this message
+- click on ok
+- the user can open the actions tab and specify the recipient s email
+- and then click on send the email is properly save as a draft and stored in the draft folder

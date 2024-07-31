@@ -1,0 +1,10 @@
+the online/offline icons are done in the old gnome style and doesn t match the rest of the icons in the interface.
+created an attachment (id=116411)
+new online and offline icons + svg sources
+i raise priority as there is patch and ui freeze is near
+even mclasen isn t sure, but he thinks gtk should preserve the aspect ratio if we put it in 32x32
+i think i would just replace the old bitmap with this one for 2.24 and look for a better solution in the next cycle.
+here s a complete patch
+i put the images into 32x32 and gtk found the icon names alright, but i had to load them by filename to prevent gtk from scaling them down to a 16x16
+i want this for 2.24, but it may require screenshot updates from our beloved docs team.
+committed to trunk (revision 35995).

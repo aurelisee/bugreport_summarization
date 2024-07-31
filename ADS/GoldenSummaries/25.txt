@@ -1,0 +1,16 @@
+when typing in the search box, sometimes search-suggestion entries would be displayed above the divider (where entries for previous matching searches are)
+the problem here is that nssearchsuggestions.js is passing the wrong previousresult to form history
+instead of it being the previous form history search result, it ' s the suggestautocompleteresult result (which contains the union of the form-history and search-suggest entries)
+so, when form history refines its results as you time, it can actually add *more* entries as data leaks from the suggestions result into form history result, and it thus looks like the divider is being drawn in the wrong place
+the search-suggestion result is only implements nsiautocompletresult (no " simple " ), so the qi fails, historyresult nee previousresult becomes null, and thus satchel was doing a new search every time
+created attachment 380567 patch v.1 (wip)
+this fixes the problem, but isn ' t quite correct..
+if you type " a &lt; backspace > b " , satchel trying to use the results from the " a " search for the " b " search, and so nothing is found
+i suspect nssearchsuggestions needs to throw away the old form history result when the search string changes like this, but i ' m not entirely sure it ' s responsible for doing so, maybe satchel should be smarter about throwing away a previous result when the previous result ' s search string doesn ' t have a common prefix
+so, there ' s a ._formhistoryresult in the suggestautocompleteresult wrapper (used to combine form history with search suggestions), and also a ._ formhistoryresult in suggestautocomplete (the service itself, used to hold onto a form history result until a search suggestion is available)
+the simple fix it to just discard the service ' s form history result copy when startsearch() is called with a null previous result
+1) type " b " in the search field
+2) form history finds 1 entry ( " blah " ), search-suggestions finds " baaa " , " bloop " , " bzzz " , the autocompete menu shows these in order with a divider between " blah " and " baaa "
+3) type an " l " in the search field ( " bl " )
+4) starthistorysearch() ' s previous result contains [ " blah " , " baaa " , " bloop " , " bzzz " ], satchel filters this down to [ " blah " , " bloop " ] to match the new " bl " search string
+5) nssearchsuggestions ' s onreadystate() change is called with updated search suggestions, builds up a new list of results, but sees that the form history result now has *two* entries.

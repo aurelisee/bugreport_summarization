@@ -1,0 +1,8 @@
+when opening the content pane in tools - > options, the browser will reliably hang on windows ce
+amazingly, the debugger is able to attach and break on the process, and seems to indicate we ' re spinning in the " for (print8 i = baseweight i += direction) " loop
+yes, confirmed, we ' re spinning in that loop
+1) " ) so this sets exactly one entry, weightlist[0] , but the loop we ' re stuck in only looks at weightlist[1] thru weightlist[9]
+created attachment 391515 fix
+the font that ' s causing this had a somewhat bogus os2 font table weight -- " 6 " instead of " 600 "
+this patch tries to be generous and handle 1..9 as valid weights (converting them to 100 .. 900), but i can also just as easily not do that and ignore the os2 table if something in the valid range isn ' t found.
+Verified fix on Mozilla/5.0 (Windows; U; WindowsCE 6.0; en-US; rv:1.9.2a2pre) Gecko/20090811 Firefox/3.6a2pre

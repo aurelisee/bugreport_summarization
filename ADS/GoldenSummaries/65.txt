@@ -1,0 +1,6 @@
+so...the problem was that the soundmixers were displayed a bit to low (for use with the default background image) and not in-line with the icons, in the patch i just set the default mixer hight to -2 , this doesn t solve the same problem when using a large kicker and it introduces a new one, when using small as size for the kicker the upper grey line is overdrawn by the soundmixer because it frees about 4 pixel more than it would need to to display it s mixers..
+it depends on the height of the panel and whether icons are shown and the direction of the panel
+i have a version that works much better already
+version: unknown (using kde 3.2.2, gentoo)
+compiler: gcc version 3.3.2 20031218 (gentoo linux 3.3.2-r5, propolice-3.3-7)
+os: linux (i686) release 2.6.5-gentoo-r1

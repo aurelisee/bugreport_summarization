@@ -1,0 +1,4 @@
+in version 4:4.5~20100903.1171290-1maemo1.1171237 when looking at a section of the calendar in which appointments are present, rendering is broken (e.g. does not update areas)
+also, in this version i was never able to see an appointment (as red box, was possible previously).
+also affects the new month view, also only when looking at a time range containing events
+it seems that the calendar views trigger a bad misbehavior in the opengl stack on the n900, causing random rendering defects at best and device crashes at worst

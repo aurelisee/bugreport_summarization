@@ -1,0 +1,16 @@
+there have been at least two updates since, but help- > check for updates doesn ' t find anything
+likely related to bug 431866, but comments there imply that this should be fixed
+seems to affect windows as well
+linux updates are mia as well
+apparently this is related to the underlying issue of bug 431270.
+also, this will might just resolve itself when the 20080504 nightlies are available
+right now the updates being served are corrupted because there were two builds with the same buildid.
+this bug is also affecting more than just mac, which is what bug 431866 was about
+fixed now, details to follow shortly.
+the tb 1.5.0.14eol nightly build for 20080503 wasn ' t published to the ftp server (it ' s pushing bits to the new staging setup, and that was down for a bit)
+the nightly update system was then barfing when it couldn ' t find that complete mar, which blocks partial updates (and forwarding the update information) across the board
+the snippets causing the problem where removed to resolve the immediate problem
+nightly updates for the fx &amp; tb 1.5.0.x builds have been disabled to prevent it recurring.
+Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9pre) Gecko/2008050209 Minefield/3.0pre
+Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9pre) Gecko/2008050206 Minefield/3.0pre
+Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9pre) Gecko/2008050204 Minefield/3.0pre ID:2008050204

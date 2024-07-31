@@ -1,0 +1,9 @@
+amo won ' t let me put them in, though, so we have problems
+(we had " 2.0 " as a legal version until quite recently, which was an even bigger problem.) this is a pretty serious issue for us right now, as people update extensions to work with bon echo, and will only become more so when beta1 ships and we really start to push on extension authors to update their stuff
+i didn ' t want to reopen bug 313605, though the case in the summary indeed still present, and i don ' t know if we need the full monty from 283803, so i ' m filing here, because i care a lot about this specific problem, and a lot less about the unified, standardized, one-true-versioning system being in place.
+v2 diff - only faq were affected, fairly simple adjustments.
+* upload a 2.0a1 (or any arbitrary version string that matches something in the applications table) from the dev cp, then approve it * view the faq in the public site note - i ' ve got mixed patches here (see bug 302287)
+public/htdocs/faq.php you net removed a column from the header, but didn ' t change the template that generates the rows of the table -- is that right
+the sort should be okay after all -- there isn ' t something that will break if the char sorting messes things up, the worst-case is a couple extra iterations until the additem script finds a version string match
+re comment#4, yes, i missed a column
+comment on attachment 227502 diff for v1 admin portion -- removing dependencies on minor/major/release/build/subver fields

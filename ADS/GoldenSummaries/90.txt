@@ -1,0 +1,5 @@
+the splash image on http://gnome.jardigrec.eu/en/ seems to be relative in size to the page size
+this causes problems on bigger screens as the image gets very pixelated.
+ramon just fixed this one.
+this is a problem of the image used, not of plone or the homepage template itself
+andreas or someone should define the size of those splash images (i think someone had defined this but it s not documented) and deliver the real splash we are going to have.

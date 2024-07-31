@@ -1,0 +1,10 @@
+as explained on the mailing-lists, the short descriptions registered by script-fu scripts should be reviewed and localized before we can enter the string freeze for 2.4.
+please use milestone + priority==urgent instead of severity==blocker.
+please consider doing the string review for tiny-fu instead of script-fu.
+created an attachment (id=74057) patch for blurb changes
+i have employed the phrase selected region (or alpha) in describing the scripts that, if no selection exists, will operate on the region where the alpha channel is not zero (black)
+i have chosen to use the word alpha because it is consistent with its usage in the alpha to selection operation
+created an attachment (id=74061) updated patch
+this patch fixes a couple of oversights in the previous one
+the script-fu-select-to-foo scripts are deprecated and do not any longer register a menu entry
+i have backed out this part of the patch, as well as the change to test-sphere.scm

@@ -1,0 +1,7 @@
+in the dolphin s places panel if i press in the pc floppy drive icon it mount s the floppy but dolphin doesn t change the directory location to the floppy one
+the second time i press over the pc floppy drive icon in the places panel it seems that try again to mount the floppy drive (although it is already mounted), also doesn t change the directory location and shows an error message in the status bar which says
+besides that, if i manually go to /media/floppy with dolphin it displays and manages correctly the contents inside the floppy disk
+another thing, that when the floppy drive it is mounted, there is no way to unmount with dolphin, if i right click over the pc floppy drive icon in the dolphin s panel only appears a hide option
+hej, that s a bug in hal, which provides an empty volume.mount_point property for floppy discs instead of the real path
+version: 0.9.5.3.97.1 (using kde devel)
+os: linux

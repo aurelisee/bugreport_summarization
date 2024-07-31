@@ -1,0 +1,16 @@
+at least on http://support.mozilla.com/en-us/kb/how+to+contribute, there are a number of images being loaded from external sites
+these really, really shouldn ' t be on an external site.
+this is caused by and probably a dupe of https://bugzilla.mozilla.org/show_bug.cgi?id=493276 ..
+reed offered to put those images somewhere on our infrastructure until that happens.
+if sumo 1.2.1 pushes this week, we should be able to move the images to support.mozilla.com, and close this bug this week as well.
+i can take care of locating the links to remote images and hosting them on support.mozilla.com.
+all remote images in articles are now hosted on support.mozilla.com
+everything on support+firefox+day was put up at the last minute for the event, so hosting on an external server was the only option we had
+we simply cannot send user data from production websites to personal servers just because it ' s faster/more convenient to do it that way
+now, the ability to push reviewed changes to svn and request a push to production by it seems entirely viable, if laura concurs...
+i removed the content being loaded from my server on the " support firefox day " and " live chat troubleshooting guide " pages
+the live chat screencast is now hosted directly on sumo, and the sfd static video is now embedded directly without the live stream hack
+i removed the &lt; form > that was sending data here from the " support firefox day " page, and we should definitely make every effort to avoid sending any data offsite in the future
+1) a solid live open video streaming solution
+2) some way to implement one-off features that need data we can access
+so we had to build an iframe that refreshed itself every minute or so

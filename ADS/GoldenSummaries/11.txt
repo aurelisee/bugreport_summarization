@@ -1,0 +1,24 @@
+inspired by martin oberhuber ' s mail about his " lsc " script for counting lines in a patch[1], i though that it maybe be worthwhile to embed such thing in the apply patch wizard itself
+so, my proposal is to allow to specify a regexp rule for lines that should be count as a " real contribution "
+^\+? (\s*\S+\s*)+$
+all lines that match the above pattern would be sum up and the info would be displayed somewhere on the apply patch wizard
+my script also ignores " empty comment " lines of the form ^\+\s+[#*] +\s+$ but that ' s really neglectible and i ' m fine with your approach of counting any non-empty added line in the patch
+and actually, if the wizard counts added lines, why shouldn ' t it also count removed lines
+i decided to leave them blank by default, so i don ' t need to worry about different diff output formats which are out there
+so i don ' t quite understand why the same patterns that compare/patch already uses aren ' t the default for the line counting feature.
+i guess you ' re right martin, but this will make the patch a little bit more complicated as the current patching mechanism is not very helpful in counting added/removed lines
+the latest patch ensures, that when no regular expressions is provided, the patcher will use internal patterns to distinguish which lines have been added or deleted
+however, this will work only for patches in unified and context diff output format
+it looks like you are also counting empty lines, which doesn ' t seem overly useful to me.
+it ' s awsome that this is customizeable, but when i remember right, one reason for putting this enhancement into eclipse sdk was such that there is a " common standard " by which the projects count their lines in a patch
+on the other hand, having some magic like removing empty lines from the count going on in the background is perhaps a problem..
+actually, it might be a good idea to have one additional kind of regex pattern in the preferences, which acts as a filter -- suggested tooltip behind //
+filter: ^[+-]\s*$ //filter for lines to not count, e.g. empty lines
+martin, i see your point when you ' re saying that the " common standard " should be as good as possible, however i would rather not to filter any lines from a patch when parsing
+here are the approaches so far
+1) use only given filters, by default no counting will be made
+2) by default count lines using the simple patterns, which are currently used when parsing a patch (ie " + " and " - " ), this can be modified in the pref page
+3) by default count lines using more sophisticated patterns like excluding empty lines
+fyi, following regex suppresses lines in the patch from counting, which are empty or only contain non-wordchars (i.e. lines which only contain an }
+or only contain a * as continuation of an empty javadoc comment
+added: ^\+[^+]+[a-zA-Z0-9_!?"|@~`$%()+;,.:=+-]

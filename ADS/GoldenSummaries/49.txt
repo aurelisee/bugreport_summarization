@@ -1,0 +1,9 @@
+while using alt+tab for switching between applications works fine in my kde4 post rc1 version, when i try to use alt+shift+tab shortcut the keyboard did not respond anymore and i don t know how to get it back
+however the mouse it is still working properlly, so i can logout with the mouse and i when i log back the keyboard it also works.
+while alt-shift-tab doesn t do anything here, the keyboard is still accessible.
+the problem is in kglobalaccel, it doesn t release the grab when a shortcut is set that isn t triggered
+thanks, your hotfix fixed this problem, however on the past krushday someone mentioned a similar issue pressing alt+printscr which is still present for me
+ok as far as i can see this is the same problem, namely that the keys alt+print don t produce the x11 keysequence that is expected
+i ve found this bug in kde 4.2 too
+version: 3.96.1 (using kde devel)
+os: linux

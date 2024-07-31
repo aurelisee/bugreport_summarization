@@ -1,0 +1,6 @@
+memory status: size: 55439360 vsize: 0 resident: 55439360 share: 0 rss: 7901184 rss_rlim: 0 CPU usage: start_time: 1157403439 rtime: 0 utime: 11 stime: 0 cutime:6 cstime: 0 timeout: 5 it_real_value: 0 frequency: 0
+backtrace was generated from /usr/libexec/evolution-data-server-1.8
+hope i have all the needed -debuginfo packages now.
+the backtrace is different, and the original one posted is from a much older evolution version
+but if you followed precisely the steps described in the other report and could trigger the crash you should leave a comment there telling that.
+note, that bug 449609 and it s dups (and their dups) look related to that issue, although they are a year younger than this bug here.

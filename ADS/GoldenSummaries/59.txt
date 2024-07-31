@@ -1,0 +1,11 @@
+the account wizards runs through fine and complains if i enter wrong passwords, but the accounts do not show up in the tree view
+the accounts do however show up in the account view in the actions flap.
+may be duplicate of https://bugs.kde.org/show_bug.cgi?id=248554 and fixed in newer versions.
+it showed up immediately in the accounts list, but not in the tree-view.
+the accounts i added where empty accounts (no folders, few/none mails)
+after i created a folder and moved a mail into it (using kontact stationary), the account showed up in kmail-mobile
+i suspect the flaw exists for the other apllications (adress, kalendar, notes), too
+sorry, but i disagree with that solution
+obviously, the kolab wizard has to handle that correctly by adding the domain part to the username (and it does that already)
+but adding kolab-specific workarounds to the generic imap wizard is wrong imho
+most non-kolab imap servers i know don t require a domain part in the username, and keep in mind that this is only about the pre-filled value in the username field anyway, in case you have a different username than the suggested default you have to edit it.

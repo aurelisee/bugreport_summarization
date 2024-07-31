@@ -1,0 +1,13 @@
+was browsing the hg pushlog, and happened to check what got pushed..
+looks like it accidentally the whole file
+indeed, it s a 0-byte file in my tree
+[note that, at the moment, mxr s index is like a week stale, so if you check on mxr it looks like the file is still ok] probably also need either a test in the script to make sure it s a legit looking update, and/or a test in the tree to blow up if the update s bad?
+can we trigger the update now to get things right in the tree again then figure out a way to avoid it in the future
+the next automatic update will occur in just a few hours (early saturday), that said i am bumping severity
+also for ref, suite/ s update was fine (but i know it ran at a much different time than fx s update) http://hg.mozilla.org/comm-central/rev/c15ed4c2c86d
+if we want to take a blocklist update there, we ll need someone to land the update by hand there too.
+i thought we had a=blocklist-update in the script [at least the version seamonkey currently uses has that.] if it was removed somehow, i d suggest adding it back in, fwiw.
+we turned that switch off to prevent this kind of thing on 1.9.2, our mainline stable branch at the time
+no, but if the blocklist gets updated after it leaves m-c, it will be a manual process, where manual could mean releng triggers the update provided we have blocklist updates enabled on that branch
+this handles the proximate problem of accidentally importing an empty file as a blocklist
+as noted before, we could have this blocklist update builder available on those branches for releng to trigger, i.e. it won t necessary fall to someone to update the blocklist by hand, although the script would make that trivial.

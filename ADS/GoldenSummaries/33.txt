@@ -1,0 +1,9 @@
+i ' m trying to cc myself on bug 457543
+it ' s a public bug, but it ' s marked as a duplicate of a security sensitive bug
+i ' m not doing anything but ccing myself, so it shouldn ' t be prompting me.
+if you belong to the group the public bug is pointing to, you can ignore the message and cc yourself or do any other change
+*but* if you don ' t belong to that group (which is my case in the example given in comment 0) and you have editbugs privs, you are no longer allowed to edit the public bug *at all*
+the problem was that $self- > check($dup_id) was called in all cases, even if the dupe was already here
+to avoid creating the same bug object three times in a row, i altered check() a bit to accept either a bug id or a bug object
+and finally, _check_dup_id() returns early if it detects that the dupe is unchanged
+the idea is exactly the same, except validatebugid doesn ' t return a bug object

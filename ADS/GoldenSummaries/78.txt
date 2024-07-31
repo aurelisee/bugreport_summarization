@@ -1,0 +1,6 @@
+invoke rb when gnome-settings-daemon is not running can we consider this a bug
+backtrace was generated from  /opt/gnome2/bin/rhythmbox
+ah, we weren t checking whether the pixbuf could be loaded before using it
+distribution: ubuntu 6.06 (dapper)
+gnome release: 2.15.91 2006-08-10 (jhbuild)
+bugbuddy version: 2.15.91

@@ -1,0 +1,11 @@
+in firefox, this fires the are you sure you want to navigate away from this page? dialog
+in thunderbird, this closes the tab right away
+i believe thunderbird needs to do something regarding beforeunload event handlers, and possibly give them a chance to run before actually closing the tab.
+the example you cite can lead to dataloss
+a patch that does the right thing
+the thing is we should offer tab types a chance to refuse being closed
+i think we should have a test for this, as it is one of those features that although small, could easily get broken and no-one notice for ages
+new version with a tentative test andrew, could you please take a look at this
+actually, changing the way i close the tab fixed the issue (i m now using mc.tabmail.closetab)
+the problem with window.close from inside a content/chrome tab is something that s being tracked in bug 638493 (which i incidentally also reported, although i can t seem to figure out why i didn t remember it earlier)
+- open a gmail content tab, - compose a new message, - type some text in the message body, - close the tab

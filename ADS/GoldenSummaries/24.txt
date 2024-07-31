@@ -1,0 +1,10 @@
+r3_5_maintenance branch in inconsistent state
+the ' r3_5_maintenance ' branch and what ' s in the jdtapt.map is currently broken as it contains additional changes (e.g. binaryfileoutputstream rev. 1.14 and the build notes also look wrong)
+i ' ve rolled back build_notes and binaryfileoutputstream
+comparing the unbranched plugins against the release date of 3.5.0 i didn ' t find anything else that needed to be rolled back
+we need to do at least a bit of a version dance to ensure that a rebuild will correctly replace the old plugins
+i will also roll back all the manifest changes except for version number, to be safe
+however, i won ' t commit that change nor release any of this until we ' ve agreed on what needs to be done
+i cannot revert the version change inside the head stream for org.eclipse.jdt.apt.core as one i-build occurred since the version has been changed
+the underlying cause here is that when we released 3.5, i did not branch all the plug-ins, because i didn ' t know whether we would need to make changes to all of them for 3.5.1
+following some advice from john a., i opted to only branch when a change was actually necessary

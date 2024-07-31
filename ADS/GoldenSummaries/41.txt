@@ -1,0 +1,13 @@
+the buttons for the multimessageview are too big by default
+this did not happen with 3.0.x
+it probably depends on the gnome system theme (i ' m using linux)
+actually, only the " delete " button has an icon, the " archive " button doesn ' t have any
+the icon is the right size in 3.0.x
+the gconf key buttons_have_icons must be set to true
+i think what ' s happens is that it picks up the regular toolbar icon size (24x24) instead of [iconsize= " small " ] that would result in 16x16 in the css
+patch to use &lt; toolbarbutton > s after some discussion with jonathan on irc this patch use &lt; toolbarbutton > instead of &lt; button > so that mode= " icons " can be set
+this patch is quite nice because it makes the markup more consistent and it allows someone to set the toolbar mode, possibly attach a palette, and so on..
+however we must be sure that multimessageview.xhtml is loaded only once because this code is executed only once if i ' m not mistaken, so reloads wouldn ' t have the property set properly
+i ' d say that the second patch is probably fine as is, and we could spin off any custom palletry or a separate default mode to another bug
+update to the patch removing two lines from #buttonbox in multimessageview.css seems to take care of the top padding issue
+unfortunately, it doesn ' t look right on the mac

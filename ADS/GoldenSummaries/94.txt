@@ -1,0 +1,5 @@
+this seems to be fixed in 3.3.x due to refactoring and cleanup of the code
+please reopen if you can reproduce with a version later than 3.3.5.
+1. open seahorse 3.2
+2. doubleclick a saved secret in the keyring
+3. close seahorse main window without closing the information window --> crash

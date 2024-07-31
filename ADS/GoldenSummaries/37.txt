@@ -1,0 +1,15 @@
+created attachment 529489 full backtrace
+moving debug statements around now give me a reliable crash
+here s a full backtrace
+cannot access memory at address 0x7fff02b60c58 i m also getting errors in the gc, but this time with methodjit disabled, don t know if this is related...
+a build of thunderbird conversations to play with ok, here s the (pretty involved, sorry) debug procedure
+also crashed on thunderbird 3.3a4 which is built on top of mozilla-aurora.
+all of these crashed within 10 seconds of thunderbird startup.
+all the extensive details are in bug 658351, and here s a patch that should fix it
+i think we should do a more thorough review of mailnews code for this class of errors, but i m afraid we don t have automated analysis tools for that.
+- on x86_64, build thunderbird 3.4 (comm-central + mozilla-central)
+- run thunderbird, install thunderbird conversations from tools > addons
+restart thunderbird
+click apply changes
+click on a collapsed thread and, using the keyboard and the right arrow / left arrow keys, repeatedly expand / collapse that thread
+proceed that way, possibly moving to other threads with the keyboard, until you segfault

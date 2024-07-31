@@ -1,0 +1,7 @@
+when browsing multiple (jpg) images and having 10+ tabs open with loading images, konqueror gets slow, this happens for example while browsing deviantart.com or some picture galery
+konq seems to redraw all the tabs when you open another, i dont think it is related to the content of tabed view itself
+i heard this may be a qt bug actually.
+closing this as i can reconfirm roger s report that it is not an issue in 3.5
+version: 4.0 (using kde 3.1.9)
+compiler: gcc version 3.2.3
+os: linux (i686) release 2.4.22-ck2

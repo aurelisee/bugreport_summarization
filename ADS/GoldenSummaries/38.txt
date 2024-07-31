@@ -1,0 +1,9 @@
+this patch adds three news fields to telemetry.h, fixes a couple comments, and makes the error code more meaningful in one case
+- indexing rate
+- gloda database size
+- time to 2nd gloda query for conversations
+comment on attachment 555658 thunderbird patch v1 this looks fine, although there may be some ambiguity between whether we are just indexing messages really slowly or are working some other type of jobs
+it might be worth adding another flag that is _messageindexingjobactive that gets set when we create a worker for message indexing, so that you only report worker batches where any messages were indexed
+maybe you should use a unit of messages per 10secs in order to get more detail at the low end so pathological cases stick out more.
+so the only worker that bumps the _indexedmessagecount is the folder-message-indexer, and there s an if that says if we didn t index any message, don t add a probe
+http://hg.mozilla.org/integration/mozilla-inbound/rev/1af35a19b87e

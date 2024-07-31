@@ -1,0 +1,7 @@
+there s a problem however which is in the gimp-1.2 tree but since we can t fix it there, we should think about possible workarounds in gimp-2.0
+the problem is that gimp.m4, which provides am_path_gimp(), the automake macro to check for gimp-1.2 does not use gimptool-1.2 as it should
+this means that if people have gimp-2.0 installed, makefiles and configure scripts written to work with gimp-1.2 start to break
+if gimp-1.2 and gimp-2.0 are installed and the gimp-print configure script is run, the script detects the presence of gimp-1.2 but uses cflags and libs from gimptool which points to gimp-2.0
+probably the only thing we can do about this is to not install the symlink and to document that gimptool-2.0 needs to be used with gimp-2.0
+don t install the gimptool links
+we should consider to do a 1.2.6 release as a final release in the 1.2 series

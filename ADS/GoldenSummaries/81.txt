@@ -1,0 +1,10 @@
+in the gimp module we have multiple text domains and maintain multiple po directories
+in each of these, intltool-update -m detects a long list of files that are missing from potfiles.in
+we would like to fix this but maintaining the potfiles.skip files would be quite a pain
+it would make our lifes a lot easier if potfiles.skip could contain directory names and intltool-update would then skip the listed directory entirely
+the gnome-games module is also annoyed by this bug.
+no matter whether this problem should be fixed in this way or by any other mean, allowing directory to be skipped could be a good thing to add for intltool.
+you can now ignore directories by simply placing the directory name in potfiles.skip
+we are now using this feature in gimp trunk
+seems to work nicely with intltool 0.40.0
+it makes maintaining the potfiles.skip files a lot easier.

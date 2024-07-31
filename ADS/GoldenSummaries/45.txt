@@ -1,0 +1,16 @@
+when i update today (0708) from yesterday ' s nightly, i get to download the new build, but after restart it doesn ' t apply anything (no patching window comes up, no messages on the console or js console)
+i tried running updater.app by hand as well, and didn ' t get anything
+not sure if this is just the server being mistaken about there being newer builds for me, or what, but i thought i ' d file it.
+after i restart, the update archive gets deleted, but i never get the " updating firefox " window, and the build is the same old one
+is active-update.xml supposed to be deleted after the update is applied
+if so, that ' s the problem, since it ' s still there after an update
+active-update.xml that was left around after applying updates
+however, i also see that active-updates.xml is still in the application directory after the update
+i also see an active-updates.xml file under windows, but its contents are significantly different (just an empty xml tag).
+i just tried removing active-updates.xml and that didn ' t seem to help
+in fact, i can ' t seem to find the .mar file from the second update cycle anywhere on my hdd.
+when i deleted the entire updates/ folder, the problem went away, and i was able to update from the 7/29 build to today ' s 8/1 build
+yeah, i think it ' s having trouble removing updates/0/updater.app/ because it does not expect that to be a directory
+under other systems (linux and windows), it is not a directory
+the solution is probably to change nsupdateservice.js to pass |true| to the nsifile
+OS X 10.4.2 Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8b4)Gecko/20050730 Firefox/1.0+

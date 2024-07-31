@@ -1,0 +1,12 @@
+the search order from a class with the definition class x extends y implements a, b is as follows
+x - x ' s superclasses in order to object - a breadth-first traversal of the target class ' s interfaces in the order returned by getinterfaces (in the example, a and its superinterfaces then b and its superinterfaces) this comment is not perfectly clear
+in particular, it does not complete the example by explicitly listing the exact order the example classes and interfaces are returned
+also, the javadoc has what reads to me as a contradiction
+but that would not be accurately described as " a and its superinterfaces then b and its superinterfaces "
+in some ways having all the classes first, followed by the interfaces might make more sense than the current implementation...
+- for the contradiction, i think we should stick with the breadth-first search, and delete the parenthetic comment about the example ( " a and its superinterfaces then b and its superinterfaces " )
+- for the spec not matching the behaviour, my instinct is to " fix " the spec to match the implementation, to avoid the risk of breaking clients
+the spec was later added to the api (iadaptermanager#computeclassorder) without checking that the implementation still matched
+i guess the question is whether superclasses take precedence over interfaces defined lower in the hierarchy, i.e. does the implementation take precedence over the specification
+it looks like this change was made inadvertently during a large batch of changes to add support for the adapters extension point (bug 32498)
+i think since this change was introduced accidentally, and this is a clear violation of a long-standing specification, i ' m leaning towards fixing the implementation

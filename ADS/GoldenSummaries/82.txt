@@ -1,0 +1,6 @@
+the list of mirrors on http://www.gimp.org/download.html doesn t list any mirrors under the united states heading.
+for some reason, the script that generates the list of mirrors from defines/mirrors_list.def is forgetting the last line
+i added a harmless &lt;/dl> that should fix the problem.
+changing all www.gimp.org bugs from gimp product to the gimp-web product, including old closed/fixed bugs, and reassigning.
+re-resolving old bugs
+re-assigning all open and closed bug reports related to ftp mirrors to the ftp mirrors component

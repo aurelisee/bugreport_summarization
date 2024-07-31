@@ -1,0 +1,10 @@
+when i call mysqlcatalogdatabase.refresh(), the single schema held by the database is not refreshed
+the refresh event is sent to the appropriate listeners
+but when a listener comes back to the database to get the new schemas, they are stale
+the mysqlcatalogdatabase flags ' schemasloaded ' and ' catalogsloaded ' seem to be unused - they are never set to boolean.true
+the flag ' schemasloaded ' is set to boolean.false in refresh(), but the schemas are still loaded....
+this should fix the setting of the flags accordingly..
+if you have a chance to test, that would be great
+brian v - if you get a chance to test it, we ' ll try and get it into an early build of 1.7.2 or whatever we ' re doing for helios
+once again, this is going to have to get pushed to " future " because we just don ' t have the manpower
+hi guys, i committed the fix, with an added modification on super.refresh(). this works fine here and refreshes correctly (i tested on sp and udf modifications)

@@ -1,0 +1,9 @@
+the version of flash that ' s shipping on the pre-release tegras is reported as " shockwave flash 9.0 r83 " , but according to vlad that ' s actually a lie (probably for web compat) -- it ' s actually flash lite
+we may just want to disable the flash check entirely for windowsce user agents
+ideally we ' d actually check against the latest known safe version, but given the opacity of the mobile market i would be surprised if it is (1) difficult to determine what versions are safe and (2) nearly impossible for users to get updates.
+it also shouldn ' t warn about nvidia ' s quicktime plugin, which isn ' t really quicktime (it ' s actually just a shim to launch the media in an external player)
+having users update to beta 1 and getting a scary warning to update their not-upgradable plugin is a problem.
+we may consider pulling the warning overall in lieu of improved visibility to the plugin checker
+i assume we ' d just display some kind of polite error message if they go to the plugin check page manually.
+the p1 part of this bug is to not pester wince users from the whatsnew page, by whatever means, since we ' ll be shipping on a wince device and it ' ll confuse users
+we ' ve delivered windows ce beta 2 builds to our partner, so it ' s critical this be fixed asap

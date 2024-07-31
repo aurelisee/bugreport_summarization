@@ -1,0 +1,10 @@
+open http://www.mozilla.org in one window
+drag the logo banner at the top (a link to http://www.mozilla.org) into another window
+the browser will try to load http://www.images.com/mozilla-banner.gif
+i ' m seeing it on 0301 linux, and daa confirmed it on 0302 win32
+this is a 0.9.9-critical issue, imo
+findparentnode(draggednode, ns_literal_string( " a " ).get(), getter_addrefs(linknode))
+} don ' t we want to do getanchorurl(linknode, urlstring)
+use linknode to fill urlstring if we ' re dragging image-within-link this works for me, and seems " obviously right "
+soliciting quick reviews and approval for 0.9.9 and 1.0.
+*** bug 128416 has been marked as a duplicate of this bug ***

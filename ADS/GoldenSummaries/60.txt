@@ -1,0 +1,15 @@
+similar to https://bugs.kde.org/show_bug.cgi?id=248775 , when attempting to send a message without a configured transport
+this results in two notifications
+error while trying to send email
+there were problems and e-mail successfully sent
+these notifications should not appear together
+the email is afterwards lost (not found in outbox or sent-mail).
+imho, its not fully the (the other issue is more sent-mail and malformed adress - centric)
+probably the intermediate cause for the conflicting notifications is
+instead, just the error message is shown
+0) start kmail-mobile
+1) open composer ( write new mail )
+2) open action flap->configure transport
+3) press delete for every transport
+4) add recipient, enter subject and text for the mail
+5) press send

@@ -1,0 +1,5 @@
+every time i click on a launcher on second screen's applet gnome-panel crashes using nvidia's propietary drivers without xinerama or twinview
+i think the crash happens because the launcher animation window is created with the default (wrong) screen.
+in ubuntu hardy there was no problem, so i would assume this bug entered the source somewhere between the hardy and intrepid release.
+the patch from gerd kohlberger fixes the issue.
+version: 2.24.0

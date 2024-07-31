@@ -1,0 +1,5 @@
+in 4:4.5~20100917.1176264-1maemo1.1174921 , when creating a new event/appointment, first nothing happens
+when pressing ok again after some time passed by a conflict warning is shown
+the conflict cannot be resolved by deciding for either (or both) dates
+interpretation is that the ui does not close
+there seems to be a lot of overlap between those three.

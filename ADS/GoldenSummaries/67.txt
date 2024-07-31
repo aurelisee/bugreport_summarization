@@ -1,0 +1,10 @@
+when moving a large amount of files to my collection, amarok2 opens a file dialog for every single file that it moves
+1) move the files sequentially, or 2) not display a file dialog?
+use the files tab of amarok, then click on the directory that you want to move the files from, select move to collection
+use cover art for folder icons ignore the in artist names group by file type replace spaces with underscores restrict to ascii vfat safe filenames overwrite destination it makes lots of file transfer windows for me, every time
+right now i am moving my files in to my collection with overwrite destination unticked and i do not get the file dialogs then
+version: (using kde 4.1.2)
+amarok version 1.94
+make a directory where you would like your music collection to be stored
+go in to amarok2 and set it up so that the new collection area is included
+then, right-click on local collection, select organise and select the new destination for the files

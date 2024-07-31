@@ -1,0 +1,15 @@
+result: when i returned to my machine, all of my 2gb of ram was claimed by amarok, the cpu was still at 100% and my swap was thrashing madly
+conclusion: seems to me that amarok is trying to load every song in my collection in to ram before starting to move them
+expected behaviour: amarok should be able to deal with huge amounts of files gracefully
+targeting this for 2.0.1 as it s a pretty important feature (and many people are going to want to organize their entire collection, so it will probably effect the masses.)
+amarok does not eat up huge amounts of memory anymore
+collection management still leaves a little to be desired, though
+i suppose that will have to go into usability bugs
+i was able to move around 20gb worth of songs from a directory to my collection.
+version: (using kde 4.1.2)
+compiler: gcc 4.3.2 -march=native -o2 -pipe
+os: linux
+to reproduce: right-click on my local collection, and then pick organize files
+ticked sort by file type, and replace spaces with underscores, restrict to ascii
+then clicked on continue
+the amarok gui becomes completely unusable, and when switching between screens and back it does not redraw

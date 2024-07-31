@@ -1,0 +1,12 @@
+thread apply all backtrace
+i just created a pls file on totem 2.26, build brasero with totem-pl-parser 2.26 support and i can t reproduce this crash
+i ll attach a sample file which makes it crash.
+sample .pls-file which makes brasero crash.
+ok now i m able to reproduce the crash using rhythmbox
+just fixed a bug on svn trunk and gnome-2-26 branch (the fix will go to 2.26.1)
+remove unneeded signal connection and rename callback
+fixes crash on rhythmbox playlist import see bgo #575904.
+1. start brasero
+2. open new audio-project
+3. in the filebrowser, select a pls-file
+4. crash.

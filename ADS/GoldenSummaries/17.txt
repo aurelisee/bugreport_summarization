@@ -1,0 +1,6 @@
+previous to m6 dali was a bit flaky when it encountered " corrupt " arrays of nested annotations
+@joincolumns({@joincolumn(name= " foo " ), 42, @joincolumn(name= " bar " )}) sometimes dali would seemingly ignore some of the sibling legitimate annotations
+sometimes it wouldn ' t (i.e. the legitimate nested annotations would only sometimes show up in the jpa details view)
+recent changes to the code for handling nested annotations has caused dali to throw an exception in this situation
+this patch attempts to fix both the current exception and the previous flakiness
+any " bogus " element in an array of nested annotations will be treated as an empty nested annotations

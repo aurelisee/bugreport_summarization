@@ -1,0 +1,11 @@
+when the configure script does not find the version of the libraries it needs, it reports the libraries missing, in stead of too old
+expected results: your installed versions of $library is too old, please upgrade to at least $required version
+it s poor form to release software as stable when it depends upon libraries that have not yet been marked as stable.
+we cannot do much about this because the pkgconfig macro from cmake simply says whether it has found a suitable version or not
+if not, it does not tell which version was found but wasn t sufficient.
+actually i think it would be better if kde would switch to the new cmake pkgconfig wrapper
+i prefer to keep things simple as well
+it would be better for the pkgconfig wrapper to be used in kde.
+version: 1.3.0 (using kde 4.4.4)
+os: linux
+steps to reproduce: compile digikam 1.3.0

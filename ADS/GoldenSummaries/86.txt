@@ -1,0 +1,4 @@
+if /desktop/gnome/interface/buttons_have_icons is set to false i still get a icon on the add... button in the font &amp; colors preferences tab
+this seems to work on the remove button though, so maybe they are implemented differently.
+created an attachment (id=139723) screenshot of preferences window
+should be fixed on trunk now.

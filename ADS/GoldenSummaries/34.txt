@@ -1,0 +1,12 @@
+what ends up happening is that the _buildsortedenginelist pre-allocates an array of a certain size, then fills the engine in order from the storage file
+if not all slots are full, then this._engines contains undefined items and iterating through the engine list later in the startup process fails, giving a " engine has no properties " error and a blank search dropdown
+when the newer build starts up, a new engine exists that doesn ' t have an entry in the db, which leaves the blank slot in the array
+the patch in bug #340331 has a fix for this.
+if the search component doesn ' t successfully load the first time you run a build after unzipping it (like when you remove the plugins folder), subsequent startups may also fail because firefox won ' t try to reload the search component again
+by moving the program folder, you ' re changing the last-modified date of the .autoreg file, which tells firefox to try reloading the component at the next startup.
+i ' ll leave this open until bug 335102 lands because the problem isn ' t entirely fixed until then
+i realize that we want bug 335102 to be fixed as well, but that one looks iffy for beta1.
+i think we should take the one line fix from that patch to fix this issue
+put this right above the " // array for the remaining engines, alphabetically sorted " comment, too, since this isn ' t related to the alphaengines stuff.
+comment on attachment 228216 filter fix requesting approval for low-risk high-reward fix, intentionally split off to be acceptable for beta1.
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9a1) Gecko/20060619 Minefield/3.0a1

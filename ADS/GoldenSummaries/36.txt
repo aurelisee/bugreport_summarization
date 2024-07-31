@@ -1,0 +1,13 @@
+expected: zooms to fit paragraph on screen actual
+pans to the top left edge of the paragraph, but no zoom
+this bug was happening because we ' re calling zoomtopage from the drawinterval after the zoomtoelement (which also explains why it was intermittent - if you wait until the page load is done, everything is fine)
+the fix is to move the _maybezoomtopage=false to zoomlevel setter, and make it unconditional
+current design does not support zooming during page load as that zoom setting will be lost as soon as the page loads(even with your hack)
+i think a better way would be to add a flag like _manuallyzoomed that turns off zoomtopaging during pageload.
+we only set maybezoomtopage to false if (_clippedpagedrawing), in zoomtopage
+zooming while loading *is* in fact busted, but the reason i was actually seeing this is that once loaded, addtodrawq still calls resizeandpaint, and that can trigger a sizetopage if _maybezoomtopage is still true
+so while we probably do need to fix the zooming-while-loading case, this simpler patch fixes the bug i ' m seeing on cnn.
+created attachment 361437 fix
+i think this fixes the bug.
+1) load cnn.com
+2) double tap on the paragraph of text under the image on the top left

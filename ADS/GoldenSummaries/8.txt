@@ -1,0 +1,26 @@
+as long as " add attachment " dialog is modal i can ' t get any extra information from eclipse i ' m working on (i can ' t take a screenshot, check a class name, copy-paste a piece of code when writing description)
+reason was to stop user from changing/submitting from editor while adding attachment
+editor should be ' disabled ' during attachment (bug#171135) but ui not blocked.
+should we worry about the usability implications of a non-modal dialog
+notably we have decided that this is necessary for the screenshot capture wizard, but i can ' t think of another place in eclipse where a non-modal wizard dialog is used, and there are a few places where they would be useful.
+(1) go with the patch and make the dialog non-modal
+(2) add offline support for attachments, i.e. allow to save changes to an attachment without submitting to the repository which would make it possible to close and reopen the wizard dialog to make additional changes
+(3) use a different ui for submitting attachments, e.g
+the eclipse sdk has made a deliberate decision to make wizard dialogs modal, since they require a sequence of user input
+so while i think that there are use cases that are better served by a non-modal wizard, we should not break from this convention unless there is overwhelming reason to do so
+as a user i would personally prefer that both ctrl+h and the attachment wizard were non-modal
+but for the average user the pain of having dialogs pop behind the main window of a solitary (i.e. full screen) application is probably too much of a usability problem
+if the parent shell is correctly set to the workbench window the wizard dialog should not never get hidden behind it
+this is the way it works on gtk
+it ' s hard to make a case that there is overwhelming reason to make the attach file wizard non-modal as well
+i don ' t see any downside except for breaking convention though but a reasonable benefit of being able to access the workbench while attaching files
+most users will never notice the difference since the work flow and ui remain exactly the same
+steffen: so i assume that you ' re suggesting the slightly odd middle-ground that i took with the attachment wizard, i.e. can ' t pop behind but the user can still interact with the workbench
+btw, i have been running with the patch for a short while and have already taken advantage of the non-modality of the dialog
+in the long run i would like to aim for a solution that does not violate the platform conventions (comment #6) and enables a richer user experience (e.g. spell checking for attachment comments)
+given the benefits i think it ' s an acceptable compromise to make the dialog non-modal for now
+not sure if it ' s worth the overhead but something similar to swt ' s tweaklets that allow runtime tweaking of the ui might be useful for that purpose
+could you summarize the usability problems that could arise if we went ahead with the non-modal always-on-top approach?
+the attachment dialog is now non-modal and has been decoupled from the editor
+it is also possible to run the actual attaching in the background
+i should add that only the jira editor currently makes use of the new attachment wizard

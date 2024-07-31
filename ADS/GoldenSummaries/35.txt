@@ -1,0 +1,13 @@
+to fix bug 327208, additional cnames need to be added to start.mozilla.com
+these correspond to all the locales that exist in 1.0.x, obtained from http://lxr.mozilla.org/l10n-aviarybranch/source/browser/locales/
+it does not include ko-kr and ja-jp, which already have cnames
+this needs coordination from marketing first as they need to verify that the correct destination domains exist at yahoo/google first.
+the main issue, as i understand it, is that we need to ensure that yahoo is set up to handle ja-jpm.start.mozilla.com pointing to ja-jp.mozilla.search.yahoo.com
+dave miller mentioned that there were problems related to that in the past
+why don ' t we just point ja-jpm.start.mozilla.com at virtual-redirect.mozilla.org, and then redirect from there to ja-jp.start.mozilla.com, which is correctly configured and working already at yahoo today
+this is what we ' re already doing with ja-jp-mac.start.mozilla.com (the 1.5 name for ja-jpm), and it seems to be working fine.
+why not push the zone file (or edit a local hosts file) and test out whether it works fine?
+1) we need to push this zone file except for ja-jpm
+japan is not setup in their vhosts - so we will do the same redirect hack as done in 1.5 for the mac
+justin will make sure this redirect is setup 3) in parallel it might not be a bad idea for john to work with y
+ok, all the zone updates are done and tested, ja-jp-mac is no longer a redirect but rather a cname and the ja-jpm redirect is in and working

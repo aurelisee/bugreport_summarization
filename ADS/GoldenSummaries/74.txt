@@ -1,0 +1,11 @@
+this leads to a crash when the first entry is played again and attempted to eleminate.
+i suspect this is a duplicate of bug #131150 which just got fixed today
+this was happening because the entry was being deleted while it still had outstanding changes
+the deletion signal was emitted immediately (removing the entry from all sources), then the changes were emitted on the next rhythmdb_commit, which re-added the entry to any sources it had been in
+this patch delays the entry deleted signal until the next rhythmdb_commit, like all other changes
+all rhythmdb_entry_delete calls except one already had rhythmdb_commit calls immediately afterwards
+purge playlist
+add two files
+play the first entry
+right-lick it and select eleminate
+playback skips to the next song but the entry is not visibly removed

@@ -1,0 +1,13 @@
+to also change numerically the permits of the files on konqueror
+i would be very happy if this option was included when making click in properties permits in a file with the konqueror
+i think that under the options of the stalls it could have an option that allowed to insert the numeric values of the permits of the file.
+i m here because i will report this wish too, but i will add one thing, when selecting the file permissions, the numerical number sould appear
+the user can enter any octal number in the line edit to change the file permission like he would do when using chmod
+the attached patch is tested against head and works flawlessly for me when applied to kdelibs
+the string permission should be changed
+the additional widget might help the user to better understand the concept of unix permissions numbers, because the number is updated in real time, as soon as the user clicks on one of the checkboxes
+@finex: the corresponding file where the change must be done is in kdelibs and out of scope of dolphin
+adding a line editor to the ui that can be used and is understood by only by a very, very small user group should not be part of a ui that is used by other user groups too
+version: 2.1
+compiler: gcc version 2.95.4.20010319 (debian prerelease)
+os: linux 2.4.4 i686

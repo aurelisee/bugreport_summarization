@@ -1,0 +1,19 @@
+in order to fix bug 334206 and provide input to the compare editor we need to at least provide two rest operations
+* status which would return a file with an information on its state (tracked, staged, modified etc)
+for modified files the response (json object) should contain a link to the diff
+* diff which would return the diff resource for the given file
+there s a bug open in jgit to provide a nicer api for diff than using the low-level internals..
+bug 334766 - add diffcommand to jgit api if you don t mind using low-level code in jgit, you can look at how we implemented diff in the cli code..
+/org.eclipse.jgit.pgm/src/org/eclipse/jgit/pgm/diff.java for status, it s a tad trickier but you can look at how we do it when we decorate resources in the navigator..
+i just hope we will be able to stick to the jgit api and don t go back to using egit
+we need git diff working via rest api, so libing could start working on the compare editor asap
+so it seems like addressing bug 334766, add diffcommand to jgit api is quite important
+we had a short discussion with tomek and having git commands implemented is only one part of the problem
+we also need a way to add git uris to get /file responses.
+i ve just pushed[1] first part of the code which is responsible for the diff operation
+if this is not crucial i would like to switch to other missing parts of git rest api[3] like clone
+so he will provide additional rest api to get the file from index
+the client side will use the diff and the index as input to generate a mapper
+git add (on a single file, or all currently unstaged files) git reset --mixed (on a single file, or all currently staged files - the inverse of git add) git commit (passing a commit message, and a boolean for amend or not) i ve asked libing to create a wiki page with a sketch of the ui we d like to build.
+i ve just released[1] a rough version of /git/status which returns status for files that
+* have been added * are missing -- in index, but not filesystem * have been modified * are not tracked yet

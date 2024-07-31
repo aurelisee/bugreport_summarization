@@ -1,0 +1,5 @@
+running ostree with a new user i realized that the sidebar is too narrow to fit the entire word.
+seems it needs to be at least 188px to fit the word.
+created an attachment (id=239564)
+sidebar: increase default sidebar width so that at least in english locale, entries can fill hte width without ellipsizing
+sidebar: increase default sidebar width

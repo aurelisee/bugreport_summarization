@@ -1,0 +1,13 @@
+this way other files load and comparison starts while i review the changes of the first file
+now, my problem is that when i switch to another compare editor, the file is not automatically selected in the synchronize view
+add the synchronize view as ' show in ' target 2
+add the commonly known ' link with editor ' tool bar button and/or view menu item
+if i ' ve understood you correctly after you switch to another compare editor the several files you clicked on in the sync view are still selected
+patch that adds linking when sync ' ed using workspace model (i guess with models turned off it will work as well)
+it ' s still missing couple of things
+for me yes, and since it ' s limited scope i would probably not even add a toolbar button but simply add it to the view menu.
+and put it back on the toolbar with the other bug as soon as linking starts to work for all synchronizations (i.e. including models)?
+so a button in view-toolbar would be useful
+yes me too, but i guess i won ' t toggle it often in the sync view, e.g. i also never disable it in the history view
+added iworkbenchcommandconstants.navigate_toggle_link_with_editor as actiondefinitionid for togglelinkingaction.
+final version of the patch to be committed simultaneously with fixes for bug 291215, bug 291214 and bug 291213.

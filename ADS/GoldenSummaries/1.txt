@@ -1,0 +1,9 @@
+according to the javadoc in platform.getresourcestring(bundle,string), this method has been deprecated and one should use the nls class or the bundlefinder.find()
+i was able to find the nls class but i didn ' t find the bundlefinder class
+the nls class doesn ' t seem to provide me with the same functionality that platform.getresourcestring does, so i am assuming that bundlefinder would do the job that i need
+as there are no current plans to act on them (and there has been no actions done in the last 2 years) i think we need to remove those comments - they make a rather confusing javadoc
+there are 21 " xxx " comments that should be removed from javadoc or acted upon.
+that concerns me because wtp has a code that uses this method, and i am sure that there is plenty of adopters that are currently using that function as well.
+the comments should have been added to the implementation code or to a bug report, not to the javadoc of the platform class.
+removed incorrect comments from the platform class.
+also i deprecated platform#endsplash since this has been replaced with iapplicationcontext#applicationrunning().

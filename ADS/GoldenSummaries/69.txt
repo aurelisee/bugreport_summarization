@@ -1,0 +1,11 @@
+the only way to do this in amarok is to tick custom in the file organize dialog
+i fiddled with it until i got the preview of where the files are supposed to go the way i liked it, and clicked on ok
+then, in the collection i selected all the songs i want to move to the new directory, and right-click and then organize files
+what i would expect is that a new directory to me made in /media/evert250gb/tunes, the name of which is the genre of my mp3
+this directory stays empty, though
+i checked that i have permissions to write to this directory, and i have actually given everybody write permission to that directory
+as i understand, you didn t drag down the token collection root , please confirm if that s the case and try with the collection root token
+removed collection root token from token pool and placed before the filenamelayoutwidget as a constant token
+a path is now forced to begin with the current collection s root
+version: 1.94 (using kde 4.1.3)
+os: linux

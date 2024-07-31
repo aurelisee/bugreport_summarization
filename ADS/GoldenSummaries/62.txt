@@ -1,0 +1,9 @@
+well the title says it all, you have to enable display icons on buttons in the style-control-thingy, instead of a check mark, a blank file-type-icon is displayed
+i am not sure which icon to use here...any idea
+it is either using the empty-doc icon because it is coded that way or (i guess) because the correctly named icon is missing.
+there was an icon, a green check mark, fits nicely imho
+it would be good to note that the cr[22-32]-action-button_ok.png are differently than the 16x16 version (cr16-action-ok.png) this should be fixed by someone who can also fix the code.
+version: (using kde devel)
+installed from: compiled sources
+compiler: 3.2.3 -
+os: linux

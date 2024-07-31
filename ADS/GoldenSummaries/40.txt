@@ -1,0 +1,8 @@
+now, with imap messages (i m not using pop so i can t tell), sending a message now goes like this
+- a fake header is created while..
+the fake header is wrongly indexed (see bug 646225), but the real header is absolutely, never, ever indexed
+i think i m seeing alternatively both this issue and 574441
+if my theory is correct, since we re not altering the msgdbhdr, restarting thunderbird should be enough for an indexing pass to kick in and index all the sent messages that hadn t been indexed previously
+my sent messages go to inbox, and i too have found that restart gets them indexed
+comment on attachment 530415 proposed fix i just gave this patch a try, and gloda is seeing msgsclassified for the fake header, which means it is indexed instantly (this is great)
+this also means asuth s code from bug 534449 will be actually used properly, because afaict, we were only going through this codepath with buggy assumptions before, or not going there at all!

@@ -1,0 +1,7 @@
+we need a 256x256 variant for various places in gnome shell
+also included is source svg using the one canvas approach.
+plese note that the source svg needs to be kept in the repository, no need to ship it with the tomboy source package tho.
+slightly refesh d version with more contrast and better canvas usage on the 256x256.
+*** bug 647174 has been marked as a duplicate of this bug ***
+tested with my opensuse 12.1 gnome 3.2 build.
+committed r50006f367b34

@@ -1,0 +1,12 @@
+branch_20090126_localdiff is there any particular reason why we validate patch root provided manually in the create local diff wizard
+currently, only existing paths are accepted
+this doesn ' t allow us to ignore leading path segments which was, correct me if i ' m wrong, the main reason behind this option.
+so, just to clear things out, we don ' t need patch root ' s validation, because we want to be able to enter a path, which may be outside of the current workspace
+i think that we should allow to continue even using a path to a location outside the workspace or paths like " local history.. "
+in such cases i would expect a warning/info in the wizard header though.
+warning added if patch root is outside the workspace or is not a valid path.
+created an attachment (id=130229) fix v02 with changes
+i found more issues with your patch_v1
+i fixed some of them in my latest fix
+i think that you should look carefully at the code and remove at least all the warnings
+there is another bug for refactoring raised by tomasz

@@ -1,0 +1,6 @@
+instead of shipping a complete but outdated print plug-in, gimp should depend on libgimpprint-4.2 and only ship the plug-in that exports the libgimpprint functionality to the user
+in case someone wants to build gimp w/o printing support, there should be a --disable-print configure option.
+it will enable compatibility with future 4.2 releases, allowing us to add new printers, improved dither algorithms, etc
+the plug-in code is based on what was shipped with gimpprint-4.2.1 but ported to gtk+-2.0 (not yet entirely deprecation-free)
+committed the change to the stable branch
+now we need to give the translators some time to update the translations.

@@ -1,0 +1,7 @@
+i ' ve recently been experiencing crashes when using alt+arrow to move the cursor around word-by-word in text boxes
+i ' ve noticed this most recently in the gmail compose window, although i ' m pretty sure i ' ve seen it in " normal " textareas/inputs as well
+not windows-specific -- i get a crash from following those steps under linux, at least.
+the space is there, sort of, but we ' re not showing it
+side note 1: not only are we not showing it, but the arrow keys don ' t seem to respect the space
+side note 2: - when coming at the invisible space from the left side, via pressing right-arrow, it ' s impossible to reach a position *immediately after* the invisible space
+i get this crash when double-clicking the first word in the sentence of this testcase

@@ -1,0 +1,10 @@
+currently, projectexplorer.updatetitle() sets the part s content description (which is displayed at the top of the view s tree whenever the user uses the go into context command to change the tree s root) by first attempting to adapt the viewer s input to iworkbenchadapter and using that adapter to build a label
+the resulting label is used for the content description
+if this is not successful, the content description is simply set to the result of calling tostring() on the input
+it seems like the appropriate way to build the content description would be to use the already available label provider
+especially since it seems the purpose of iworkbenchadapter is to be used by a universal label provider, not directly by the viewer.
+francis, the only question i have is should it do the iworkbenchadapter first and then switch to the label provider if that doesn t work
+i think trying the cn label provider first is better, that gives better local control, so i like the way brian did that
+brian, can you verify this is correct in the next nightly or i build and then mark this bug report as verified?
+if we auto-rebase it, gerrit becomes the committer, but the efoundation is fine with that as they still have the gerrit review record
+verified with i20130625-0800

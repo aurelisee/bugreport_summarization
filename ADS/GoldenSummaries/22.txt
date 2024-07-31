@@ -1,0 +1,11 @@
+i have o.e.ui.console as source in my workspace
+when i updated from head i got an api error on the project and in the problems view (a default api profile has not been set for the current workspace)
+neither cleaning and rebuilding nor replacing with an earlier version of the project makes the error go away
+i then tried to close and reopen - no luck
+it ' s possible the error does go away on clean - but probably comes back as soon as you build
+this is to alert users that are using api tooling that they need to set up a baseline, else the tooling will not do binary compatible checks
+interesting - we have a listener that looks for this (i.e. changing project nature to no longer have api tooling)
+so if you did this immediately after a workspace re-start, the code would not be invoked (as the listener would not be registered).
+for this one, i think we should start by marking the error a warning (i.e. no baseline set up)
+this way, users can load projects from cvs and still use them without errors (and without using api tooling binary compatibility analysis)
+we do clean problems if your remove the builder and api tooling is " loaded " , but is possible to start a workspace with problems and replace from head without ever invoking our builder/tooling

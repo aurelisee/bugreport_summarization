@@ -1,0 +1,6 @@
+intltool-update no longer works because of missing file git master
+error: xgettext failed to generate po template file
+l10n.gnome.org also reports trouble
+raising prio.
+ping this is still valid for me
+should be fixed now, sorry for the delay.

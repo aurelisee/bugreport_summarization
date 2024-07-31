@@ -1,0 +1,13 @@
+i20050928-1300 the menu ' fully qualify duplicates ' in the open type dialog does not affect the qualification (which is always on for duplicates) but actually appends the container info.
+i agree that the names are quite confusing
+' fully qualified ' normally means including package
+here it means including container info
+suggestion ' show container for duplicates ' this conflicts with the ' show container info ' which i would call, ' show status line ' dirk, why is the first option only for duplicates
+the feature works as follows
+- if fully qualify duplicates is unchecked two types with the same name are qualified until they " name " is unique
+- if fully qualify duplicates is checked two types with the same name are are alqays qualified with the full container path
+i was interpreting ' fully qualify ' as the package qualification only and hence expected that ' fully qualify duplicates ' would affect the package qualification for duplicates which it doesn ' t
+i also like martin ' s suggestion to rename the other item ' show status line '
+this would make it clear and would even allow to remove the separator, making the menu smaller and nicer.
+fixed by changing the names and reordering the menu.
+setting to verified.

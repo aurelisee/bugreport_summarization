@@ -1,0 +1,8 @@
+stack trace: starting program: /usr/bin/seahorse [thread debugging using libthread_db enabled] [new thread 0xb7048700 (lwp 16727)]
+program received signal sigsegv, segmentation fault
+this should be fixed with this commit
+but the key does not get deleted either so its still not the expected behaviour
+just fixed related bug #551377
+1. open seahorse
+2. right-mouse-click a ssh-key and select delete
+3. crash
